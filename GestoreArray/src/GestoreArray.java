@@ -14,7 +14,7 @@ public class GestoreArray
 	
 	/**
 	 * Dato in input un intero, restituisce la posizione dello stesso all'interno dell'array,
-	 * se non è presente restituisce -1
+	 * se non Ã¨ presente restituisce -1
 	 *
 	 * @param index intero da ricercare nell'array
 	 * @return posizione dell'intero presente nel vettore
@@ -55,7 +55,7 @@ public class GestoreArray
 	
 	/**
 	 * Concatena un altro array di interi in fondo all'array dell'oggetto, escludendo le ripetizioni
-     * Il metodo restituisce il numero di elementi scartati
+	 * Il metodo restituisce il numero di elementi scartati
 	 *
 	 * @param array un array di interi da concatenare senza ripetizioni
 	 * @return numero di elementi scartati dalla concatenazione
@@ -81,8 +81,8 @@ public class GestoreArray
 	public int concatNoDup(GestoreArray array) { return concatNoDup(array.array); } 
 	
 	/**
-	 * Sostituisce la prima occorrenza di x con il valore di y all’interno dell’array
-	 * Se l’occorrenza viene sostituita, il metodo restituisce true, altrimenti false
+	 * Sostituisce la prima occorrenza di x con il valore di y allâ€™interno dellâ€™array
+	 * Se lâ€™occorrenza viene sostituita, il metodo restituisce true, altrimenti false
 	 * 
 	 * @param x valore del vettore da sostituire
 	 * @param y valore con cui sostituire la prima occorrenza di x
