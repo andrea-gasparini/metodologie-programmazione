@@ -62,15 +62,16 @@ public class GestoreArray
 	 */
 	public int concatNoDup(int[] array)
 	{
-		int duplicati = 0;
+		int[] array2 = new int[array.length];
+		int i = 0;
 		
-		for(int i = 0; i < array.length; i++)
-			if(indexOf(array[i]) != -1) 
-				duplicati++;
-			else
-				concat(new int[] { array[i] });
+		for(int ii = 0; ii < array.length; ii++)
+			if(indexOf(array[ii]) == -1) 
+				array2[i++] = array[ii];
 		
-		return duplicati;
+		concat(array2);
+		
+		return array2.length - i;
 	}
 	
 	/**
@@ -122,7 +123,7 @@ public class GestoreArray
 	public static void main(String[] args)
 	{
 		int[] myArray = {4, 4, 6, 10};
-		GestoreArray a = new GestoreArray(new int[] {2, 2, 3});
+		GestoreArray a = new GestoreArray(new int[] {1, 2, 3});
 		GestoreArray b = new GestoreArray(myArray);
 		
 		a.concat(b);
