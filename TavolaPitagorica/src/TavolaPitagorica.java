@@ -85,7 +85,7 @@ public class TavolaPitagorica
 	
 	public static void main(String[] args)
 	{
-		TavolaPitagorica tp = new TavolaPitagorica(5);
+		TavolaPitagorica tp = new TavolaPitagorica(10);
 		System.out.println(tp.toString());
 	}
 	
