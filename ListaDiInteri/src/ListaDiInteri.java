@@ -70,10 +70,10 @@ public class ListaDiInteri
 	public int size() { return a.length; }
 	
 	/**
-	 * Controlla se un intero è contenuto nella lista
+	 * Controlla se un intero Ã¨ contenuto nella lista
 	 * 
 	 * @param v
-	 * @return true se v è contenuto, false altrimenti
+	 * @return true se v Ã¨ contenuto, false altrimenti
 	 */
 	public boolean contains(int v) { return indexOf(v) != -1; }
 	
@@ -82,10 +82,7 @@ public class ListaDiInteri
 	 * 
 	 * @param v intero da aggiungere
 	 */
-	public void add(int v)
-	{
-		add(v, a.length);
-	}
+	public void add(int v) { add(v, a.length); }
 	
 	/**
 	 * Aggiunge un intero nella posizione specifiata
@@ -102,7 +99,8 @@ public class ListaDiInteri
 		
 		b[k] = v;
 		
-		for (int i = k; i < a.length; i++) b[i+1] = a[i];
+		for (int i = k; i < a.length; i++) 
+			b[i+1] = a[i];
 		
 		a = b;
 	}
