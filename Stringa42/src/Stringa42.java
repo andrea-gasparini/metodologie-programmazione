@@ -36,9 +36,9 @@ public class Stringa42
 	public char getInizialeStringa42() { return str.charAt(0);	}
 	
 	/**
-	 * Restituisce un booleano che indichi se la stringa è pari al numero "magico" 42
+	 * Restituisce un booleano che indichi se la stringa Ã¨ pari al numero "magico" 42
 	 *
-	 * @return true se la stringa è pari a 42, false altrimenti
+	 * @return true se la stringa Ã¨ pari a 42, false altrimenti
 	 */
 	public boolean getBooleanStringa42() { return str.equals("42"); }
 	
@@ -63,7 +63,7 @@ public class Stringa42
 		Stringa42 stringa = new Stringa42("parolaparolaparola", "parolaparolaparola", "parolaparolaparola");
 		System.out.println("Stringa con lunghezza massima 42: " + stringa.getStringa42());
 		System.out.println("Iniziale della stringa: " + stringa.getInizialeStringa42());
-		System.out.println("La stringa è pari a 42? " + stringa.getBooleanStringa42());
+		System.out.println("La stringa Ã¨ pari a 42? " + stringa.getBooleanStringa42());
 		System.out.println("La stringa contiene il numero 42? " + stringa.getBoolean42Stringa42());
 	}
 }
