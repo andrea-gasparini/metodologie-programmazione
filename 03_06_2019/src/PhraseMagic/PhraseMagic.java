@@ -1,5 +1,3 @@
-package PhraseMagic;
-
 import java.util.Random;
 
 /**
@@ -7,7 +5,7 @@ import java.util.Random;
  * 
  * Progettare una classe i cui oggetti contengono tre elenchi di parole E1, E2 e E3
  * 
- * La classe è in grado di emettere nuove espressioni costruite creando stringhe del tipo "a b c"
+ * La classe Ã¨ in grado di emettere nuove espressioni costruite creando stringhe del tipo "a b c"
  * scegliendo casualmente dai tre rispettivi elenchi a (E1), b (E2), c (E3)
  * 
  * Ad esempio, dati i seguenti elenchi:
