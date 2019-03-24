@@ -2,7 +2,7 @@
 /**
  * Progettare una classe ScacchieraTris che implementi la scacchiera del gioco del tris
  * La classe deve memorizzare la scacchiera i cui elementi possono essere:
- * - " " (se non Ë stata ancora occupata la casella)
+ * - " " (se non √® stata ancora occupata la casella)
  * - "X" oppure "O" (secondo il giocatore che ha occupato la casella)
  * 
  * La classe deve stampare in qualsiasi momento la situazione della scacchiera
@@ -20,10 +20,7 @@ public class ScacchieraTris
 	/**
 	 * Crea un oggetto ScacchieraTris formato dalla matrice 3x3
 	 */
-	public ScacchieraTris()
-	{
-		scacchiera = new String[][] {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
-	}
+	public ScacchieraTris() { scacchiera = new String[][] {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}}; }
 	
 	/** 
 	 * Restituisce la situazione della scacchiera sotto forma di stringa
@@ -52,7 +49,7 @@ public class ScacchieraTris
 	
 	/**
 	 * Occupa la casella di coordinate (x, y) con "X" o "O"
-	 * Il turno rimane invariato se si sceglie una casella gi‡ occupata
+	 * Il turno rimane invariato se si sceglie una casella gi√† occupata
 	 * 
 	 * @param x numero di riga della matrice
 	 * @param y numero di colonna della matrice
@@ -70,7 +67,7 @@ public class ScacchieraTris
 	}
 	
 	/**
-	 * Controlla se sulla scacchiera Ë presente un Tris
+	 * Controlla se sulla scacchiera √® presente un Tris
 	 * 
 	 * @return una stringa contenente l'esito della partita (TRIS o nulla)
 	 */
