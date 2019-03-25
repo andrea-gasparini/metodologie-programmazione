@@ -17,7 +17,7 @@ public class Tris
 		int turn = 1, choice, oldTurn;
 		String giocatore;
 		
-		System.out.println("GIOCO DEL TRIS \nInizia il giocatore X \nSeleziona una casella fra 1 e 9 \n");
+		System.out.println("GIOCO DEL TRIS \nInizia il giocatore X \nSeleziona una casella fra 1 e 9: \n| 1 | 2 | 3 | \n------------\n| 4 | 5 | 6 | \n------------\n| 7 | 8 | 9 |  \n");
 		
 		outer: while (true)
 		{	
