@@ -14,8 +14,8 @@ public class Tris
 		Scanner in = new Scanner(System.in);
 		ScacchieraTris obj = new ScacchieraTris();
 		
-		int turn = 1, choice = 0, oldTurn = 0;
-		String giocatore = "X";
+		int turn = 1, choice, oldTurn;
+		String giocatore;
 		
 		System.out.println("GIOCO DEL TRIS \nInizia il giocatore X \nSeleziona una casella fra 1 e 9 \n");
 		
@@ -63,7 +63,7 @@ public class Tris
 				}
 				
 				if (oldTurn == turn)
-					System.out.println("Casella gi‡ occupata, scegline un'altra \n");
+					System.out.println("Casella gi√† occupata, scegline un'altra \n");
 				else
 					System.out.print(obj.toString());
 				
