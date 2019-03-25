@@ -67,9 +67,14 @@ public class Tris
 				else
 					System.out.print(obj.toString());
 				
-				if (turn >= 4 && obj.checkTris(giocatore) == true)
+				if (obj.checkTris(giocatore))
 				{
 					System.out.println("TRIS!! \nVince il giocatore " + giocatore);
+					break outer;
+				}
+				else if (turn > 9)
+				{
+					System.out.println("PAREGGIO \nVince lo sport");
 					break outer;
 				}
 			}
