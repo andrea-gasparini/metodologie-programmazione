@@ -20,6 +20,7 @@ public class BarraDiEnergiaConPercentuale extends BarraDiEnergia
 	 *
 	 * @return una stringa contenente la rappresentazione della barra di energia
 	 */
+	 @Override
 	public String toString() { return super.toString() + " " + barra * 10 + "%"; }
 	
 	public static void main(String[] args)
