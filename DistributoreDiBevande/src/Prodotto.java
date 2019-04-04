@@ -22,11 +22,4 @@ public enum Prodotto
 	 * @return il prezzo del prodotto
 	 */
 	public double getPrezzo() { return prezzo; }
-	
-	public static void main(String[] args)
-	{
-		Prodotto[] prezzi = Prodotto.values();
-		System.out.println(prezzi[0].getPrezzo());
-		System.out.println(Prodotto.Cappuccino.getPrezzo());
-	}
 }
