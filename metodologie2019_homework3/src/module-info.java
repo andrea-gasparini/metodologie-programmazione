@@ -1,8 +1,5 @@
 /**
- * 
- */
-/**
- * @author Andrea Gasparini
+ * @author Andrea Gasparini (1813486)
  *
  */
 module metodologie2019_homework3

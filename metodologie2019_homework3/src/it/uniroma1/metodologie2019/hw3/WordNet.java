@@ -82,7 +82,6 @@ public class WordNet implements Iterable<Synset>
 					if (!(line.startsWith("  ")))
 					{
 						String[] lineSplitted = line.split(" ");
-
 						int nSynonyms = Integer.parseInt(lineSplitted[3], 16);
 						Set<String> synonyms = new HashSet<>();
 						synonyms.add(lineSplitted[4]);
@@ -93,7 +92,6 @@ public class WordNet implements Iterable<Synset>
 								synonyms.add(lineSplitted[pos]);
 								pos += 2;
 							}
-
 						int nRelations = Integer.parseInt(lineSplitted[pos]);
 						List<RelatedSynset> relatedSynsets = new ArrayList<>();
 						if (nRelations == 1)
@@ -129,7 +127,8 @@ public class WordNet implements Iterable<Synset>
 									examples.add(
 											restOfLine.substring(restOfLine.indexOf(";") + 2, restOfLine.length() - 2));
 								}
-							} else
+							} 
+							else
 							{
 								gloss = restOfLine.substring(0, pos).trim().isEmpty() ? ""
 										: restOfLine.substring(0, pos - 2);
@@ -150,7 +149,8 @@ public class WordNet implements Iterable<Synset>
 										{
 											examples.add(restOfLine.substring(1));
 											pos = -1;
-										} else
+										} 
+										else
 										{
 											examples.add(restOfLine.substring(1, pos + 1));
 											restOfLine = restOfLine.substring(pos + 2);
@@ -292,7 +292,7 @@ public class WordNet implements Iterable<Synset>
 	@Override
 	public boolean equals(Object wn)
 	{
-		if ((wn != null || wn instanceof WordNet) && version.equals(((WordNet) wn).getVersion()))
+		if (wn != null && wn instanceof WordNet && version.equals(((WordNet) wn).getVersion()))
 			return true;
 		return false;
 	}

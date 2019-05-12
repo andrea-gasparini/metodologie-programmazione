@@ -1,7 +1,5 @@
 package it.uniroma1.metodologie2019.hw3;
 
-import java.util.Arrays;
-
 /**
  * La classe BasicWordNetRelation rappresenta i tipi di relazioni esistenti su WordNet 
  * alla versione 3.1. Ogni tipo di relazione e' costruita a partire dalla sua versione
@@ -54,18 +52,6 @@ public enum BasicWordNetRelation implements WordNetRelation
 	 */
 	BasicWordNetRelation(String pointerSymbol) { this.pointerSymbol = pointerSymbol; }
 	
-	/**
-	 * Dato un tipo di relazione sotto forma di simbolo (String), restituisce l'oggetto WordNetRelation corrispondente
-	 * 
-	 * @param pointerSymbol un tipo di relazione sotto forma di simbolo (String)
-	 * @return l'oggetto WordNetRelation corrispondente
-	 */
-	public static WordNetRelation getWordNetRelationFromPointerSymbol(String pointerSymbol) 
-	{
-		return (WordNetRelation) Arrays.stream(BasicWordNetRelation.values())
-				.filter(s -> s.pointerSymbol.equals(pointerSymbol));
-	}
-
 	@Override
 	public String getPointerSymbol() { return pointerSymbol; }
 }
