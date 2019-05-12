@@ -35,6 +35,11 @@ public class WordNet implements Iterable<Synset>
 	 * Path della cartella contenente le versioni di WordNet rilasciate
 	 */
 	public static final Path PATH_WORDNET = Paths.get("wordnet-releases" + File.separator + "releases");
+	
+	/**
+	 * Array dei file data in cui sono contenute tutte le informazioni sui Synset 
+	 */
+	public static final String[] DATA_FILES = {"data.adj", "data.adv", "data.noun", "data.verb"};
 
 	/**
 	 * Versione di WordNet
@@ -64,13 +69,9 @@ public class WordNet implements Iterable<Synset>
 	{
 		this.version = version;
 		synsetsMap = new HashMap<>();
-
-		Path[] dirFiles = new Path[4];
-		dirFiles[0] = folderDir.resolve("data.adj");
-		dirFiles[1] = folderDir.resolve("data.adv");
-		dirFiles[2] = folderDir.resolve("data.noun");
-		dirFiles[3] = folderDir.resolve("data.verb");
-
+		List<Path> dirFiles = new ArrayList<>();
+		for (String fileName : DATA_FILES)
+			dirFiles.add(folderDir.resolve(fileName));
 		for (Path dir : dirFiles)
 		{
 			try (BufferedReader br = Files.newBufferedReader(dir))

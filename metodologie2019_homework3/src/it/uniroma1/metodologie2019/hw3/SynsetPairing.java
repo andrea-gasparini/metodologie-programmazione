@@ -15,14 +15,15 @@ import java.util.stream.Collectors;
  * e destinazione con associato un punteggio di similarita' tra i due.
  * 
  * Il calcolo del punteggio viene effettuato da dei metodi privati 
- * nel momento in cui viene chiamato il costruttore; il calcolo viene 
- * effettuato in base al numero di occorrenze in comune degli esempi e 
- * della similarita' delle glosse, senza prendere in considerazione le 
- * Stop Words, filtrate appositamente da un metodo privato che le carica 
- * in memoria a partire dal contenuto del file StopWords.txt contenuto nel package.
+ * nel momento in cui viene chiamato il costruttore; il calcolo valuta 
+ * il numero di occorrenze in comune degli esempi e delle parole presenti 
+ * nelle glosse, senza prendere in considerazione le Stop Words, 
+ * filtrate appositamente da un metodo privato. Tutte le Stop Words si 
+ * trovano nel file StopWords.txt e sono presenti in memoria nel campo List 
+ * STOP_WORDS, inizializzato da un metodo privato che legge dal file.
  * 
- * Il punteggio e' compreso tra 1.0 (per i Synset identici) e 0.0 
- * (per i Synset che non hanno abbastanza elementi in comune per essere 
+ * Il punteggio del SynsetPairing e' compreso tra 1.0 (per i Synset identici) 
+ * e 0.0 (per i Synset che non hanno abbastanza elementi in comune per essere 
  * considerati simili)
  * 
  * @author Andrea Gasparini (1813486)
@@ -31,8 +32,10 @@ import java.util.stream.Collectors;
 public class SynsetPairing
 {
 	/**
-	 * Lista delle Stop Words principali della lingua inglese, utilizzata per 
-	 * calcolare un punteggio di similarita' che non le prenda in considerazione
+	 * Lista delle Stop Words principali della lingua inglese, utilizzate per 
+	 * calcolare un punteggio di similarita' che non le prenda in considerazione 
+	 * in quanto poco significative. L'inizializzazione e' gestita da un metodo 
+	 * privato che legge dal file StopWords.txt contenuto nel package.
 	 */
 	public static final List<String> STOP_WORDS = readStopWords();
 	
@@ -128,9 +131,8 @@ public class SynsetPairing
 	 * In base alle parole presenti in un insieme sorgente, calcola 
 	 * le occorrenze presenti in un secondo insieme destinazione. 
 	 * Il calcolo viene effettuato senza prendere in considerazione 
-	 * le Stop Words, filtrate appositamente da un metodo privato 
-	 * che le carica in memoria a partire dal contenuto del file 
-	 * StopWords.txt contenuto nel package. 
+	 * le Stop Words, caricate in memoria a partire dal contenuto 
+	 * del file StopWords.txt contenuto nel package. 
 	 * Restituisce un punteggio compreso tra 1.0 e 0.0
 	 * 
 	 * @param source insieme sorgente di parole da confrontare
