@@ -1,16 +1,26 @@
 package it.uniroma1.metodologie2019.hw3;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * La classe SynsetPairing rappresenta una coppia di Synset sorgente 
  * e destinazione con associato un punteggio di similarita' tra i due.
  * 
  * Il calcolo del punteggio viene effettuato da dei metodi privati 
- * nel momento in cui viene chiamato il costruttore in base al numero 
- * di occorrenze in comune degli esempi e della similarita' della glossa.
+ * nel momento in cui viene chiamato il costruttore; il calcolo viene 
+ * effettuato in base al numero di occorrenze in comune degli esempi e 
+ * della similarita' delle glosse, senza prendere in considerazione le 
+ * Stop Words, filtrate appositamente da un metodo privato che le carica 
+ * in memoria a partire dal contenuto del file StopWords.txt contenuto nel package.
+ * 
  * Il punteggio e' compreso tra 1.0 (per i Synset identici) e 0.0 
  * (per i Synset che non hanno abbastanza elementi in comune per essere 
  * considerati simili)
@@ -20,6 +30,12 @@ import java.util.Set;
  */
 public class SynsetPairing
 {
+	/**
+	 * Lista delle Stop Words principali della lingua inglese, utilizzata per 
+	 * calcolare un punteggio di similarita' che non le prenda in considerazione
+	 */
+	public static final List<String> STOP_WORDS = readStopWords();
+	
 	/**
 	 * Synset sorgente
 	 */
@@ -73,6 +89,24 @@ public class SynsetPairing
 	public double getScore() { return score; }
 
 	/**
+	 * Restituisce le Stop Words principali della lingua inglese, 
+	 * contenute nel file StopWords.txt all'interno del package
+	 */
+	private static List<String> readStopWords()
+	{
+		try
+		{
+			return Files.lines(Paths.get("src" + File.separator + "it" + File.separator + "uniroma1" + 
+					File.separator + "metodologie2019" + File.separator + "hw3" + File.separator + "StopWords.txt"))
+					.collect(Collectors.toList());
+		} catch (IOException e)
+		{
+			System.err.println("File \"StopWords.txt\" non trovato!");
+		}
+		return null;
+	}
+	
+	/**
 	 * Calcola il punteggio di similarita' tra Synset sorgente e destinazione
 	 * 
 	 * @return il punteggio di similarita' tra Synset sorgente e destinazione
@@ -92,9 +126,12 @@ public class SynsetPairing
 	
 	/**
 	 * In base alle parole presenti in un insieme sorgente, calcola 
-	 * le occorrenze presenti in un secondo insieme destinazione e 
-	 * restituisce un punteggio superiore a 0.0 (e minore di 1.0) 
-	 * se almeno la meta' delle parole e' presente, altrimenti 0.0
+	 * le occorrenze presenti in un secondo insieme destinazione. 
+	 * Il calcolo viene effettuato senza prendere in considerazione 
+	 * le Stop Words, filtrate appositamente da un metodo privato 
+	 * che le carica in memoria a partire dal contenuto del file 
+	 * StopWords.txt contenuto nel package. 
+	 * Restituisce un punteggio compreso tra 1.0 e 0.0
 	 * 
 	 * @param source insieme sorgente di parole da confrontare
 	 * @param target insieme destinazione di parole da confrontare
@@ -102,11 +139,16 @@ public class SynsetPairing
 	 */
 	private double calcSimilScore(Set<String> source, Set<String> target)
 	{
-		double size = source.size() > target.size() ? source.size() : target.size();
-		double cnt = source.stream()
-				.filter(s -> target.contains(s))
+		Set<String> sourceSet = source.stream()
+				.filter(s -> !(STOP_WORDS.contains(s)))
+				.collect(Collectors.toSet());
+		Set<String> targetSet = target.stream()
+				.filter(s -> !(STOP_WORDS.contains(s)))
+				.collect(Collectors.toSet());
+		double cnt = sourceSet.stream()
+				.filter(s -> targetSet.contains(s))
 				.count();
-		return cnt > size / 2 ? cnt / size : 0.0;
+		return cnt / (sourceSet.size() > targetSet.size() ? sourceSet.size() : targetSet.size());
 	}
 	
 	@Override

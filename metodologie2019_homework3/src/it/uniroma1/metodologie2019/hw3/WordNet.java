@@ -92,22 +92,16 @@ public class WordNet implements Iterable<Synset>
 								synonyms.add(lineSplitted[pos]);
 								pos += 2;
 							}
+						
 						int nRelations = Integer.parseInt(lineSplitted[pos]);
-						List<RelatedSynset> relatedSynsets = new ArrayList<>();
-						if (nRelations == 1)
+						Set<RelatedSynset> relatedSynsets = new HashSet<>();
+						for (int i = 0; i < nRelations; i++)
 						{
 							relatedSynsets.add(new RelatedSynset(lineSplitted[pos + 1],
 									lineSplitted[pos + 2] + lineSplitted[pos + 3]));
 							pos += 4;
-						} 
-						else if (nRelations > 1)
-							for (int i = 0; i < nRelations; i++)
-							{
-								relatedSynsets.add(new RelatedSynset(lineSplitted[pos + 1],
-										lineSplitted[pos + 2] + lineSplitted[pos + 3]));
-								pos += 4;
-							}
-
+						}
+						
 						String restOfLine = line.substring(line.indexOf("|") + 2, line.length() - 1);
 						pos = restOfLine.indexOf("\"");
 						String gloss;
@@ -116,22 +110,19 @@ public class WordNet implements Iterable<Synset>
 							gloss = restOfLine.substring(0, restOfLine.length() - 1);
 						else
 						{
-							if (pos + 2 == restOfLine.length()) // se le virgolette si trovano solo come ultimo
-																// carattere
+							if (pos + 2 == restOfLine.length()) // se le virgolette si trovano solo come ultimo carattere
 							{
-								if (restOfLine.indexOf(";") == -1) // se non ci sono esempi
+								if (restOfLine.indexOf(";") == -1) // e se non ci sono esempi
 									gloss = restOfLine.substring(0, restOfLine.length() - 2);
 								else
 								{
 									gloss = restOfLine.substring(0, restOfLine.indexOf(";"));
-									examples.add(
-											restOfLine.substring(restOfLine.indexOf(";") + 2, restOfLine.length() - 2));
+									examples.add(restOfLine.substring(restOfLine.indexOf(";") + 2, restOfLine.length() - 2));
 								}
 							} 
 							else
 							{
-								gloss = restOfLine.substring(0, pos).trim().isEmpty() ? ""
-										: restOfLine.substring(0, pos - 2);
+								gloss = restOfLine.substring(0, pos).trim().isEmpty() ? "" : restOfLine.substring(0, pos - 2);
 								restOfLine = restOfLine.substring(pos);
 								pos = restOfLine.substring(1).indexOf("\"");
 								if (pos == -1) // se ci sono solo le virgolette in apertura
@@ -262,7 +253,7 @@ public class WordNet implements Iterable<Synset>
 				.collect(Collectors.toSet());
 	}
 
-	/**
+	/**		
 	 * Dati un Synset e una relazione sotto forma di WordNetRelation, restituisce 
 	 * una collezione di Synset correlati. Se la relazione non esiste o non ci sono 
 	 * istanze di tale relazione viene restituita una collezione vuota

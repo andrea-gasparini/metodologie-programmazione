@@ -1,6 +1,5 @@
 package it.uniroma1.metodologie2019.hw3;
 
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -54,9 +53,9 @@ public class Synset
 	private Set<String> examples;
 	
 	/**
-	 * Lista delle relazioni del Synset verso altri Synset
+	 * Insieme delle relazioni del Synset verso altri Synset
 	 */
-	private List<RelatedSynset> relatedSynsets;
+	private Set<RelatedSynset> relatedSynsets;
 	
 	/**
 	 * Costruisce un Synset a partire dai parametri, da cui l'ID del Synset viene inizializzato 
@@ -69,7 +68,7 @@ public class Synset
 	 * @param gloss la definizione testuale del Synset
 	 * @param examples l'insieme degli esempi del Synset
 	 */
-	public Synset(String offset, String grammaticalCategory, Set<String> synonyms, List<RelatedSynset> relatedSynsets, String gloss, Set<String> examples)
+	public Synset(String offset, String grammaticalCategory, Set<String> synonyms, Set<RelatedSynset> relatedSynsets, String gloss, Set<String> examples)
 	{
 		this.offset = offset;
 		this.grammaticalCategory = POS.getPOS(grammaticalCategory);
