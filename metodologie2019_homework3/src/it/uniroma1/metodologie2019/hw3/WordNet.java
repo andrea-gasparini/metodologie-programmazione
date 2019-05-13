@@ -37,7 +37,7 @@ public class WordNet implements Iterable<Synset>
 	public static final Path PATH_WORDNET = Paths.get("wordnet-releases" + File.separator + "releases");
 	
 	/**
-	 * Array dei file data in cui sono contenute tutte le informazioni sui Synset 
+	 * Array di stringhe contenente i nomi dei file data, in cui sono contenute tutte le informazioni sui Synset 
 	 */
 	public static final String[] DATA_FILES = {"data.adj", "data.adv", "data.noun", "data.verb"};
 
