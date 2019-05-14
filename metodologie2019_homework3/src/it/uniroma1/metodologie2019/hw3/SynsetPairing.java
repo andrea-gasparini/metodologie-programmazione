@@ -132,7 +132,8 @@ public class SynsetPairing
 	 * le occorrenze presenti in un secondo insieme destinazione. 
 	 * Il calcolo viene effettuato senza prendere in considerazione 
 	 * le Stop Words, caricate in memoria a partire dal contenuto 
-	 * del file StopWords.txt contenuto nel package. 
+	 * del file StopWords.txt contenuto nel package e opportunamente 
+	 * filtrate da un metodo privato. 
 	 * Restituisce un punteggio compreso tra 1.0 e 0.0
 	 * 
 	 * @param source insieme sorgente di parole da confrontare
@@ -141,16 +142,26 @@ public class SynsetPairing
 	 */
 	private double calcSimilScore(Set<String> source, Set<String> target)
 	{
-		Set<String> sourceSet = source.stream()
-				.filter(s -> !(STOP_WORDS.contains(s)))
-				.collect(Collectors.toSet());
-		Set<String> targetSet = target.stream()
-				.filter(s -> !(STOP_WORDS.contains(s)))
-				.collect(Collectors.toSet());
+		Set<String> sourceSet = filterStopWords(source);
+		Set<String> targetSet = filterStopWords(target);
 		double cnt = sourceSet.stream()
 				.filter(s -> targetSet.contains(s))
 				.count();
 		return cnt / (sourceSet.size() > targetSet.size() ? sourceSet.size() : targetSet.size());
+	}
+	
+	/**
+	 * A partire da un insime di parole, restituisce un insieme (Set)  
+	 * contenente le stesse parole ad eccezione delle Stop Words
+	 * 
+	 * @param wordsSet insieme di parole da cui rimuovere le Stop Words
+	 * @return un insieme contenente le stesse parole ad eccezione delle Stop Words
+	 */
+	private Set<String> filterStopWords(Set<String> wordsSet)
+	{
+		return wordsSet.stream()
+		.filter(s -> !(STOP_WORDS.contains(s)))
+		.collect(Collectors.toSet());
 	}
 	
 	@Override
