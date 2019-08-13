@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 
-@WebServlet(name="SignupServlet", urlPatterns="/singup.jsp")
+@WebServlet(name="SignupServlet", urlPatterns="/signup.jsp")
 public class SignupServlet extends BaseServlet {
 	private static final long serialVersionUID = 8484501789787L;
 
