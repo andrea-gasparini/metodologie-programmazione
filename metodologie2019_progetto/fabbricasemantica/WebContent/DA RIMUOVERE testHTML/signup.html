@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Signup | FabbricaSemantica</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="./css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="./css/fabbricasemantica.css" />
+		<link rel="stylesheet" type="text/css" href="./css/signup.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="page" class="vertical container">
+			<div id="navbar" class="horizontal container">
+				<h2 id="website-title">FabbricaSemantica</h2>
+				<div id="menu">
+					<a href="./login.html"><button id="other-page" class="menu-button">Log in</button></a>
+					<button id="actual-page" class="menu-button">Sign up</button>
+				</div>
+			</div>
+			<div id="box" class="vertical container">
+				<h1>Welcome!</h1>
+				<span style="color: grey; margin-top: 5px;">Please register a new account to be able to play :-)</span>
+				<form id="form" class="vertical container">
+					<span class="form-text">Email Address*</span>
+					<input required class="form-field" type="email">
+					<span class="form-text">Password*</span>
+					<input required class="form-field" type="password">
+					<span class="form-text">Confirm Password*</span>
+					<input required class="form-field" type="password">
+					<div id="languages" class="horizontal container">
+						<div>
+							<span class="form-text">Main Language(s)*</span>
+							<div id="checkbox-list" class="vertical container">
+								<div class="checkbox-text">
+									<input checked type="checkbox" value="English">
+									<span>English</span>
+								</div>
+								<div class="checkbox-text">
+									<input type="checkbox" value="Italiano">
+									<span>Italiano</span>
+								</div>
+							</div>
+						</div>
+						<div>
+							<span class="form-text">Other Languages</span>
+							<div class="vertical container">
+								<div class="other-language horizontal container">
+									<input class="language-field">
+									<select class="level-select">
+										<option>A1</option>
+										<option>A2</option>
+										<option>B1</option>
+										<option>B2</option>
+										<option>C1</option>
+										<option>C2</option>
+									</select>
+								</div>
+								<div class="other-language horizontal container">
+									<input class="language-field">
+									<select class="level-select">
+										<option>A1</option>
+										<option>A2</option>
+										<option>B1</option>
+										<option>B2</option>
+										<option>C1</option>
+										<option>C2</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<input id="signup" type="submit" value="Sign up">
+				</form>
+				<span id="bottom-text">Already have an account? <a href="./login.html" id="change-page">Log in!</a></span>
+			</div>
+		</div>
+	</body>
+</html>

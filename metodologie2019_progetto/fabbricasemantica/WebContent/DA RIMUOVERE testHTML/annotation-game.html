@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Annotation Game | FabbricaSemantica</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="./css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="./css/fabbricasemantica.css" />
+		<link rel="stylesheet" type="text/css" href="./css/annotation-game.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+		<script>
+		
+		var myGamePiece;
+		var myObstacles = [];
+		var myWords = [];
+		var buttonClicked;
+		
+		function startGame() {
+			myGameArea.start();
+			myGamePiece = new circle(10, "blue", 245, 480); 
+			//myGamePiece = new component(20, 20, "blue", 235, 570);
+		}
+		
+		var myGameArea = {
+			canvas : document.createElement("canvas"),
+			start : function() {
+				this.canvas.width = 500;
+				this.canvas.height = 500;
+				this.context = this.canvas.getContext("2d");
+				$("#box").prepend(this.canvas);
+				this.frameNo = 0;  
+				this.interval = setInterval(updateGameArea, 20);
+				window.addEventListener('keydown', function (e) {
+				  myGameArea.key = e.keyCode;
+				})
+				window.addEventListener('keyup', function (e) {
+				  myGameArea.key = false;
+				})
+			},
+			clear : function() {
+				this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+			},
+			stop : function() {
+				clearInterval(this.interval);
+			}
+		}
+		
+		function circle(r, color, x, y) {
+			this.r = r;
+			this.speedX = 0;
+			this.speedY = 0;
+			this.x = x;
+			this.y = y; 
+			this.update = function() {
+				ctx = myGameArea.context;
+				ctx.beginPath();
+				ctx.fillStyle = color;				
+				ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.stroke();
+			}
+			this.newPos = function() {
+				this.x += this.speedX;
+				this.y += this.speedY; 
+			} 
+			this.crashWith = function(otherobj) {
+				var myleft = this.x - (this.r + 1);
+				var myright = this.x + (this.r + 1);
+				var mytop = this.y - (this.r + 1);
+				var mybottom = this.y + (this.r + 1);
+				var otherleft = otherobj.x;
+				var otherright = otherobj.x + (otherobj.width);
+				var othertop = otherobj.y;
+				var otherbottom = otherobj.y + (otherobj.height);
+				var crash = true;
+				if ((mybottom < othertop) || (mytop > otherbottom) ||
+					(myright < otherleft) || (myleft > otherright)) {
+				  crash = false;
+				}
+				return crash;
+			}
+		}
+		
+		function component(width, height, color, x, y, type, text) {
+			this.type = type;
+			this.text = text;
+			this.width = width;
+			this.height = height;
+			this.speedX = 0;
+			this.speedY = 0;
+			this.x = x;
+			this.y = y; 
+			this.update = function() {
+				ctx = myGameArea.context;
+				if (this.type == "text") {
+				  ctx.font = this.width + " " + this.height;
+				  ctx.fillStyle = color;
+				  ctx.fillText(this.text, this.x, this.y);
+				} else {
+				ctx.fillStyle = color;
+				ctx.fillRect(this.x, this.y, this.width, this.height);
+				}
+			}
+			this.newPos = function() {
+				this.x += this.speedX;
+				this.y += this.speedY; 
+			}
+			this.crashWith = function(otherobj) {
+				var myleft = this.x;
+				var myright = this.x + (this.width);
+				var mytop = this.y;
+				var mybottom = this.y + (this.height);
+				var otherleft = otherobj.x;
+				var otherright = otherobj.x + (otherobj.width);
+				var othertop = otherobj.y;
+				var otherbottom = otherobj.y + (otherobj.height);
+				var crash = true;
+				if ((mybottom < othertop) ||
+				(mytop > otherbottom) ||
+				(myright < otherleft) ||
+				(myleft > otherright)) {
+					crash = false;
+				}
+				return crash;
+			}
+		}
+		
+		function updateGameArea() {
+			var x, y;
+			for (i = 0; i < myObstacles.length; i += 1) {
+				if (myGamePiece.crashWith(myObstacles[i])) {
+					myGameArea.stop();
+					return;
+				} 
+			}
+			myGameArea.clear();
+			if (myGameArea.key && myGameArea.key == 37) { myGamePiece.speedX -= 2; }
+			if (myGameArea.key && myGameArea.key == 39) { myGamePiece.speedX += 2; }
+			myGameArea.frameNo += 1;
+			if (myGameArea.frameNo == 1 || everyinterval(300)) {
+				y = 0;
+				minWidth = 10;
+				maxWidth = 150;
+				width = Math.floor(Math.random()*(maxWidth-minWidth+1)+minWidth);
+				width2 = Math.floor(Math.random()*(maxWidth-minWidth+1)+minWidth);
+				//minGap = 50;
+				//maxGap = 200;
+				//gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+				gap = 100;
+				myObstacles.push(new component(width, 10, "red", 0, y));
+				myWords.push(new component("15px", "Consolas", "black", width + 30, y + 10, "text", "test"));
+				
+				//myGameArea.context.fillText("Hello World",10,50);
+				myObstacles.push(new component(width2, 10, "red", width + gap, y));
+				myObstacles.push(new component(myGameArea.canvas.width - width - width2 - gap, 10, "red", width + width2 + gap + gap, y));
+			}
+			for (i = 0; i < myObstacles.length; i += 1) {
+				myObstacles[i].y += 1;
+				myObstacles[i].update();
+			}
+			for (i = 0; i < myWords.length; i += 1) {
+				myWords[i].y += 1;
+				myWords[i].update();
+			}
+			myGamePiece.newPos(); 
+			if (! buttonClicked) { stopMove(); }
+			myGamePiece.update();
+		}	
+			
+		
+		function everyinterval(n) {
+			if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+			return false;
+		}
+		
+		function moveleft() {
+			myGamePiece.speedX -= 2;
+			buttonClicked = true;
+		}
+
+		function moveright() {
+			myGamePiece.speedX += 2;
+			buttonClicked = true;
+		}
+		
+		function stopMove() {
+			myGamePiece.speedX = 0;
+			myGamePiece.speedY = 0;
+			buttonClicked = false;
+		}
+
+		</script>
+	</head>
+	<body onload="startGame()">
+		<div id="page" class="vertical container">
+			<div id="navbar" class="horizontal container">
+				<h2 id="website-title">FabbricaSemantica</h2>
+				<div id="menu">
+					<a href="./login.html"><button id="other-page" class="menu-button">Log out</button></a>
+				</div>
+			</div>
+			<div id="box" class="vertical container">
+				<div class="vertical container">	
+					<div id="buttons" class="horizontal container">
+						<button class="control-button" onmousedown="moveleft()" onmouseup="stopMove()">LEFT</button>
+						<button class="control-button" onmousedown="moveright()" onmouseup="stopMove()">RIGHT</button>
+					</div>
+					<button class="control-button" onclick="location.reload()">START AGAIN</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

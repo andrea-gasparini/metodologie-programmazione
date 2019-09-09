@@ -1,0 +1,123 @@
+body {
+	font-family: "Titillium Web", sans-serif;
+	background-color: #d9d9d9;
+}
+h1 {
+	font-size: 230%;
+}
+h2 {
+	font-size: 200%;
+}
+button:hover {
+	cursor: pointer;
+}
+input {
+	margin-top: 10px;
+	border-radius: 10px;
+	border-style: solid;
+}
+input[type="submit"] {
+	margin-top: 15px;
+}
+input:focus,
+button:focus,
+select:focus {
+	outline: none;
+}
+a {
+	color: lightgray;
+	text-decoration: none;
+}
+#actual-page {
+	color: white;
+	opacity: 1;
+	cursor: default;
+}
+#other-page:active {
+	transform: translateY(1px);
+	opacity: 1;
+	color: white;
+}
+#navbar {
+	justify-content: space-between;
+	align-items: center;
+	background-color: #262626;
+	min-height: 60px;
+	width: 100%;
+	top: 0;
+	position: fixed;
+}
+#website-title {
+	color: lightgray;
+	padding: 10px;
+}
+#menu {
+	cursor: default;
+	margin: 15px;
+}
+#page {
+	align-items: center;
+}
+#box {
+	margin-top: 150px;
+	align-items: center;
+	background-color: #ffffff;
+	width: 500px;
+	border-radius: 10px;
+	padding: 25px;
+	box-shadow: 5px 5px whitesmoke;
+}
+#form {
+	margin-top: 20px;
+	align-items: center;
+	width: 90%;
+}
+#bottom-text {
+	color: gray;
+	font-size: 75%;
+	margin-top: 50px;
+}
+#change-page {
+	text-decoration: underline;
+	color: gray;
+}
+#change-page:hover {
+	color: #6666ff;
+}
+.menu-button {
+	opacity: 0.6;
+	font-size: 100%;
+	padding: 5px;
+	margin: 5px;
+	color: lightgray;
+	background-color: transparent;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+}
+.form-text {
+	margin-top: 15px;
+	align-self: flex-start;
+	margin-left: 10px;
+	font-weight: bold;
+}
+.form-field {
+	padding: 15px;
+	background-color: whitesmoke;
+	border-color: #d9d9d9;
+	border-width: 1px;
+	font-size: 110%;
+	width: 90%;
+}
+.clickable:hover {
+	cursor: pointer;
+}
+.container {
+	display: flex;
+}
+.vertical.container {
+	flex-direction: column;
+}
+.horizontal.container {
+	flex-direction: row;
+}
