@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.uniroma1.fabbricasemantica.data.test.XMLWriter;
+
 @WebServlet(name="ExampleServlet", urlPatterns="/example.jsp")
 public class ExampleServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,6 +22,7 @@ public class ExampleServlet extends BaseServlet {
 			out.append("Nessuna traduzione");
 		else
 			out.append("La tua risposta: '" + translation + "'");
+		new XMLWriter();
 	}
 
 }
