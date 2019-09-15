@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 
 @WebServlet(name="LogoutServlet", urlPatterns="/logout.jsp")
-public class LogoutServlet extends BaseServlet {
+public class LogoutServlet extends BaseServlet 
+{
 	private static final long serialVersionUID = 8484501789787L;
 
 	@Override
-	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		//TODO disconnettere l'utente dal sistema 
 		response.sendRedirect("login.html");
 	}

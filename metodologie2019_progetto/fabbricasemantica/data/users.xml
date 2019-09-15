@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<users>
+<user id="1">
+<firstname>Robert</firstname>
+<lastname>Brown</lastname>
+<occupation>programmer</occupation>
+</user>
+<user id="2">
+<firstname>Pamela</firstname>
+<lastname>Kyle</lastname>
+<occupation>writer</occupation>
+</user>
+<user id="3">
+<firstname>Peter</firstname>
+<lastname>Smith</lastname>
+<occupation>teacher</occupation>
+</user>
+<user id="1">
+<emailaddress>gasptube@gmail.com</emailaddress>
+<password>test</password>
+<mainlanguage>Italian</mainlanguage>
+</user>
+<user id="1">
+<emailaddress>gasptube@gmail.com</emailaddress>
+<password>test</password>
+<mainlanguage>Italian</mainlanguage>
+</user>
+</users>

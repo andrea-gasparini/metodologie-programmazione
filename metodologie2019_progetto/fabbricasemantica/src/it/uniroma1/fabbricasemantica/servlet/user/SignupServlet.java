@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 
 @WebServlet(name="SignupServlet", urlPatterns="/signup.jsp")
-public class SignupServlet extends BaseServlet {
+public class SignupServlet extends BaseServlet 
+{
 	private static final long serialVersionUID = 8484501789787L;
 
 	@Override
-	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		
 		//TODO implementare la logica per la registrazione
 		response.sendRedirect("home.html");
 	}

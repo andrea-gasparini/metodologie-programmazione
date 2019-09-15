@@ -10,11 +10,13 @@ import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 
 
 @WebServlet(name="LoginServlet", urlPatterns="/login.jsp")
-public class LoginServlet extends BaseServlet {
+public class LoginServlet extends BaseServlet
+{
 	private static final long serialVersionUID = 8484501789787L;
 
 	@Override
-	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
 		//TODO implementare i controlli per l'utente.
 		// ridirige l'utente alla pagina home.html
 		response.sendRedirect("home.html");

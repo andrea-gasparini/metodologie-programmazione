@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 
 @WebServlet(name = "TaskSenseValidationServlet", urlPatterns = "/senseValidation.jsp")
-public class TaskSenseValidationServlet extends BaseServlet {
+public class TaskSenseValidationServlet extends BaseServlet
+{
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
 		//TODO Salvare i dati
 		//TODO reinderizzare a un task a caso.
 		response.sendRedirect("senseValidation.html");

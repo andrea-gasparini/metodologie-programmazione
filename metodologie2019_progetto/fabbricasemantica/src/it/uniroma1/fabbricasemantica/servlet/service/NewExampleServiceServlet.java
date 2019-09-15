@@ -1,5 +1,5 @@
 package it.uniroma1.fabbricasemantica.servlet.service;
-
+ 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
@@ -17,7 +17,8 @@ import it.uniroma1.fabbricasemantica.data.Task;
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 
 @WebServlet(name="NewExampleServlet", urlPatterns="/nextExample.jsp")
-public class NewExampleServiceServlet extends BaseServlet {
+public class NewExampleServiceServlet extends BaseServlet
+{
 	private static final long serialVersionUID = 8783416660707020469L;
 	
 	private Map<String, Task> tasks;
@@ -28,7 +29,8 @@ public class NewExampleServiceServlet extends BaseServlet {
 	 * e mai il costruttore!
 	 * */
 	@Override
-	public void init() throws ServletException {
+	public void init() throws ServletException
+	{
 		super.init();
 		//TODO se implementata, instanziare la propria classe DataProvider
 		dataProvider = new StandardDataProvider();
@@ -38,7 +40,8 @@ public class NewExampleServiceServlet extends BaseServlet {
 	}
 
 	@Override
-	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
 		String sTask = (String) request.getParameter("task");
 		Task task = tasks.get(sTask);
 		String json = dataProvider.getData(task);
