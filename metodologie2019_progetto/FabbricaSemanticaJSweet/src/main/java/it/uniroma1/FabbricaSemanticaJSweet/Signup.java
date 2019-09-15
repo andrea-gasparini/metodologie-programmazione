@@ -7,7 +7,6 @@ import static def.jquery.Globals.$;
 import def.dom.Event;
 import def.dom.HTMLDivElement;
 import def.dom.HTMLInputElement;
-import def.dom.HTMLSpanElement;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder;
@@ -26,12 +25,12 @@ public class Signup extends FabbricaSemanticaPage
 	{	
 		super(pageName);
 		// da "riassumere" in un metodo? dipende dal back-end
-		HTMLDivElement firstCheckboxDiv = new HTMLDivElementBuilder().addClass("checkbox-text").toHTMLElement();
-		HTMLInputElement firstCheckbox = new HTMLInputElementBuilder().addName("first-checkbox").addType("checkbox").toHTMLElement();
-		HTMLSpanElement firstCheckboxSpan = new HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText("English").toHTMLElement();
-		HTMLDivElement secondCheckboxDiv = new HTMLDivElementBuilder().addClass("checkbox-text").toHTMLElement();
-		HTMLInputElement secondCheckbox = new HTMLInputElementBuilder().addName("second-checkbox").addType("checkbox").toHTMLElement();
-		HTMLSpanElement secondCheckboxSpan = new HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText("Italian").toHTMLElement();
+//		HTMLDivElement firstCheckboxDiv = new HTMLDivElementBuilder().addClass("checkbox-text").toHTMLElement();
+//		HTMLInputElement firstCheckbox = new HTMLInputElementBuilder().addName("first-checkbox").addType("checkbox").toHTMLElement();
+//		HTMLSpanElement firstCheckboxSpan = new HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText("English").toHTMLElement();
+//		HTMLDivElement secondCheckboxDiv = new HTMLDivElementBuilder().addClass("checkbox-text").toHTMLElement();
+//		HTMLInputElement secondCheckbox = new HTMLInputElementBuilder().addName("second-checkbox").addType("checkbox").toHTMLElement();
+//		HTMLSpanElement secondCheckboxSpan = new HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText("Italian").toHTMLElement();
 		
 		$("#page").append(new HTMLDivElementBuilder("box").addClass("vertical container").toHTMLElement());
 		$("#box").append(
@@ -54,13 +53,13 @@ public class Signup extends FabbricaSemanticaPage
 		$("#languages-left").append(
 				new HTMLSpanElementBuilder().addClass("form-text").addText("Main Language(s)*").toHTMLElement(),
 				new HTMLDivElementBuilder("checkbox-list").addClass("vertical container").toHTMLElement());
-		$("#checkbox-list").append(firstCheckboxDiv, secondCheckboxDiv);
-		$(firstCheckboxDiv).append(
-				firstCheckbox,
-				firstCheckboxSpan);
-		$(secondCheckboxDiv).append(
-				secondCheckbox,
-				secondCheckboxSpan);
+		$("#checkbox-list").append(createCheckboxDiv("English"), createCheckboxDiv("Italian"));
+//		$(firstCheckboxDiv).append(
+//				firstCheckbox,
+//				firstCheckboxSpan);
+//		$(secondCheckboxDiv).append(
+//				secondCheckbox,
+//				secondCheckboxSpan);
 		$("#languages-right").append(
 				new HTMLSpanElementBuilder().addClass("form-text").addText("Other Languages").toHTMLElement(),
 				new HTMLDivElementBuilder("other-languages").addClass("vertical container").toHTMLElement());
@@ -68,13 +67,22 @@ public class Signup extends FabbricaSemanticaPage
 		$("#bottom-text").append(new HTMLAnchorElementBuilder("change-page").addHref("./login.html").addText("Log in!").toHTMLElement());
 	}
 	
+	private HTMLDivElement createCheckboxDiv(String language)
+	{
+		HTMLDivElement checkboxDiv = new HTMLDivElementBuilder().addClass("checkbox-text").toHTMLElement();
+		$(checkboxDiv).append(
+				new HTMLInputElementBuilder().addName("language-checkbox").addType("checkbox").toHTMLElement(),
+				new HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText(language).toHTMLElement());
+		return checkboxDiv;
+	}
+	
 	private HTMLDivElement createOtherLanguageDiv()
 	{
 		HTMLDivElement otherLanguageDiv = new HTMLDivElementBuilder().addClass("other-language horizontal container").toHTMLElement();
-		HTMLSelectElementBuilder otherLanguageSelect = new HTMLSelectElementBuilder().addClass("level-select");
+		HTMLSelectElementBuilder otherLanguageSelect = new HTMLSelectElementBuilder().addName("language-level").addClass("level-select");
 		for (String level : LANGUAGE_LEVELS) otherLanguageSelect.addOptionElement(level);
 		$(otherLanguageDiv).append(
-				new HTMLInputElementBuilder().addClass("language-field").toHTMLElement(), // questo input non ha Name, è un problema nel back?
+				new HTMLInputElementBuilder().addName("other-language").addClass("language-field").toHTMLElement(),
 				otherLanguageSelect.toHTMLElement());
 		return otherLanguageDiv;
 	}

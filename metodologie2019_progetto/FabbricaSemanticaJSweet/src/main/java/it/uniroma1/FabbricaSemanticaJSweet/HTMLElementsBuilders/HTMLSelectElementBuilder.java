@@ -16,6 +16,8 @@ public class HTMLSelectElementBuilder implements HTMLElementBuilder
 	public HTMLSelectElementBuilder addId(String id) { selectElement.id = id; return this; }
 	
 	public HTMLSelectElementBuilder addClass(String className) { selectElement.className = className; return this; }
+	
+	public HTMLSelectElementBuilder addName(String name) { selectElement.name = name; return this; }
 
 	public HTMLSelectElementBuilder addOptionElement(String content) 
 	{ 

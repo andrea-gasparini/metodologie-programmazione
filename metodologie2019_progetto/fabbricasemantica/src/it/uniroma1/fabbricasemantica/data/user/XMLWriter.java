@@ -19,14 +19,9 @@ import org.xml.sax.SAXException;
 
 public class XMLWriter 
 {
-//	public static void main(String[] args)
-//	{	
-//		new XMLWriter();
-//	}
-	
 	private Document doc;
 	
-	private String fileName;
+	private String childName;
 	
 	private File dataFile;
 	
@@ -36,43 +31,27 @@ public class XMLWriter
 	
 	public XMLWriter(String fileName)
 	{
-		this.fileName = fileName;
 		dataFile = new File("data" + File.separator + fileName + ".xml");
-		if (dataFile.exists())
-			editFile();
-		else
-			createFile();
-	}
-	
-	private void editFile()
-	{
+		childName = fileName.substring(0, fileName.length() - 1);
 		try
 		{
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder(); // try catch
-			doc = builder.parse(dataFile); // try catch
-			root = doc.getDocumentElement();
-			//if (idCnt != 1)
-				idCnt = Integer.parseInt(((Element)root.getLastChild()).getAttribute("id")) + 1;
+			if (dataFile.exists())
+			{
+				doc = builder.parse(dataFile); // try catch
+				root = doc.getDocumentElement();
+				idCnt = root.getElementsByTagName(childName).getLength() + 1;
+			}
+			else
+			{
+				doc = builder.newDocument();
+				root = doc.createElement(fileName);
+				doc.appendChild(root);
+				saveFile();
+			}
 		} 
 		catch (SAXException | IOException | ParserConfigurationException e)
-		{
-			e.printStackTrace();
-		}
-		
-	}
-	
-	private void createFile()
-	{
-		try 
-		{
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder(); // try catch
-			doc = builder.newDocument();
-			root = doc.createElement(fileName);
-			doc.appendChild(root);
-		} 
-		catch (ParserConfigurationException e)
 		{
 			e.printStackTrace();
 		}
@@ -87,13 +66,14 @@ public class XMLWriter
 			
 			transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 			transf.setOutputProperty(OutputKeys.INDENT, "yes");
+//			transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 			
 			DOMSource source = new DOMSource(doc);
 			
-			StreamResult console = new StreamResult(System.out);
+			StreamResult console = new StreamResult(System.out); //DEBUG
 			StreamResult file = new StreamResult(dataFile);
 			
-			transf.transform(source, console); // try catch
+			transf.transform(source, console); // try catch //DEBUG
 			transf.transform(source, file); // try catch
 		}
 		catch (TransformerException e)
@@ -102,18 +82,18 @@ public class XMLWriter
 		}
 	}
 	
-	public void addUser(String emailAddress, String password, String mainLanguage) 
+	public void addUser(String username, String password, String mainLanguage) 
 	{
-		Element user = doc.createElement("user");
+		Element user = doc.createElement(childName);
 		
 		user.setAttribute("id", idCnt + "");
-		user.appendChild(createElement("emailaddress", emailAddress));
+		user.appendChild(createElement("username", username));
 		user.appendChild(createElement("password", password));
 		user.appendChild(createElement("mainlanguage", mainLanguage));
 		root.appendChild(user);
 	}
 	
-	// overload che supporta le lingue "extra"
+	//TODO overload che supporta le lingue "extra"
 	/*public void addUser(String id, String emailAddress, String password, String mainLanguage, String ) 
 	{
 		Element user = doc.createElement("user");

@@ -37,6 +37,11 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
             return this;
         }
 
+        public addName(name : string) : HTMLSelectElementBuilder {
+            this.selectElement.name = name;
+            return this;
+        }
+
         public addOptionElement(content : string) : HTMLSelectElementBuilder {
             this.selectElement.add(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLOptionElementBuilder().addText(content).toHTMLElement());
             return this;

@@ -46,6 +46,10 @@ var it;
                         this.selectElement.className = className;
                         return this;
                     }
+                    addName(name) {
+                        this.selectElement.name = name;
+                        return this;
+                    }
                     addOptionElement(content) {
                         this.selectElement.add(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLOptionElementBuilder().addText(content).toHTMLElement());
                         return this;
