@@ -42,6 +42,11 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
             return this;
         }
 
+        public addValue(value : string) : HTMLOptionElementBuilder {
+            this.optionElement.value = value;
+            return this;
+        }
+
         public toHTMLElement() : HTMLOptionElement {
             return this.optionElement;
         }

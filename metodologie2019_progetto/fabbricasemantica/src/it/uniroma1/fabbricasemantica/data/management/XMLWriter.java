@@ -1,4 +1,4 @@
-package it.uniroma1.fabbricasemantica.data.user;
+package it.uniroma1.fabbricasemantica.data.management;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,15 +19,15 @@ import org.xml.sax.SAXException;
 
 public class XMLWriter 
 {
-	private Document doc;
+	protected Document doc;
 	
-	private String childName;
+	protected String childName;
 	
 	private File dataFile;
 	
-	private Element root;
+	protected Element root;
 	
-	private int idCnt = 1;
+	protected int idCnt = 1;
 	
 	public XMLWriter(String fileName)
 	{
@@ -82,38 +82,11 @@ public class XMLWriter
 		}
 	}
 	
-	public void addUser(String username, String password, String mainLanguage) 
-	{
-		Element user = doc.createElement(childName);
-		
-		user.setAttribute("id", idCnt + "");
-		user.appendChild(createElement("username", username));
-		user.appendChild(createElement("password", password));
-		user.appendChild(createElement("mainlanguage", mainLanguage));
-		root.appendChild(user);
-	}
-	
-	//TODO overload che supporta le lingue "extra"
-	/*public void addUser(String id, String emailAddress, String password, String mainLanguage, String ) 
-	{
-		Element user = doc.createElement("user");
-		
-		user.setAttribute("id", id);
-		user.appendChild(createElement("emailaddress", emailAddress));
-		user.appendChild(createElement("password", password));
-		user.appendChild(createElement("mainlanguage", mainLanguage));
-		
-		Node otherLanguages = doc.createElement("otherlanguages");
-		user.appendChild(otherLanguages);
-		
-		root.appendChild(user);
-	}*/
-	
-	private Node createElement(String name, String value) 
+	protected Node createElement(String name, String value) 
 	{
 		Element node = doc.createElement(name);
 		node.appendChild(doc.createTextNode(value));
-		
+
 		return node;
 	}
 }

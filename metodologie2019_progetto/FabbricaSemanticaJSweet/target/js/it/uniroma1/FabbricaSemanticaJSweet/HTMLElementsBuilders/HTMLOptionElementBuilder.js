@@ -50,6 +50,10 @@ var it;
                         this.optionElement.innerText = text;
                         return this;
                     }
+                    addValue(value) {
+                        this.optionElement.value = value;
+                        return this;
+                    }
                     toHTMLElement() {
                         return this.optionElement;
                     }

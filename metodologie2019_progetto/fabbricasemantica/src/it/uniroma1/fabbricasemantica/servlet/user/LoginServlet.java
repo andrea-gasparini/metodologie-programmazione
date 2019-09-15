@@ -5,7 +5,9 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import it.uniroma1.fabbricasemantica.data.management.XMLUserReader;
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 
 
@@ -17,9 +19,16 @@ public class LoginServlet extends BaseServlet
 	@Override
 	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		//TODO implementare i controlli per l'utente.
-		// ridirige l'utente alla pagina home.html
-		response.sendRedirect("home.html");
+		String username = request.getParameter("email");
+		String password = request.getParameter("password");
+		XMLUserReader usersData = new XMLUserReader();
+		if (usersData.checkForUser(username, password))
+		{
+			HttpSession session = request.getSession();
+			session.setAttribute("username", username);
+			response.sendRedirect("home.html");
+		}
+		else
+			response.sendRedirect("login.html");
 	}
-
 }

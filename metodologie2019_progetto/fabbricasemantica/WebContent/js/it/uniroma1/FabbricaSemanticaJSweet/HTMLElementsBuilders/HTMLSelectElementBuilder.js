@@ -51,7 +51,7 @@ var it;
                         return this;
                     }
                     addOptionElement(content) {
-                        this.selectElement.add(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLOptionElementBuilder().addText(content).toHTMLElement());
+                        this.selectElement.add(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLOptionElementBuilder().addText(content).addValue(content).toHTMLElement());
                         return this;
                     }
                     toHTMLElement() {

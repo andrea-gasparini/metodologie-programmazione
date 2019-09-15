@@ -3,6 +3,19 @@
 <user id="1">
 <username>gasptube@gmail.com</username>
 <password>asd</password>
-<mainlanguage>test</mainlanguage>
+<languages>
+<mainlanguage>english</mainlanguage>
+</languages>
+</user>
+<user id="2">
+<username>andrea.gasparini11@gmail.com</username>
+<password>asdasd</password>
+<languages>
+<mainlanguage>italian</mainlanguage>
+<otherlanguage>
+<language>Rumeno</language>
+<level>A1</level>
+</otherlanguage>
+</languages>
 </user>
 </users>

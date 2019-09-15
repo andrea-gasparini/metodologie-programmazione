@@ -5,9 +5,10 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import it.uniroma1.fabbricasemantica.data.user.XMLReader;
-import it.uniroma1.fabbricasemantica.data.user.XMLWriter;
+import it.uniroma1.fabbricasemantica.data.management.XMLUserReader;
+import it.uniroma1.fabbricasemantica.data.management.XMLUserWriter;
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 
 @WebServlet(name="SignupServlet", urlPatterns="/signup.jsp")
@@ -20,19 +21,23 @@ public class SignupServlet extends BaseServlet
 	{
 		String username = request.getParameter("email");
 		String password = request.getParameter("password");
-//		String mainlanguage = request.getParameter("mainlanguage");
-		
+		String[] mainLanguages = request.getParameterValues("language-checkbox");
+		String[] otherLanguages = request.getParameterValues("other-language");
+		String[] languageLevels = request.getParameterValues("language-level");
+
 		//TODO il controllo password andrebbe fatto da back-end, ora è implementato in JS
-		XMLWriter usersData = new XMLWriter("users");
-		if (new XMLReader("users").checkForElement("username", username))
+		XMLUserWriter usersData = new XMLUserWriter();
+		if (new XMLUserReader().checkForElement("username", username))
 		{
 			//TODO andrà implementato un "alert" o basta il refresh della pagina?
 			response.sendRedirect("signup.html");
 		}
 		else
 		{
-			usersData.addUser(username, password, "test");
-			usersData.saveFile();		
+			usersData.addUser(username, password, mainLanguages, otherLanguages, languageLevels);
+			usersData.saveFile();	
+			HttpSession session = request.getSession();
+			session.setAttribute("username", username);
 			response.sendRedirect("home.html");
 		}
 	} 

@@ -22,7 +22,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet {
 
         /*private*/ createCheckboxDiv(language : string) : HTMLDivElement {
             let checkboxDiv : HTMLDivElement = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder().addClass("checkbox-text").toHTMLElement();
-            $(checkboxDiv).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().addName("language-checkbox").addType("checkbox").toHTMLElement(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText(language).toHTMLElement());
+            $(checkboxDiv).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().addName("language-checkbox").addType("checkbox").addValue(language.toLowerCase()).toHTMLElement(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText(language).toHTMLElement());
             return checkboxDiv;
         }
 

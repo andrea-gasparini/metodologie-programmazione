@@ -1,4 +1,4 @@
-package it.uniroma1.fabbricasemantica.data.user;
+package it.uniroma1.fabbricasemantica.data.management;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -21,7 +20,7 @@ public class XMLReader
 	
 	private File dataFile;
 	
-	private Element root;
+	protected Element root;
 	
 	public XMLReader(String fileName)
 	{
@@ -43,17 +42,10 @@ public class XMLReader
 	
 	public boolean checkForElement(String fieldName, String value)
 	{
-		if (dataFile.exists())
-		{
-			NodeList list = root.getElementsByTagName(fieldName);
-			for (int i = 0; i < list.getLength(); i++)
-			{
-				Node nElement = list.item(i);
-				if (nElement.getTextContent().equals(value))
-					return true;
-			}
-		}
+		NodeList list = root.getElementsByTagName(fieldName);
+		for (int i = 0; i < list.getLength(); i++)
+			if (list.item(i).getTextContent().equals(value))
+				return true;
 		return false;
 	}
-
 }

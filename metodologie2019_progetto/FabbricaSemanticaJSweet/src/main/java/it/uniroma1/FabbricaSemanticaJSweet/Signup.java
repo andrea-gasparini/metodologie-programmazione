@@ -24,13 +24,6 @@ public class Signup extends FabbricaSemanticaPage
 	public Signup(PageType pageName)
 	{	
 		super(pageName);
-		// da "riassumere" in un metodo? dipende dal back-end
-//		HTMLDivElement firstCheckboxDiv = new HTMLDivElementBuilder().addClass("checkbox-text").toHTMLElement();
-//		HTMLInputElement firstCheckbox = new HTMLInputElementBuilder().addName("first-checkbox").addType("checkbox").toHTMLElement();
-//		HTMLSpanElement firstCheckboxSpan = new HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText("English").toHTMLElement();
-//		HTMLDivElement secondCheckboxDiv = new HTMLDivElementBuilder().addClass("checkbox-text").toHTMLElement();
-//		HTMLInputElement secondCheckbox = new HTMLInputElementBuilder().addName("second-checkbox").addType("checkbox").toHTMLElement();
-//		HTMLSpanElement secondCheckboxSpan = new HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText("Italian").toHTMLElement();
 		
 		$("#page").append(new HTMLDivElementBuilder("box").addClass("vertical container").toHTMLElement());
 		$("#box").append(
@@ -54,12 +47,6 @@ public class Signup extends FabbricaSemanticaPage
 				new HTMLSpanElementBuilder().addClass("form-text").addText("Main Language(s)*").toHTMLElement(),
 				new HTMLDivElementBuilder("checkbox-list").addClass("vertical container").toHTMLElement());
 		$("#checkbox-list").append(createCheckboxDiv("English"), createCheckboxDiv("Italian"));
-//		$(firstCheckboxDiv).append(
-//				firstCheckbox,
-//				firstCheckboxSpan);
-//		$(secondCheckboxDiv).append(
-//				secondCheckbox,
-//				secondCheckboxSpan);
 		$("#languages-right").append(
 				new HTMLSpanElementBuilder().addClass("form-text").addText("Other Languages").toHTMLElement(),
 				new HTMLDivElementBuilder("other-languages").addClass("vertical container").toHTMLElement());
@@ -71,7 +58,7 @@ public class Signup extends FabbricaSemanticaPage
 	{
 		HTMLDivElement checkboxDiv = new HTMLDivElementBuilder().addClass("checkbox-text").toHTMLElement();
 		$(checkboxDiv).append(
-				new HTMLInputElementBuilder().addName("language-checkbox").addType("checkbox").toHTMLElement(),
+				new HTMLInputElementBuilder().addName("language-checkbox").addType("checkbox").addValue(language.toLowerCase()).toHTMLElement(),
 				new HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText(language).toHTMLElement());
 		return checkboxDiv;
 	}

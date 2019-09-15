@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 
@@ -16,8 +17,8 @@ public class LogoutServlet extends BaseServlet
 	@Override
 	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		//TODO disconnettere l'utente dal sistema 
+		HttpSession session = request.getSession();
+		session.setAttribute("username", null);
 		response.sendRedirect("login.html");
 	}
-
 }

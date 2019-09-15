@@ -12,6 +12,7 @@ public class FabbricaSemanticaPage
 {
 	public FabbricaSemanticaPage(PageType pageName)
 	{
+		//TODO Aggiungere un controllo su isLoggedIn.jsp ogni volta che viene caricata una pagina del sito (tranne login e signup)
 		HTMLAnchorElementBuilder changePage = new HTMLAnchorElementBuilder("change-page");
 		$("body").append(new HTMLDivElementBuilder("page").addClass("vertical container").toHTMLElement());
 		$("#page").append(new HTMLDivElementBuilder("navbar").addClass("horizontal container").toHTMLElement());
@@ -33,7 +34,7 @@ public class FabbricaSemanticaPage
 				$("#menu").append(createMenuButton("actual-page", "Home"), changePage.addHref("./logout.jsp").toHTMLElement());
 				$("#change-page").append(createMenuButton("other-page", "Log out"));
 				break;
-			case ANNOTATION_GAME_PAGE:
+			default:
 				$("#menu").append(new HTMLAnchorElementBuilder("home").toHTMLElement(), changePage.addHref("./logout.jsp").toHTMLElement());
 				$("#home").append(createMenuButton("other-page", "Home"));
 				$("#change-page").append(createMenuButton("other-page", "Log out"));

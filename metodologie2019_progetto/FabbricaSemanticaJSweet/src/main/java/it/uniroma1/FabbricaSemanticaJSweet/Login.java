@@ -24,9 +24,9 @@ public class Login extends FabbricaSemanticaPage
 				new HTMLSpanElementBuilder("bottom-text").addText("Don't have an account? ").toHTMLElement());
 		$("#form").append(
 				new HTMLSpanElementBuilder().addClass("form-text").addText("Email Address").toHTMLElement(),
-				new HTMLInputElementBuilder().addClass("form-field").addType("email").isRequired().toHTMLElement(),
+				new HTMLInputElementBuilder().addClass("form-field").addName("email").addType("email").isRequired().toHTMLElement(),
 				new HTMLSpanElementBuilder().addClass("form-text").addText("Password").toHTMLElement(),
-				new HTMLInputElementBuilder().addClass("form-field").addType("password").isRequired().toHTMLElement(),
+				new HTMLInputElementBuilder().addClass("form-field").addName("password").addType("password").isRequired().toHTMLElement(),
 				new HTMLInputElementBuilder("login").addType("submit").addValue("Log in").toHTMLElement());
 		$("#bottom-text").append(new HTMLAnchorElementBuilder("change-page").addHref("./signup.html").addText("Sign up!").toHTMLElement());
 	}
