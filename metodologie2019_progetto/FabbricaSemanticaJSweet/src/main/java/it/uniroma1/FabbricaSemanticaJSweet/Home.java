@@ -11,8 +11,8 @@ public class Home extends FabbricaSemanticaPage
 	public Home(PageType pageName)
 	{		
 		super(pageName);
-		$("#page").append(new HTMLDivElementBuilder("play-border").addClass("vertical container clickable").toHTMLElement());
-		$("#play-border").append(new HTMLDivElementBuilder("play-box").addClass("vertical container").toHTMLElement());
-		$("#play-box").append(new HTMLDivElementBuilder("play-triangle").toHTMLElement());
+		$("#page").append(new HTMLDivElementBuilder("play-border").addClass("vertical container clickable").build());
+		$("#play-border").append(new HTMLDivElementBuilder("play-box").addClass("vertical container").build());
+		$("#play-box").append(new HTMLDivElementBuilder("play-triangle").build());
 	}
 }

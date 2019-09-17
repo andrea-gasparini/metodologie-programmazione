@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Translation Annotation | FabbricaSemantica</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="./css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="./css/fabbricasemantica.css" />
+		<link rel="stylesheet" type="text/css" href="./css/task.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="page" class="vertical container">
+			<div id="navbar" class="horizontal container">
+				<h2 id="website-title">FabbricaSemantica</h2>
+				<div id="menu">
+					<a href="./home.html"><button id="other-page" class="menu-button">Home</button></a>
+					<a href="./login.html"><button id="other-page" class="menu-button">Log out</button></a>
+				</div>
+			</div>
+			<div id="box" class="vertical container">
+				<h3>Provide a translation in your Mother Tongue</h3>
+				<div id="first-div" class="bold-text">
+					<span>Word:</span>
+					<span class="grey-text">Apple</span>
+				</div>
+				<div id="second-div">
+					<span class="bold-text">Definition:</span>	
+					<span class="grey-text">It's one of the most common fruits you mention in examples but that you rarely eat</span>
+				</div>
+				<div class="horizontal container">
+					<form id="form" action="translationAnnotation.jsp">	
+						<input required class="form-field " name="translation">
+						<input id="next" type="submit" value="NEXT" name="next">
+					</form>
+					<form action="nextExample.jsp"><input id="skip" type="submit" value="SKIP" name="skip"></form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

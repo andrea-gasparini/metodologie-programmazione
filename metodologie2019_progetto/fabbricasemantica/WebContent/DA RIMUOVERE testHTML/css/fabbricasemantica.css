@@ -8,10 +8,13 @@ h1 {
 h2 {
 	font-size: 200%;
 }
+h3 {
+	font-size: 150%;
+}
 button:hover {
 	cursor: pointer;
 }
-input {
+input, textarea {
 	margin-top: 10px;
 	border-radius: 10px;
 	border-style: solid;
@@ -21,7 +24,8 @@ input[type="submit"] {
 }
 input:focus,
 button:focus,
-select:focus {
+select:focus,
+textarea:focus {
 	outline: none;
 }
 a {
@@ -60,7 +64,6 @@ a {
 }
 #box {
 	margin-top: 150px;
-	margin-bottom: 1%;
 	align-items: center;
 	background-color: #ffffff;
 	width: 500px;

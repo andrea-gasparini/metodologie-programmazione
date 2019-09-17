@@ -51,10 +51,10 @@ var it;
                         return this;
                     }
                     addOptionElement(content) {
-                        this.selectElement.add(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLOptionElementBuilder().addText(content).addValue(content).toHTMLElement());
+                        this.selectElement.add(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLOptionElementBuilder().addText(content).addValue(content).build());
                         return this;
                     }
-                    toHTMLElement() {
+                    build() {
                         return this.selectElement;
                     }
                 }

@@ -54,7 +54,7 @@ var it;
                         this.optionElement.value = value;
                         return this;
                     }
-                    toHTMLElement() {
+                    build() {
                         return this.optionElement;
                     }
                 }

@@ -25,52 +25,52 @@ public class Signup extends FabbricaSemanticaPage
 	{	
 		super(pageName);
 		
-		$("#page").append(new HTMLDivElementBuilder("box").addClass("vertical container").toHTMLElement());
+		$("#page").append(new HTMLDivElementBuilder("box").addClass("vertical container").build());
 		$("#box").append(
-				new HTMLHeadingElementBuilder().addText("Welcome!").toHTMLElement(),
+				new HTMLHeadingElementBuilder().addText("Welcome!").build(),
 				new HTMLSpanElementBuilder().addCss("color: grey; margin-top: 5px;")
-					.addText("Please register a new account to be able to play :-)").toHTMLElement(),
+					.addText("Please register a new account :-)").build(),
 				new HTMLFormElementBuilder("form").addClass("vertical container").changeMethod("POST").addAction("./signup.jsp")
-					.onSubmit(this::checkForm).toHTMLElement(),
-					new HTMLSpanElementBuilder("bottom-text").addText("Already have an account? ").toHTMLElement());
+					.onSubmit(this::checkForm).build(),
+					new HTMLSpanElementBuilder("bottom-text").addText("Already have an account? ").build());
 		$("#form").append(
-				new HTMLSpanElementBuilder().addClass("form-text").addText("Email Address*").toHTMLElement(),
-				new HTMLInputElementBuilder().addClass("form-field").addName("email").addType("email").isRequired().toHTMLElement(),
-				new HTMLSpanElementBuilder().addClass("form-text").addText("Password*").toHTMLElement(), 
-				new HTMLInputElementBuilder().addClass("form-field").addName("password").addType("password").isRequired().toHTMLElement(),
-				new HTMLSpanElementBuilder().addClass("form-text").addText("Confirm Password*").toHTMLElement(), 
-				new HTMLInputElementBuilder().addClass("form-field").addName("confirm-password").addType("password").isRequired().toHTMLElement(),
-				new HTMLDivElementBuilder("languages").addClass("horizontal container").toHTMLElement(), 
-				new HTMLInputElementBuilder("signup").addType("submit").addValue("Sign up").toHTMLElement());
-		$("#languages").append(new HTMLDivElementBuilder("languages-left").toHTMLElement(), new HTMLDivElementBuilder("languages-right").toHTMLElement());
+				new HTMLSpanElementBuilder().addClass("form-text").addText("Email Address*").build(),
+				new HTMLInputElementBuilder().addClass("form-field").addName("email").addType("email").isRequired().build(),
+				new HTMLSpanElementBuilder().addClass("form-text").addText("Password*").build(), 
+				new HTMLInputElementBuilder().addClass("form-field").addName("password").addType("password").isRequired().build(),
+				new HTMLSpanElementBuilder().addClass("form-text").addText("Confirm Password*").build(), 
+				new HTMLInputElementBuilder().addClass("form-field").addName("confirm-password").addType("password").isRequired().build(),
+				new HTMLDivElementBuilder("languages").addClass("horizontal container").build(), 
+				new HTMLInputElementBuilder("signup").addType("submit").addValue("Sign up").build());
+		$("#languages").append(new HTMLDivElementBuilder("languages-left").build(), new HTMLDivElementBuilder("languages-right").build());
 		$("#languages-left").append(
-				new HTMLSpanElementBuilder().addClass("form-text").addText("Main Language(s)*").toHTMLElement(),
-				new HTMLDivElementBuilder("checkbox-list").addClass("vertical container").toHTMLElement());
+				new HTMLSpanElementBuilder().addClass("form-text").addText("Main Language(s)*").build(),
+				new HTMLDivElementBuilder("checkbox-list").addClass("vertical container").build());
 		$("#checkbox-list").append(createCheckboxDiv("English"), createCheckboxDiv("Italian"));
 		$("#languages-right").append(
-				new HTMLSpanElementBuilder().addClass("form-text").addText("Other Languages").toHTMLElement(),
-				new HTMLDivElementBuilder("other-languages").addClass("vertical container").toHTMLElement());
+				new HTMLSpanElementBuilder().addClass("form-text").addText("Other Languages").build(),
+				new HTMLDivElementBuilder("other-languages").addClass("vertical container").build());
 		$("#other-languages").append(createOtherLanguageDiv(), createOtherLanguageDiv());
-		$("#bottom-text").append(new HTMLAnchorElementBuilder("change-page").addHref("./login.html").addText("Log in!").toHTMLElement());
+		$("#bottom-text").append(new HTMLAnchorElementBuilder("change-page").addHref("./login.html").addText("Log in!").build());
 	}
 	
 	private HTMLDivElement createCheckboxDiv(String language)
 	{
-		HTMLDivElement checkboxDiv = new HTMLDivElementBuilder().addClass("checkbox-text").toHTMLElement();
+		HTMLDivElement checkboxDiv = new HTMLDivElementBuilder().addClass("checkbox-text").build();
 		$(checkboxDiv).append(
-				new HTMLInputElementBuilder().addName("language-checkbox").addType("checkbox").addValue(language.toLowerCase()).toHTMLElement(),
-				new HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText(language).toHTMLElement());
+				new HTMLInputElementBuilder().addName("language-checkbox").addType("checkbox").addValue(language.toLowerCase()).build(),
+				new HTMLSpanElementBuilder().addCss("margin-left: 5px;").addText(language).build());
 		return checkboxDiv;
 	}
 	
 	private HTMLDivElement createOtherLanguageDiv()
 	{
-		HTMLDivElement otherLanguageDiv = new HTMLDivElementBuilder().addClass("other-language horizontal container").toHTMLElement();
+		HTMLDivElement otherLanguageDiv = new HTMLDivElementBuilder().addClass("other-language horizontal container").build();
 		HTMLSelectElementBuilder otherLanguageSelect = new HTMLSelectElementBuilder().addName("language-level").addClass("level-select");
 		for (String level : LANGUAGE_LEVELS) otherLanguageSelect.addOptionElement(level);
 		$(otherLanguageDiv).append(
-				new HTMLInputElementBuilder().addName("other-language").addClass("language-field").toHTMLElement(),
-				otherLanguageSelect.toHTMLElement());
+				new HTMLInputElementBuilder().addName("other-language").addClass("language-field").build(),
+				otherLanguageSelect.build());
 		return otherLanguageDiv;
 	}
 	

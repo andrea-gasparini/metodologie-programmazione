@@ -24,11 +24,16 @@ public class LoginServlet extends BaseServlet
 		XMLUserReader usersData = new XMLUserReader();
 		if (usersData.checkForUser(username, password))
 		{
-			HttpSession session = request.getSession();
-			session.setAttribute("username", username);
+			logIn(request, username);
 			response.sendRedirect("home.html");
 		}
 		else
 			response.sendRedirect("login.html");
+	}
+	
+	protected static void logIn(HttpServletRequest request, String username)
+	{
+		HttpSession session = request.getSession();
+		session.setAttribute("username", username);
 	}
 }

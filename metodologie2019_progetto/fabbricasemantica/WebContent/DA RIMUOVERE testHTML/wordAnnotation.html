@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Word Annotation | FabbricaSemantica</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="./css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="./css/fabbricasemantica.css" />
+		<link rel="stylesheet" type="text/css" href="./css/task.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="page" class="vertical container">
+			<div id="navbar" class="horizontal container">
+				<h2 id="website-title">FabbricaSemantica</h2>
+				<div id="menu">
+					<a href="./home.html"><button id="other-page" class="menu-button">Home</button></a>
+					<a href="./login.html"><button id="other-page" class="menu-button">Log out</button></a>
+				</div>
+			</div>
+			<div id="box" class="vertical container">
+				<h3>Try to guess the right term for the definition</h3>
+				<div id="first-div">
+					<span class="bold-text">Definition:</span>	
+					<span class="grey-text">A motor vehicle with four wheels; usually propelled by an internal combustion engine</span>
+				</div>
+				<form id="form" action="translationAnnotation.jsp">	
+					<input required class="form-field " name="translation">
+					<input id="next" type="submit" value="NEXT" name="next">
+					<form action="nextExample.jsp"><input id="skip" type="submit" value="SKIP" name="skip"></form>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+input[type="submit"] {
+	margin-left: 10px;
+	padding: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #282828;
+	color: white;
+	border-color: transparent;
+	box-shadow: 0 2px #999;
+}
+input[type="submit"]:hover {
+	cursor: pointer;
+}
+input[type="submit"]:active {
+	box-shadow: 0 1px #666;
+	transform: translateY(1px);
+}
+input[type="radio"] {
+	margin-bottom: 10px;
+}
+#box {
+	width: 800px;
+}
+#form {
+	margin-top: 10px;
+}
+#first-div {
+	margin-top: 30px;
+	max-width: 90%;
+}
+#second-div {
+	margin-top: 15px;
+	max-width: 90%;
+}
+#bottom-buttons {
+	margin-right: 10px;
+	justify-content: space-between;
+}
+.align-center {
+	justify-content: center;
+}
+.grey-text {
+	color: grey;
+}
+.bold-text {
+	font-weight: bold;
+}
+.form-field {
+	max-width: 72%;
+}
+.form-text {
+	margin-top: 9px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-weight: normal;
+}
+.radio-div {
+	height: 33px;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: #d9d9d9;
+	border-width: 1px;
+}
+.radio-div:not(:last-child) {
+	margin-bottom: 5px;
+}
+.space-between {
+	margin-left: 10px;
+}

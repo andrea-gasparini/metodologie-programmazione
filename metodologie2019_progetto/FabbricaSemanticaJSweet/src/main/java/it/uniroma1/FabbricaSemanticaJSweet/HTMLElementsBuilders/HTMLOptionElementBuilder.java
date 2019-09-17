@@ -21,5 +21,5 @@ public class HTMLOptionElementBuilder implements HTMLElementBuilder
 	
 	public HTMLOptionElementBuilder addValue(String value) { optionElement.value = value; return this; }
 	
-	public HTMLOptionElement toHTMLElement() { return optionElement; }
+	public HTMLOptionElement build() { return optionElement; }
 }

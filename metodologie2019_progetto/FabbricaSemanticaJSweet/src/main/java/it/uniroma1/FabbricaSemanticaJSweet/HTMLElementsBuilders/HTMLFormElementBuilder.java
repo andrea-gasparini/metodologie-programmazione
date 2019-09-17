@@ -27,5 +27,5 @@ public class HTMLFormElementBuilder implements HTMLElementBuilder
 	
 	public HTMLFormElementBuilder onSubmit(Function<Event, Object> func) { formElement.onsubmit = func; return this; }
 	
-	public HTMLElement toHTMLElement() { return formElement; }
+	public HTMLElement build() { return formElement; }
 }

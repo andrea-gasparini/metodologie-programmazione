@@ -16,19 +16,19 @@ public class Login extends FabbricaSemanticaPage
 	public Login(PageType pageName)
 	{
 		super(pageName);
-		$("#page").append(new HTMLDivElementBuilder("box").addClass("vertical container").toHTMLElement());
+		$("#page").append(new HTMLDivElementBuilder("box").addClass("vertical container").build());
 		$("#box").append(
-				new HTMLHeadingElementBuilder().addText("Welcome Back!").toHTMLElement(),
-				new HTMLSpanElementBuilder().addCss("color: grey; margin-top: 5px;").addText("Please log in to play :-)").toHTMLElement(),
-				new HTMLFormElementBuilder("form").addClass("vertical container").changeMethod("POST").addAction("./login.jsp").toHTMLElement(),
-				new HTMLSpanElementBuilder("bottom-text").addText("Don't have an account? ").toHTMLElement());
+				new HTMLHeadingElementBuilder().addText("Welcome Back!").build(),
+				new HTMLSpanElementBuilder().addCss("color: grey; margin-top: 5px;").addText("Please log in :-)").build(),
+				new HTMLFormElementBuilder("form").addClass("vertical container").changeMethod("POST").addAction("./login.jsp").build(),
+				new HTMLSpanElementBuilder("bottom-text").addText("Don't have an account? ").build());
 		$("#form").append(
-				new HTMLSpanElementBuilder().addClass("form-text").addText("Email Address").toHTMLElement(),
-				new HTMLInputElementBuilder().addClass("form-field").addName("email").addType("email").isRequired().toHTMLElement(),
-				new HTMLSpanElementBuilder().addClass("form-text").addText("Password").toHTMLElement(),
-				new HTMLInputElementBuilder().addClass("form-field").addName("password").addType("password").isRequired().toHTMLElement(),
-				new HTMLInputElementBuilder("login").addType("submit").addValue("Log in").toHTMLElement());
-		$("#bottom-text").append(new HTMLAnchorElementBuilder("change-page").addHref("./signup.html").addText("Sign up!").toHTMLElement());
+				new HTMLSpanElementBuilder().addClass("form-text").addText("Email Address").build(),
+				new HTMLInputElementBuilder().addClass("form-field").addName("email").addType("email").isRequired().build(),
+				new HTMLSpanElementBuilder().addClass("form-text").addText("Password").build(),
+				new HTMLInputElementBuilder().addClass("form-field").addName("password").addType("password").isRequired().build(),
+				new HTMLInputElementBuilder("login").addType("submit").addValue("Log in").build());
+		$("#bottom-text").append(new HTMLAnchorElementBuilder("change-page").addHref("./signup.html").addText("Sign up!").build());
 	}
 
 }

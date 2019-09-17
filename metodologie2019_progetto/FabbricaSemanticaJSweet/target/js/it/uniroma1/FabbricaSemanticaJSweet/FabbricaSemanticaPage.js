@@ -8,31 +8,31 @@ var it;
             class FabbricaSemanticaPage {
                 constructor(pageName) {
                     let changePage = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder("change-page");
-                    $("body").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("page").addClass("vertical container").toHTMLElement());
-                    $("#page").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("navbar").addClass("horizontal container").toHTMLElement());
-                    $("#navbar").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder(2, "website-title").addText("FabbricaSemantica").toHTMLElement(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("menu").toHTMLElement());
+                    $("body").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("page").addClass("vertical container").build());
+                    $("#page").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("navbar").addClass("horizontal container").build());
+                    $("#navbar").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder(2, "website-title").addText("FabbricaSemantica").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("menu").build());
                     switch ((pageName)) {
                         case it.uniroma1.FabbricaSemanticaJSweet.PageType.LOGIN_PAGE:
-                            $("#menu").append(this.createMenuButton("actual-page", "Log in"), changePage.addHref("./signup.html").toHTMLElement());
+                            $("#menu").append(this.createMenuButton("actual-page", "Log in"), changePage.addHref("./signup.html").build());
                             $("#change-page").append(this.createMenuButton("other-page", "Sign up"));
                             break;
                         case it.uniroma1.FabbricaSemanticaJSweet.PageType.SIGNUP_PAGE:
-                            $("#menu").append(changePage.addHref("./login.html").toHTMLElement(), this.createMenuButton("actual-page", "Sign up"));
+                            $("#menu").append(changePage.addHref("./login.html").build(), this.createMenuButton("actual-page", "Sign up"));
                             $("#change-page").append(this.createMenuButton("other-page", "Log in"));
                             break;
                         case it.uniroma1.FabbricaSemanticaJSweet.PageType.HOME_PAGE:
-                            $("#menu").append(this.createMenuButton("actual-page", "Home"), changePage.addHref("./logout.jsp").toHTMLElement());
+                            $("#menu").append(this.createMenuButton("actual-page", "Home"), changePage.addHref("./logout.jsp").build());
                             $("#change-page").append(this.createMenuButton("other-page", "Log out"));
                             break;
-                        case it.uniroma1.FabbricaSemanticaJSweet.PageType.ANNOTATION_GAME_PAGE:
-                            $("#menu").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder("home").toHTMLElement(), changePage.addHref("./logout.jsp").toHTMLElement());
+                        default:
+                            $("#menu").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder("home").addHref("./home.html").build(), changePage.addHref("./logout.jsp").build());
                             $("#home").append(this.createMenuButton("other-page", "Home"));
                             $("#change-page").append(this.createMenuButton("other-page", "Log out"));
                             break;
                     }
                 }
                 /*private*/ createMenuButton(page, text) {
-                    return new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder(page).addClass("menu-button").addText(text).toHTMLElement();
+                    return new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder(page).addClass("menu-button").addText(text).build();
                 }
             }
             FabbricaSemanticaJSweet.FabbricaSemanticaPage = FabbricaSemanticaPage;
