@@ -62,7 +62,7 @@ var it;
                         this.inputElement.name = name;
                         return this;
                     }
-                    toHTMLElement() {
+                    build() {
                         return this.inputElement;
                     }
                 }

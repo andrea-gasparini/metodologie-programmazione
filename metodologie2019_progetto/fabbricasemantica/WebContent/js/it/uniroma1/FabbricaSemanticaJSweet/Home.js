@@ -8,9 +8,9 @@ var it;
             class Home extends it.uniroma1.FabbricaSemanticaJSweet.FabbricaSemanticaPage {
                 constructor(pageName) {
                     super(pageName);
-                    $("#page").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("play-border").addClass("vertical container clickable").toHTMLElement());
-                    $("#play-border").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("play-box").addClass("vertical container").toHTMLElement());
-                    $("#play-box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("play-triangle").toHTMLElement());
+                    $("#page").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("play-border").addClass("vertical container clickable").build());
+                    $("#play-border").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("play-box").addClass("vertical container").build());
+                    $("#play-box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("play-triangle").build());
                 }
                 static main(args) {
                     new Home(it.uniroma1.FabbricaSemanticaJSweet.PageType.HOME_PAGE);

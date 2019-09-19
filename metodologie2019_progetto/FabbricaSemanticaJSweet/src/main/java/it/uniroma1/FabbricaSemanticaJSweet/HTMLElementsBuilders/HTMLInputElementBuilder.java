@@ -25,5 +25,5 @@ public class HTMLInputElementBuilder implements HTMLElementBuilder
 	
 	public HTMLInputElementBuilder addName(String name) { inputElement.name = name; return this; }
 	
-	public HTMLInputElement toHTMLElement() { return inputElement; }
+	public HTMLInputElement build() { return inputElement; }
 }

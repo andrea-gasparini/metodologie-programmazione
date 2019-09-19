@@ -57,7 +57,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
             return this;
         }
 
-        public toHTMLElement() : HTMLInputElement {
+        public build() : HTMLInputElement {
             return this.inputElement;
         }
     }

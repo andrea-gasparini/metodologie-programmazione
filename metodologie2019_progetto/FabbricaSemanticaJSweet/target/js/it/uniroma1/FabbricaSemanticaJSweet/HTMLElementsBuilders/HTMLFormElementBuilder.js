@@ -58,7 +58,7 @@ var it;
                         this.formElement.onsubmit = (func);
                         return this;
                     }
-                    toHTMLElement() {
+                    build() {
                         return this.formElement;
                     }
                 }

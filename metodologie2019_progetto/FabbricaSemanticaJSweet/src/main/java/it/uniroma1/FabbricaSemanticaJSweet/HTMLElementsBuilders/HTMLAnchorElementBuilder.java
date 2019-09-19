@@ -21,5 +21,5 @@ public class HTMLAnchorElementBuilder implements HTMLElementBuilder
 	
 	public HTMLAnchorElementBuilder addText(String text) { anchorElement.innerText = text; return this; }
 	
-	public HTMLAnchorElement toHTMLElement() { return anchorElement; }
+	public HTMLAnchorElement build() { return anchorElement; }
 }

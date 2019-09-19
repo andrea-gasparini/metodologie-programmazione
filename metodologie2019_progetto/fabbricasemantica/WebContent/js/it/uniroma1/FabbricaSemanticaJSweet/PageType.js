@@ -10,7 +10,7 @@ var it;
                 PageType[PageType["LOGIN_PAGE"] = 0] = "LOGIN_PAGE";
                 PageType[PageType["SIGNUP_PAGE"] = 1] = "SIGNUP_PAGE";
                 PageType[PageType["HOME_PAGE"] = 2] = "HOME_PAGE";
-                PageType[PageType["ANNOTATION_GAME_PAGE"] = 3] = "ANNOTATION_GAME_PAGE";
+                PageType[PageType["ANNOTATION_OR_VALIDATION_PAGE"] = 3] = "ANNOTATION_OR_VALIDATION_PAGE";
             })(PageType = FabbricaSemanticaJSweet.PageType || (FabbricaSemanticaJSweet.PageType = {}));
         })(FabbricaSemanticaJSweet = uniroma1.FabbricaSemanticaJSweet || (uniroma1.FabbricaSemanticaJSweet = {}));
     })(uniroma1 = it.uniroma1 || (it.uniroma1 = {}));

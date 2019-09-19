@@ -21,9 +21,9 @@ public class HTMLSelectElementBuilder implements HTMLElementBuilder
 
 	public HTMLSelectElementBuilder addOptionElement(String content) 
 	{ 
-		selectElement.add(new HTMLOptionElementBuilder().addText(content).addValue(content).toHTMLElement()); 
+		selectElement.add(new HTMLOptionElementBuilder().addText(content).addValue(content).build()); 
 		return this; 
 	}
 	
-	public HTMLSelectElement toHTMLElement() { return selectElement; }
+	public HTMLSelectElement build() { return selectElement; }
 }

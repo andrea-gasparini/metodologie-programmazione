@@ -18,7 +18,7 @@ var it;
                                 if (this.headingElement === undefined)
                                     this.headingElement = null;
                                 (() => {
-                                    this.headingElement = headingDimension === 1 ? document.createElement("h1") : document.createElement("h2");
+                                    this.headingElement = headingDimension === 1 ? document.createElement("h1") : headingDimension === 2 ? document.createElement("h2") : document.createElement("h3");
                                 })();
                             }
                             (() => {
@@ -38,7 +38,7 @@ var it;
                                     if (this.headingElement === undefined)
                                         this.headingElement = null;
                                     (() => {
-                                        this.headingElement = headingDimension === 1 ? document.createElement("h1") : document.createElement("h2");
+                                        this.headingElement = headingDimension === 1 ? document.createElement("h1") : headingDimension === 2 ? document.createElement("h2") : document.createElement("h3");
                                     })();
                                 }
                                 (() => {
@@ -53,7 +53,7 @@ var it;
                             if (this.headingElement === undefined)
                                 this.headingElement = null;
                             (() => {
-                                this.headingElement = headingDimension === 1 ? document.createElement("h1") : document.createElement("h2");
+                                this.headingElement = headingDimension === 1 ? document.createElement("h1") : headingDimension === 2 ? document.createElement("h2") : document.createElement("h3");
                             })();
                         }
                         else if (headingDimension === undefined && id === undefined) {
@@ -66,7 +66,7 @@ var it;
                                 if (this.headingElement === undefined)
                                     this.headingElement = null;
                                 (() => {
-                                    this.headingElement = headingDimension === 1 ? document.createElement("h1") : document.createElement("h2");
+                                    this.headingElement = headingDimension === 1 ? document.createElement("h1") : headingDimension === 2 ? document.createElement("h2") : document.createElement("h3");
                                 })();
                             }
                         }
@@ -85,7 +85,7 @@ var it;
                         this.headingElement.innerText = text;
                         return this;
                     }
-                    toHTMLElement() {
+                    build() {
                         return this.headingElement;
                     }
                 }

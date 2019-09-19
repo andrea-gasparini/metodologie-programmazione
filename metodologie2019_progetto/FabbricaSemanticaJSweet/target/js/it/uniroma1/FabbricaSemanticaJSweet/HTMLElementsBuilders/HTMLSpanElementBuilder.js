@@ -54,7 +54,7 @@ var it;
                         this.spanElement.setAttribute("style", css);
                         return this;
                     }
-                    toHTMLElement() {
+                    build() {
                         return this.spanElement;
                     }
                 }

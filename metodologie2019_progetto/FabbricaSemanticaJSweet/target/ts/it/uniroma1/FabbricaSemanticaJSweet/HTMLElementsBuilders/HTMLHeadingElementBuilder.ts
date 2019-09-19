@@ -11,7 +11,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                     if(this.headingElement===undefined) this.headingElement = null;
                     if(this.headingElement===undefined) this.headingElement = null;
                     (() => {
-                        this.headingElement = headingDimension === 1?document.createElement("h1"):document.createElement("h2");
+                        this.headingElement = headingDimension === 1?document.createElement("h1"):headingDimension === 2?document.createElement("h2"):document.createElement("h3");
                     })();
                 }
                 (() => {
@@ -28,7 +28,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                         if(this.headingElement===undefined) this.headingElement = null;
                         if(this.headingElement===undefined) this.headingElement = null;
                         (() => {
-                            this.headingElement = headingDimension === 1?document.createElement("h1"):document.createElement("h2");
+                            this.headingElement = headingDimension === 1?document.createElement("h1"):headingDimension === 2?document.createElement("h2"):document.createElement("h3");
                         })();
                     }
                     (() => {
@@ -40,7 +40,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                 if(this.headingElement===undefined) this.headingElement = null;
                 if(this.headingElement===undefined) this.headingElement = null;
                 (() => {
-                    this.headingElement = headingDimension === 1?document.createElement("h1"):document.createElement("h2");
+                    this.headingElement = headingDimension === 1?document.createElement("h1"):headingDimension === 2?document.createElement("h2"):document.createElement("h3");
                 })();
             } else if(headingDimension === undefined && id === undefined) {
                 let __args = arguments;
@@ -50,7 +50,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                     if(this.headingElement===undefined) this.headingElement = null;
                     if(this.headingElement===undefined) this.headingElement = null;
                     (() => {
-                        this.headingElement = headingDimension === 1?document.createElement("h1"):document.createElement("h2");
+                        this.headingElement = headingDimension === 1?document.createElement("h1"):headingDimension === 2?document.createElement("h2"):document.createElement("h3");
                     })();
                 }
             } else throw new Error('invalid overload');
@@ -71,7 +71,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
             return this;
         }
 
-        public toHTMLElement() : HTMLHeadingElement {
+        public build() : HTMLHeadingElement {
             return this.headingElement;
         }
     }

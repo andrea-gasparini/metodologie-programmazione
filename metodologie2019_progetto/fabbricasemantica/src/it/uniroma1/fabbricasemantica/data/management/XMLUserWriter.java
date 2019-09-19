@@ -4,7 +4,6 @@ import org.w3c.dom.Element;
 
 public class XMLUserWriter extends XMLWriter
 {
-
 	public XMLUserWriter() { super("users"); }
 	
 	public void addUser(String username, String password, String[] mainLanguages, String[] otherLanguages, String[] levels) 
@@ -28,5 +27,4 @@ public class XMLUserWriter extends XMLWriter
 		
 		root.appendChild(user);
 	}
-
 }

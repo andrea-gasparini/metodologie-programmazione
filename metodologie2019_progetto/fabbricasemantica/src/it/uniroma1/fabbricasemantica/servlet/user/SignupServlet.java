@@ -1,11 +1,11 @@
 package it.uniroma1.fabbricasemantica.servlet.user;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import it.uniroma1.fabbricasemantica.data.management.XMLUserReader;
 import it.uniroma1.fabbricasemantica.data.management.XMLUserWriter;
@@ -36,8 +36,7 @@ public class SignupServlet extends BaseServlet
 		{
 			usersData.addUser(username, password, mainLanguages, otherLanguages, languageLevels);
 			usersData.saveFile();	
-			HttpSession session = request.getSession();
-			session.setAttribute("username", username);
+			LoginServlet.logIn(request, username);
 			response.sendRedirect("home.html");
 		}
 	} 

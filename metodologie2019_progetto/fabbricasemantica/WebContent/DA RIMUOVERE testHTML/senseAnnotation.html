@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Sense Annotation | FabbricaSemantica</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="./css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="./css/fabbricasemantica.css" />
+		<link rel="stylesheet" type="text/css" href="./css/task.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="page" class="vertical container">
+			<div id="navbar" class="horizontal container">
+				<h2 id="website-title">FabbricaSemantica</h2>
+				<div id="menu">
+					<a href="./home.html"><button id="other-page" class="menu-button">Home</button></a>
+					<a href="./login.html"><button id="other-page" class="menu-button">Log out</button></a>
+				</div>
+			</div>
+			<div id="box" class="vertical container">
+				<h3>Select the correct meaning of the word in the following sentence</h3>
+				<div id="first-div" class="bold-text">
+					<span>Word:</span>
+					<span class="grey-text">Break</span>
+				</div>
+				<div id="second-div">
+					<span class="bold-text">Sentence:</span>
+					<span class="grey-text">He finally got his big break</span>
+				</div>
+				<form id="form" action="translationAnnotation.jsp">	
+					<div class="vertical container grey-text">
+						<div class="horizontal container radio-div">
+							<input required type="radio" name="sentence"/>
+							<span class="form-text">Some abrupt occurrence that interrupts an ongoing activity</span>
+						</div>
+						<div class="horizontal container radio-div">
+							<input required type="radio" name="sentence"/>
+							<span class="form-text">An unexpected piece of good luck</span>
+						</div>
+						<div class="horizontal container radio-div">
+							<input required type="radio" name="sentence"/>
+							<span class="form-text">A crack in the earth's crust</span>
+						</div>
+						<div class="horizontal container radio-div">
+							<input required type="radio" name="sentence"/>
+							<span class="form-text">A pause from doing something</span>
+						</div>					
+					</div>
+				</form>
+				<div id="bottom-buttons" class="horizontal container space-between">
+					<div><button id="form-button" form="form" type="submit">NEXT</button></div>
+					<form action="nextExample.jsp">
+						<input type="submit" value="SKIP" name="skip">
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

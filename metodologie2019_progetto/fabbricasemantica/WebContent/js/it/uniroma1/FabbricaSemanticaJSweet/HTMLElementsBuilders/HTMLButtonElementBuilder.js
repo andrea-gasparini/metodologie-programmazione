@@ -50,7 +50,7 @@ var it;
                         this.buttonElement.innerText = text;
                         return this;
                     }
-                    toHTMLElement() {
+                    build() {
                         return this.buttonElement;
                     }
                 }

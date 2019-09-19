@@ -21,5 +21,5 @@ public class HTMLSpanElementBuilder implements HTMLElementBuilder
 	
 	public HTMLSpanElementBuilder addCss(String css) { spanElement.setAttribute("style", css); return this; }
 	
-	public HTMLSpanElement toHTMLElement() { return spanElement; }
+	public HTMLSpanElement build() { return spanElement; }
 }

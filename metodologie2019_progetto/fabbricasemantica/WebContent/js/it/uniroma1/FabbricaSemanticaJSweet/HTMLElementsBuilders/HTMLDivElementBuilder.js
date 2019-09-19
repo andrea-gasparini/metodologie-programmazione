@@ -46,7 +46,7 @@ var it;
                         this.divElement.className = className;
                         return this;
                     }
-                    toHTMLElement() {
+                    build() {
                         return this.divElement;
                     }
                 }

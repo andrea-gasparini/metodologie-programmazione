@@ -17,5 +17,5 @@ public class HTMLDivElementBuilder implements HTMLElementBuilder
 	
 	public HTMLDivElementBuilder addClass(String className) { divElement.className = className; return this; }
 	
-	public HTMLDivElement toHTMLElement() { return divElement; }
+	public HTMLDivElement build() { return divElement; }
 }

@@ -54,7 +54,7 @@ var it;
                         this.anchorElement.innerText = text;
                         return this;
                     }
-                    toHTMLElement() {
+                    build() {
                         return this.anchorElement;
                     }
                 }

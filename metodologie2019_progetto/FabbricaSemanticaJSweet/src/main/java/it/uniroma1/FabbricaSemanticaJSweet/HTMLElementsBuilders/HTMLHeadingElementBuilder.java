@@ -17,7 +17,8 @@ public class HTMLHeadingElementBuilder implements HTMLElementBuilder
 	
 	public HTMLHeadingElementBuilder(int headingDimension) 
 	{ 
-		headingElement = headingDimension == 1 ? document.createElement(StringTypes.h1) : document.createElement(StringTypes.h2);
+		headingElement = headingDimension == 1 ? document.createElement(StringTypes.h1) : 
+			headingDimension == 2 ? document.createElement(StringTypes.h2) : document.createElement(StringTypes.h3);
 	}
 	
 	public HTMLHeadingElementBuilder addId(String id) { headingElement.id = id; return this; }
@@ -26,5 +27,5 @@ public class HTMLHeadingElementBuilder implements HTMLElementBuilder
 	
 	public HTMLHeadingElementBuilder addText(String text) { headingElement.innerText = text; return this; }
 	
-	public HTMLHeadingElement toHTMLElement() { return headingElement; }
+	public HTMLHeadingElement build() { return headingElement; }
 }

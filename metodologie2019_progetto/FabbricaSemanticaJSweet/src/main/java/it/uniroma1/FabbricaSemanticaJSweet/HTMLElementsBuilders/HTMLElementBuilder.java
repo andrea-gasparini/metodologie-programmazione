@@ -4,5 +4,9 @@ import def.dom.HTMLElement;
 
 public interface HTMLElementBuilder  
 {
-	public HTMLElement toHTMLElement();
+	HTMLElementBuilder addId(String id);
+	
+	HTMLElementBuilder addClass(String className);
+	
+	HTMLElement build();
 }

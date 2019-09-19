@@ -43,11 +43,11 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
         }
 
         public addOptionElement(content : string) : HTMLSelectElementBuilder {
-            this.selectElement.add(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLOptionElementBuilder().addText(content).addValue(content).toHTMLElement());
+            this.selectElement.add(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLOptionElementBuilder().addText(content).addValue(content).build());
             return this;
         }
 
-        public toHTMLElement() : HTMLSelectElement {
+        public build() : HTMLSelectElement {
             return this.selectElement;
         }
     }
