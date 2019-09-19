@@ -7,13 +7,11 @@ package it.uniroma1.fabbricasemantica.data;
  * 
  * TODO nel caso si decidesse di implementare la propria versione per ottenere i dati, bastera' implementare questa interfaccia
  * 		e definire la logica al suo interno nella maniera che si ritiene piu' opportuna. 
- * */
+ */
 public interface DataProvider<T> 
 {
-	
 	/**
 	 * Restituisce un oggetto di tipo <T> per il Task passato in input.
-	 * */
+	 */
 	T getData(Task task);
-
 }
