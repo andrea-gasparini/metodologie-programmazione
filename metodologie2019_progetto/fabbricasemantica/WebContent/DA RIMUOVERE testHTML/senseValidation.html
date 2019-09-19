@@ -34,19 +34,21 @@
 				<form id="form" action="translationAnnotation.jsp">	
 					<div class="horizontal container grey-text align-center">
 						<div class="horizontal container radio-div space-between">
-							<input type="radio" name="response"/>
+							<input required type="radio" name="response"/>
 							<span class="form-text">Yes</span>
 						</div>
 						<div class="horizontal container radio-div space-between">
-							<input type="radio" name="response"/>
+							<input required type="radio" name="response"/>
 							<span class="form-text">No</span>
 						</div>	
 					</div>
-					<div class="horizontal container align-center">
-						<input id="next" type="submit" value="NEXT" name="next">
-						<form action="nextExample.jsp"><input id="skip" type="submit" value="SKIP" name="skip"></form>
-					</div>
 				</form>
+				<div class="horizontal container align-center">
+					<div><button id="form-button" form="form" type="submit">NEXT</button></div>
+					<form action="nextExample.jsp">
+						<input type="submit" value="SKIP" name="skip">
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

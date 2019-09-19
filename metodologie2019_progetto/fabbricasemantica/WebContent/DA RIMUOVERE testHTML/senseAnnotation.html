@@ -30,27 +30,29 @@
 				<form id="form" action="translationAnnotation.jsp">	
 					<div class="vertical container grey-text">
 						<div class="horizontal container radio-div">
-							<input type="radio" name="sentence"/>
+							<input required type="radio" name="sentence"/>
 							<span class="form-text">Some abrupt occurrence that interrupts an ongoing activity</span>
 						</div>
 						<div class="horizontal container radio-div">
-							<input type="radio" name="sentence"/>
+							<input required type="radio" name="sentence"/>
 							<span class="form-text">An unexpected piece of good luck</span>
 						</div>
 						<div class="horizontal container radio-div">
-							<input type="radio" name="sentence"/>
+							<input required type="radio" name="sentence"/>
 							<span class="form-text">A crack in the earth's crust</span>
 						</div>
 						<div class="horizontal container radio-div">
-							<input type="radio" name="sentence"/>
+							<input required type="radio" name="sentence"/>
 							<span class="form-text">A pause from doing something</span>
 						</div>					
 					</div>
-					<div id="bottom-buttons" class="horizontal container space-between">
-						<input id="next" type="submit" value="NEXT" name="next">
-						<form action="nextExample.jsp"><input id="skip" type="submit" value="SKIP" name="skip"></form>
-					</div>
 				</form>
+				<div id="bottom-buttons" class="horizontal container space-between">
+					<div><button id="form-button" form="form" type="submit">NEXT</button></div>
+					<form action="nextExample.jsp">
+						<input type="submit" value="SKIP" name="skip">
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

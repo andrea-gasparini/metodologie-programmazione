@@ -23,11 +23,15 @@
 					<span class="bold-text">Definition:</span>	
 					<span class="grey-text">A motor vehicle with four wheels; usually propelled by an internal combustion engine</span>
 				</div>
-				<form id="form" action="translationAnnotation.jsp">	
-					<input required class="form-field " name="translation">
-					<input id="next" type="submit" value="NEXT" name="next">
-					<form action="nextExample.jsp"><input id="skip" type="submit" value="SKIP" name="skip"></form>
-				</form>
+				<div id="div-form" class="horizontal container">
+					<form class="horizontal container width-90" action="wordAnnotation.jsp">	
+						<input required class="form-field " name="translation">
+						<input id="fixd-margin-top" type="submit" value="NEXT" name="next">
+					</form>
+					<form action="nextExample.jsp">
+						<input type="submit" value="SKIP" name="skip">
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>
