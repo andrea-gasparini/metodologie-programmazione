@@ -36,10 +36,10 @@ public class XMLWriter
 		try
 		{
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder(); // try catch
+			DocumentBuilder builder = factory.newDocumentBuilder();
 			if (dataFile.exists())
 			{
-				doc = builder.parse(dataFile); // try catch
+				doc = builder.parse(dataFile);
 				root = doc.getDocumentElement();
 				idCnt = root.getElementsByTagName(childName).getLength() + 1;
 			}
@@ -62,19 +62,15 @@ public class XMLWriter
 		try
 		{
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transf = transformerFactory.newTransformer(); // try catch
+			Transformer transf = transformerFactory.newTransformer();
 			
 			transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 			transf.setOutputProperty(OutputKeys.INDENT, "yes");
-//			transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-			
+
 			DOMSource source = new DOMSource(doc);
-			
-			StreamResult console = new StreamResult(System.out); //DEBUG
 			StreamResult file = new StreamResult(dataFile);
 			
-			transf.transform(source, console); // try catch //DEBUG
-			transf.transform(source, file); // try catch
+			transf.transform(source, file);
 		}
 		catch (TransformerException e)
 		{

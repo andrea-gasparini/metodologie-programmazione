@@ -18,6 +18,8 @@ public class HTMLButtonElementBuilder implements HTMLElementBuilder
 	public HTMLButtonElementBuilder addClass(String className) { buttonElement.className = className; return this; }
 	
 	public HTMLButtonElementBuilder addText(String text) { buttonElement.innerText = text; return this; }
+
+	public HTMLButtonElementBuilder addType(String type) { buttonElement.type = type; return this; }
 	
 	public HTMLButtonElement build() { return buttonElement; }
 }

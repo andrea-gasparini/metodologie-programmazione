@@ -52,7 +52,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
             return this;
         }
 
-        public build() : HTMLElement {
+        public build() : HTMLFormElement {
             return this.formElement;
         }
     }

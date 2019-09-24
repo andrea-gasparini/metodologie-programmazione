@@ -50,6 +50,10 @@ var it;
                         this.buttonElement.innerText = text;
                         return this;
                     }
+                    addType(type) {
+                        this.buttonElement.type = type;
+                        return this;
+                    }
                     build() {
                         return this.buttonElement;
                     }

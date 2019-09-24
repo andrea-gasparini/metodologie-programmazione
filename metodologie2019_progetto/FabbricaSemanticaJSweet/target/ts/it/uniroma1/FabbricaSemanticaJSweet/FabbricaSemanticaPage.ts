@@ -19,7 +19,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet {
                 $("#menu").append(this.createMenuButton("actual-page", "Home"), changePage.addHref("./logout.jsp").build());
                 $("#change-page").append(this.createMenuButton("other-page", "Log out"));
                 break;
-            default:
+            case it.uniroma1.FabbricaSemanticaJSweet.PageType.TASK_PAGE:
                 $("#menu").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder("home").addHref("./home.html").build(), changePage.addHref("./logout.jsp").build());
                 $("#home").append(this.createMenuButton("other-page", "Home"));
                 $("#change-page").append(this.createMenuButton("other-page", "Log out"));

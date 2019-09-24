@@ -5,7 +5,6 @@ import static def.dom.Globals.document;
 import java.util.function.Function;
 
 import def.dom.Event;
-import def.dom.HTMLElement;
 import def.dom.HTMLFormElement;
 import jsweet.util.StringTypes;
 
@@ -27,5 +26,5 @@ public class HTMLFormElementBuilder implements HTMLElementBuilder
 	
 	public HTMLFormElementBuilder onSubmit(Function<Event, Object> func) { formElement.onsubmit = func; return this; }
 	
-	public HTMLElement build() { return formElement; }
+	public HTMLFormElement build() { return formElement; }
 }

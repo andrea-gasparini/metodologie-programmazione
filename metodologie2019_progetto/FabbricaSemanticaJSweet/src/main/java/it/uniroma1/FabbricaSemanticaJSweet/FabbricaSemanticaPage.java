@@ -33,7 +33,7 @@ public class FabbricaSemanticaPage
 				$("#menu").append(createMenuButton("actual-page", "Home"), changePage.addHref("./logout.jsp").build());
 				$("#change-page").append(createMenuButton("other-page", "Log out"));
 				break;
-			default:
+			case TASK_PAGE:
 				$("#menu").append(new HTMLAnchorElementBuilder("home").addHref("./home.html").build(), changePage.addHref("./logout.jsp").build());
 				$("#home").append(createMenuButton("other-page", "Home"));
 				$("#change-page").append(createMenuButton("other-page", "Log out"));

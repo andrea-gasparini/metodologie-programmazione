@@ -1,4 +1,4 @@
-package it.uniroma1.FabbricaSemanticaJSweet;
+package it.uniroma1.FabbricaSemanticaJSweet.user;
 
 import static def.dom.Globals.document;
 import static def.dom.Globals.alert;
@@ -7,6 +7,8 @@ import static def.jquery.Globals.$;
 import def.dom.Event;
 import def.dom.HTMLDivElement;
 import def.dom.HTMLInputElement;
+import it.uniroma1.FabbricaSemanticaJSweet.FabbricaSemanticaPage;
+import it.uniroma1.FabbricaSemanticaJSweet.PageType;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder;
@@ -33,7 +35,7 @@ public class Signup extends FabbricaSemanticaPage
 				new HTMLFormElementBuilder("form").addClass("vertical container").changeMethod("POST").addAction("./signup.jsp")
 					.onSubmit(this::checkForm).build(),
 					new HTMLSpanElementBuilder("bottom-text").addText("Already have an account? ").build());
-		$("#form").append(
+		$("#form").append( //TODO tutte queste istanze simili fra loro si possono modularizzare in un metodo?
 				new HTMLSpanElementBuilder().addClass("form-text").addText("Email Address*").build(),
 				new HTMLInputElementBuilder().addClass("form-field").addName("email").addType("email").isRequired().build(),
 				new HTMLSpanElementBuilder().addClass("form-text").addText("Password*").build(), 

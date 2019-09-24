@@ -16,8 +16,6 @@ public class XMLReader
 {
 	private Document doc;
 	
-	private String childName;
-	
 	private File dataFile;
 	
 	protected Element root;
@@ -25,19 +23,21 @@ public class XMLReader
 	public XMLReader(String fileName)
 	{
 		dataFile = new File("data" + File.separator + fileName + ".xml");
-		childName = fileName.substring(0, fileName.length() - 1);
-		try
-		{
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder(); // try catch
-			doc = builder.parse(dataFile); // try catch
-			doc.getDocumentElement().normalize();
-			root = doc.getDocumentElement();
-		} 
-		catch (SAXException | IOException | ParserConfigurationException e)
-		{
-			e.printStackTrace();
-		}
+		if (dataFile.exists())
+			try
+			{
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				doc = builder.parse(dataFile);
+				doc.getDocumentElement().normalize();
+				root = doc.getDocumentElement();
+			} 
+			catch (SAXException | IOException | ParserConfigurationException e)
+			{
+				e.printStackTrace();
+			}
+		else
+			new XMLWriter(fileName);
 	}
 	
 	public boolean checkForElement(String fieldName, String value)

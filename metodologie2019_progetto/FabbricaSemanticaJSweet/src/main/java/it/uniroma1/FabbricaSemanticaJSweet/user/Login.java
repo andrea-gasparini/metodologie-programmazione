@@ -1,7 +1,9 @@
-package it.uniroma1.FabbricaSemanticaJSweet;
+package it.uniroma1.FabbricaSemanticaJSweet.user;
 
 import static def.jquery.Globals.$;
 
+import it.uniroma1.FabbricaSemanticaJSweet.FabbricaSemanticaPage;
+import it.uniroma1.FabbricaSemanticaJSweet.PageType;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder;

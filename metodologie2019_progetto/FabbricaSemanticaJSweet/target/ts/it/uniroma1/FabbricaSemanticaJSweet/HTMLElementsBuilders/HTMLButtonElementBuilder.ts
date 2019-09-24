@@ -42,6 +42,11 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
             return this;
         }
 
+        public addType(type : string) : HTMLButtonElementBuilder {
+            this.buttonElement.type = type;
+            return this;
+        }
+
         public build() : HTMLButtonElement {
             return this.buttonElement;
         }

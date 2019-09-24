@@ -16,12 +16,12 @@ public class StandardDataProvider implements DataProvider<String>
 		{
 			return "{" +
 					"\"word\": \"Apple\"," +
-					"\"description\": \"It's one of the most common fruits you mention in examples but that you rarely eat\"" +
+					"\"definition\": \"It's one of the most common fruits you mention in examples but that you rarely eat\"" +
 					"}";
 		}
 		else if (task == StandardTask.WORD_ANNOTATION)
 		{
-			return "{\"description\": \"A motor vehicle with four wheels; usually propelled by an internal combustion engine\"}";
+			return "{\"definition\": \"A motor vehicle with four wheels; usually propelled by an internal combustion engine\"}";
 		}
 		else if (task == StandardTask.DEFINITION_ANNOTATION)
 		{
@@ -34,7 +34,7 @@ public class StandardDataProvider implements DataProvider<String>
 		{
 			return "{" + 
 					"\"word\":\"mouse\"," +
-					"\"description\":\"A swollen bruise caused by a blow to the eye\"," + 
+					"\"sentence\":\"A swollen bruise caused by a blow to the eye\"," + 
 					"\"senses\": [\"02330245n\", \"03793489n\", \"10335563n\", \"14289387n\"]" + 
 					"}";
 		}
@@ -42,7 +42,7 @@ public class StandardDataProvider implements DataProvider<String>
 		{
 			return "{" +
 					"\"word\": \"rock\"," +
-					"\"description\": \"A lump or mass of hard consolidated mineral matter\"," + 
+					"\"definition\": \"A lump or mass of hard consolidated mineral matter\"," + 
 					"\"translations\": [\"Un grumo o una massa di materia minerale consolidata dura\"," +
 										"\"Materiale costituito dall'aggregato di minerali come quelli che formano la crosta terrestre\"," +
 										"\"Un'associazione non ufficiale di persone o gruppi\"]" +
@@ -50,10 +50,10 @@ public class StandardDataProvider implements DataProvider<String>
 		}
 		else if (task == StandardTask.SENSE_VALIDATION)
 		{
-			return "{" + 
+			return "{" +
 					"\"word\": \"bank\"," +
-					"\"example\": \"He cashed a check at the bank\"" +
-					"\"sense\": \"09213565n\"" +
+					"\"sentence\": \"He cashed a check at the bank\"" +
+//					"\"definition\": \"09213565n\"" +
 					"}";
 		}
 		return null; 
