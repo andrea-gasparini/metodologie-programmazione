@@ -38,23 +38,23 @@ var it;
                         $("#button-2").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addText("SKIP").build());
                         this.fillTaskContext();
                     }
-                    createRadioResponse$java_lang_String$java_lang_String$java_lang_String(text, radioName, justifyContent) {
+                    createCheckResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(text, type, name, justifyContent) {
                         let elem = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder().addClass("horizontal container radio-div " + justifyContent).build();
-                        $(elem).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().isRequired().addType("radio").addName(radioName).build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder().addClass("form-text").addText(text).build());
+                        $(elem).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().isRequired().addType(type).addName(name).build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder().addClass("form-text").addText(text).build());
                         return elem;
                     }
-                    createRadioResponse(text, radioName, justifyContent) {
-                        if (((typeof text === 'string') || text === null) && ((typeof radioName === 'string') || radioName === null) && ((typeof justifyContent === 'string') || justifyContent === null)) {
-                            return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String(text, radioName, justifyContent);
+                    createCheckResponse(text, type, name, justifyContent) {
+                        if (((typeof text === 'string') || text === null) && ((typeof type === 'string') || type === null) && ((typeof name === 'string') || name === null) && ((typeof justifyContent === 'string') || justifyContent === null)) {
+                            return this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(text, type, name, justifyContent);
                         }
-                        else if (((typeof text === 'string') || text === null) && ((typeof radioName === 'string') || radioName === null) && justifyContent === undefined) {
-                            return this.createRadioResponse$java_lang_String$java_lang_String(text, radioName);
+                        else if (((typeof text === 'string') || text === null) && ((typeof type === 'string') || type === null) && ((typeof name === 'string') || name === null) && justifyContent === undefined) {
+                            return this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String(text, type, name);
                         }
                         else
                             throw new Error('invalid overload');
                     }
-                    createRadioResponse$java_lang_String$java_lang_String(text, radioName) {
-                        return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String(text, radioName, "");
+                    createCheckResponse$java_lang_String$java_lang_String$java_lang_String(text, type, name) {
+                        return this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(text, type, name, "");
                     }
                     createBottomButtons(divId, justifyContent) {
                         let elem = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder(divId).addClass("horizontal container " + justifyContent).build();

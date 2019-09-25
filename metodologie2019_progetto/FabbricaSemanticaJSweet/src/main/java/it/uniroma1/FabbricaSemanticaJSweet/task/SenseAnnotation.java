@@ -16,11 +16,11 @@ public class SenseAnnotation extends TaskPage
 		$("#form").append(
 				new HTMLDivElementBuilder("form-div").addClass("vertical container grey-text").build(),
 				createBottomButtons("bottom-buttons", "space-between"));
-		$("#form-div").append(
-				createCheckResponse("test1", "checkbox", "sentence"),
-				createCheckResponse("test2", "checkbox", "sentence"),
-				createCheckResponse("test3", "checkbox", "sentence"),
-				createCheckResponse("test4", "checkbox", "sentence"));
+		$("#form-div").append( //TODO nella documentazione è scritto che vanno messe delle checkbox ma non ha senso -> chiedere sul gruppo
+				createCheckResponse("test1", "radio", "sentence"),
+				createCheckResponse("test2", "radio", "sentence"),
+				createCheckResponse("test3", "radio", "sentence"),
+				createCheckResponse("test4", "radio", "sentence"));
 		fillTaskContext();
 	}
 }

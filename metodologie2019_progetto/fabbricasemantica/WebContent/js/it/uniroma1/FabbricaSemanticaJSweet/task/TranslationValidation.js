@@ -12,7 +12,7 @@ var it;
                         super("TRANSLATION_VALIDATION", "Select the correct translation of this word and his definition", ["Word", "Definition"], "./translationValidation.jsp");
                         $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form").changeMethod("POST").addAction(this.servletUrl).build());
                         $("#form").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("form-div").addClass("vertical container grey-text").build(), this.createBottomButtons("bottom-buttons", "space-between"));
-                        $("#form-div").append(this.createRadioResponse$java_lang_String$java_lang_String("test1", "translation"), this.createRadioResponse$java_lang_String$java_lang_String("test2", "translation"), this.createRadioResponse$java_lang_String$java_lang_String("test3", "translation"), this.createRadioResponse$java_lang_String$java_lang_String("Nessuna", "translation"));
+                        $("#form-div").append(this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("test1", "radio", "translation"), this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("test2", "radio", "translation"), this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("test3", "radio", "translation"), this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("Nessuna", "radio", "translation"));
                         this.fillTaskContext();
                     }
                     static main(args) {

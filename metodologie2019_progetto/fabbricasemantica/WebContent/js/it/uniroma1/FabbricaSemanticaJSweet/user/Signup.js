@@ -45,18 +45,17 @@ var it;
                         return document.querySelector("[name=\'" + name + "\']");
                     }
                     /*private*/ checkForm(event) {
-                        if (!((o1, o2) => { if (o1 && o1.equals) {
+                        if ($("input[type=\'checkbox\']:checked").length === 0) {
+                            alert("You must choose at least 1 Main Language!");
+                            return false;
+                        }
+                        else if (!((o1, o2) => { if (o1 && o1.equals) {
                             return o1.equals(o2);
                         }
                         else {
                             return o1 === o2;
-                        } })(this.getInputElem("password").value, this.getInputElem("confirm-password").value)) {
+                        } })(this.getInputElem("password").value, this.getInputElem("confirm-password").value))
                             alert("Passwords don\'t match!");
-                        }
-                        else if ($("input[type=\'checkbox\']:checked").length === 0) {
-                            alert("You must choose at least 1 Main Language!");
-                            return false;
-                        }
                         return true;
                     }
                 }

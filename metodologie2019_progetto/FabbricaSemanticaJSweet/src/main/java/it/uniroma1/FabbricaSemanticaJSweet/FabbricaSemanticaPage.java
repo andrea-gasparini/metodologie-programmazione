@@ -6,7 +6,9 @@ import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElemen
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder;
+import def.dom.Globals;
 import def.dom.HTMLButtonElement;
+import def.jquery.JQueryXHR;
 
 public class FabbricaSemanticaPage 
 {
@@ -30,10 +32,12 @@ public class FabbricaSemanticaPage
 				$("#change-page").append(createMenuButton("other-page", "Log in"));
 				break;
 			case HOME_PAGE:
+				checkLoggedIn();
 				$("#menu").append(createMenuButton("actual-page", "Home"), changePage.addHref("./logout.jsp").build());
 				$("#change-page").append(createMenuButton("other-page", "Log out"));
 				break;
 			case TASK_PAGE:
+				checkLoggedIn();
 				$("#menu").append(new HTMLAnchorElementBuilder("home").addHref("./home.html").build(), changePage.addHref("./logout.jsp").build());
 				$("#home").append(createMenuButton("other-page", "Home"));
 				$("#change-page").append(createMenuButton("other-page", "Log out"));
@@ -44,5 +48,15 @@ public class FabbricaSemanticaPage
 	private HTMLButtonElement createMenuButton(String page, String text) 
 	{
 		return new HTMLButtonElementBuilder(page).addClass("menu-button").addText(text).build();
+	}
+	
+	private void checkLoggedIn()
+	{
+		$.get("./isLoggedIn.jsp", (Object result, String a, JQueryXHR ctx) -> 
+		{ 
+			if (((String) result).equals("false"))
+				Globals.location.replace("./login.html");
+			return null;
+		});
 	}
 }

@@ -16,11 +16,11 @@ public class TranslationValidation extends TaskPage
 		$("#form").append(
 				new HTMLDivElementBuilder("form-div").addClass("vertical container grey-text").build(),
 				createBottomButtons("bottom-buttons", "space-between"));
-		$("#form-div").append(
-				createCheckResponse("test1", "checkbox", "translation"),
-				createCheckResponse("test2", "checkbox", "translation"),
-				createCheckResponse("test3", "checkbox", "translation"),
-				createCheckResponse("Nessuna", "checkbox", "translation"));
+		$("#form-div").append( //TODO nella documentazione è scritto che vanno messe delle checkbox ma non ha senso -> chiedere sul gruppo
+				createCheckResponse("test1", "radio", "translation"),
+				createCheckResponse("test2", "radio", "translation"),
+				createCheckResponse("test3", "radio", "translation"),
+				createCheckResponse("Nessuna", "radio", "translation"));
 		fillTaskContext();
 	}
 }
