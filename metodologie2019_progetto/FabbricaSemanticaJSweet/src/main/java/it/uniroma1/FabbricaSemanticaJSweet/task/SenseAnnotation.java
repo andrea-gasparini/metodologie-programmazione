@@ -16,11 +16,11 @@ public class SenseAnnotation extends TaskPage
 		$("#form").append(
 				new HTMLDivElementBuilder("form-div").addClass("vertical container grey-text").build(),
 				createBottomButtons("bottom-buttons", "space-between"));
-		$("#form-div").append( //TODO nella documentazione c'è scritto checkbox e non radio, in caso basta cambiare il metodo
-				createRadioResponse("test1", "sentence"),
-				createRadioResponse("test2", "sentence"),
-				createRadioResponse("test3", "sentence"),
-				createRadioResponse("test4", "sentence"));
+		$("#form-div").append(
+				createCheckResponse("test1", "checkbox", "sentence"),
+				createCheckResponse("test2", "checkbox", "sentence"),
+				createCheckResponse("test3", "checkbox", "sentence"),
+				createCheckResponse("test4", "checkbox", "sentence"));
 		fillTaskContext();
 	}
 }

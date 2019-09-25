@@ -63,16 +63,16 @@ public class TaskPage extends FabbricaSemanticaPage
 		fillTaskContext();
 	}
 	
-	protected HTMLDivElement createRadioResponse(String text, String radioName, String justifyContent)
+	protected HTMLDivElement createCheckResponse(String text, String type, String name, String justifyContent)
 	{
 		HTMLDivElement elem = new HTMLDivElementBuilder().addClass("horizontal container radio-div " + justifyContent).build();
 		$(elem).append(
-				new HTMLInputElementBuilder().isRequired().addType("radio").addName(radioName).build(),
+				new HTMLInputElementBuilder().isRequired().addType(type).addName(name).build(),
 				new HTMLSpanElementBuilder().addClass("form-text").addText(text).build());
 		return elem;
 	}
 	
-	protected HTMLDivElement createRadioResponse(String text, String radioName) { return createRadioResponse(text, radioName, ""); }
+	protected HTMLDivElement createCheckResponse(String text, String type, String name) { return createCheckResponse(text, type, name, ""); }
 
 	protected HTMLDivElement createBottomButtons(String divId, String justifyContent)
 	{

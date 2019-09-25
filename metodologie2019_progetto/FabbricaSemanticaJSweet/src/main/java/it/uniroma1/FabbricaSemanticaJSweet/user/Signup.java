@@ -80,16 +80,14 @@ public class Signup extends FabbricaSemanticaPage
 	
 	private boolean checkForm(Event event)
 	{
-		if (! getInputElem("password").value.equals(getInputElem("confirm-password").value))
-		{
-			alert("Passwords don't match!");
-			return false;
-		}
-		else if ($("input[type='checkbox']:checked").length == 0)
+		if ($("input[type='checkbox']:checked").length == 0)
 		{
 			alert("You must choose at least 1 Main Language!");
 			return false;
 		}
+		else if (! getInputElem("password").value.equals(getInputElem("confirm-password").value))
+			alert("Passwords don't match!");
+		
 		return true;
 	}
 }

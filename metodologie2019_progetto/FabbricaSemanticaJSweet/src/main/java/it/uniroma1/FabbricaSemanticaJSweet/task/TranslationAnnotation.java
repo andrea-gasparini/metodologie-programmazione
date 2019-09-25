@@ -6,7 +6,7 @@ public class TranslationAnnotation extends TaskPage
 	
 	public TranslationAnnotation() 
 	{
-		super("TRANSLATION_ANNOTATION", "Provide a translation in your Mother Tongue",	new String[] {"Word", "Definition"},"./translationAnnotation.jsp");
+		super("TRANSLATION_ANNOTATION", "Provide a translation in your Mother Tongue",	new String[] {"Word", "Definition"}, "./translationAnnotation.jsp");
 		createBasicTask();
 	}
 }

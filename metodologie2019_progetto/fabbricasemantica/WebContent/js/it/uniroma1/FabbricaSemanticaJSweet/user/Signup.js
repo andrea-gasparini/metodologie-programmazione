@@ -52,7 +52,6 @@ var it;
                             return o1 === o2;
                         } })(this.getInputElem("password").value, this.getInputElem("confirm-password").value)) {
                             alert("Passwords don\'t match!");
-                            return false;
                         }
                         else if ($("input[type=\'checkbox\']:checked").length === 0) {
                             alert("You must choose at least 1 Main Language!");

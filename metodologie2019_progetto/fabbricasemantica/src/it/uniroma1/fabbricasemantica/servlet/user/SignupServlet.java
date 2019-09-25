@@ -21,17 +21,14 @@ public class SignupServlet extends BaseServlet
 	{
 		String username = request.getParameter("email");
 		String password = request.getParameter("password");
+		String confirmPassword = request.getParameter("confirm-password");
 		String[] mainLanguages = request.getParameterValues("language-checkbox");
 		String[] otherLanguages = request.getParameterValues("other-language");
 		String[] languageLevels = request.getParameterValues("language-level");
 
-		//TODO il controllo password andrebbe fatto da back-end, ora è implementato in JS
 		XMLUserWriter usersData = new XMLUserWriter();
-		if (new XMLUserReader().checkForElement("username", username))
-		{
-			//TODO andrà implementato un "alert" o basta il refresh della pagina?
+		if (new XMLUserReader().checkForElement("username", username) || ! (password.equals(confirmPassword)))
 			response.sendRedirect("signup.html");
-		}
 		else
 		{
 			usersData.addUser(username, password, mainLanguages, otherLanguages, languageLevels);

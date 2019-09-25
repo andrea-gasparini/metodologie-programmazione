@@ -21,6 +21,7 @@ public class LoginServlet extends BaseServlet
 	{
 		String username = request.getParameter("email");
 		String password = request.getParameter("password");
+		
 		XMLUserReader usersData = new XMLUserReader();
 		if (usersData.checkForUser(username, password))
 		{

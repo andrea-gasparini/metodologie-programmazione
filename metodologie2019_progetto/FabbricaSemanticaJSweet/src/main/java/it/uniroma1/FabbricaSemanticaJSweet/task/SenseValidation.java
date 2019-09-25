@@ -17,8 +17,8 @@ public class SenseValidation extends TaskPage
 				new HTMLDivElementBuilder("radio-div").addClass("horizontal container grey-text align-center").build(),
 				createBottomButtons("buttons-div", "align-center"));
 		$("#radio-div").append(
-				createRadioResponse("Yes", "response", "space-between"),
-				createRadioResponse("No", "response", "space-between"));
+				createCheckResponse("Yes", "radio", "response", "space-between"),
+				createCheckResponse("No", "radio", "response", "space-between"));
 		fillTaskContext();
 	}
 }
