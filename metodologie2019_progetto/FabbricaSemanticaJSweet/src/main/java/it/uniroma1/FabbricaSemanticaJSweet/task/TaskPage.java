@@ -63,16 +63,16 @@ public class TaskPage extends FabbricaSemanticaPage
 		fillTaskContext();
 	}
 	
-	protected HTMLDivElement createRadioResponse(String text, String name, String justifyContent)
+	protected HTMLDivElement createRadioResponse(String id, String text, String name, String justifyContent)
 	{
 		HTMLDivElement elem = new HTMLDivElementBuilder().addClass("horizontal container radio-div " + justifyContent).build();
 		$(elem).append(
 				new HTMLInputElementBuilder().isRequired().addType("radio").addName(name).build(),
-				new HTMLSpanElementBuilder().addClass("form-text").addText(text).build());
+				new HTMLSpanElementBuilder(id).addClass("form-text").addText(text).build());
 		return elem;
 	}
 	
-	protected HTMLDivElement createRadioResponse(String text, String name) { return createRadioResponse(text, name, ""); }
+	protected HTMLDivElement createRadioResponse(String id, String text, String name) { return createRadioResponse(id, text, name, ""); }
 
 	protected HTMLDivElement createBottomButtons(String divId, String justifyContent)
 	{
@@ -96,4 +96,22 @@ public class TaskPage extends FabbricaSemanticaPage
 			return null;
 		});
 	}
+	
+	protected void fillTaskContext(String responsesName, int nResponses)
+	{	
+		$.getJSON(REST_URL, "task=" + taskName, (Object result, String a, JQueryXHR ctx) -> 
+		{
+			JSON json = (JSON) result;
+			for (String elem : contextElems)
+			{
+				String response = json.$get(elem.toLowerCase());
+				$("#" + elem.toLowerCase()).text(response);
+			}
+			String[] senses = json.$get(responsesName);
+			for (int i = 1; i <= nResponses; i++)
+				$("#response-" + i).text(senses[i-1]);
+			
+			return null;
+		});
+	}	
 }

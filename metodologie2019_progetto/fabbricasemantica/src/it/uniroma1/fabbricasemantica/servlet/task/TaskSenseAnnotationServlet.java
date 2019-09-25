@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
+import it.uniroma1.fabbricasemantica.servlet.RandomTaskServlet;
 
 @WebServlet(name = "TaskSenseAnnotationServlet", urlPatterns = "/senseAnnotation.jsp")
 public class TaskSenseAnnotationServlet extends BaseServlet
@@ -18,8 +19,7 @@ public class TaskSenseAnnotationServlet extends BaseServlet
 	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		//TODO Salvare i dati
-		//TODO reinderizzare a un task a caso.
-		response.sendRedirect("senseAnnotation.html");
+		response.sendRedirect(RandomTaskServlet.getRandomTaskUrl());
 	}
 
 }

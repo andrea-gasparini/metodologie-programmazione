@@ -16,11 +16,11 @@ public class SenseAnnotation extends TaskPage
 		$("#form").append(
 				new HTMLDivElementBuilder("form-div").addClass("vertical container grey-text").build(),
 				createBottomButtons("bottom-buttons", "space-between"));
-		$("#form-div").append( //TODO inserire le risposte dal dataProvider
-				createRadioResponse("test1", "sentence"),
-				createRadioResponse("test2", "sentence"),
-				createRadioResponse("test3", "sentence"),
-				createRadioResponse("test4", "sentence"));
-		fillTaskContext();
+		$("#form-div").append(
+				createRadioResponse("response-1", "test1", "sentence"),
+				createRadioResponse("response-2", "test2", "sentence"),
+				createRadioResponse("response-3", "test3", "sentence"),
+				createRadioResponse("response-4", "test4", "sentence"));
+		fillTaskContext("senses", 4);
 	}
 }

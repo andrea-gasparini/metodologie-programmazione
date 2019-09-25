@@ -38,23 +38,23 @@ var it;
                         $("#button-2").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addText("SKIP").build());
                         this.fillTaskContext();
                     }
-                    createRadioResponse$java_lang_String$java_lang_String$java_lang_String(text, name, justifyContent) {
+                    createRadioResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(id, text, name, justifyContent) {
                         let elem = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder().addClass("horizontal container radio-div " + justifyContent).build();
-                        $(elem).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().isRequired().addType("radio").addName(name).build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder().addClass("form-text").addText(text).build());
+                        $(elem).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().isRequired().addType("radio").addName(name).build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder(id).addClass("form-text").addText(text).build());
                         return elem;
                     }
-                    createRadioResponse(text, name, justifyContent) {
-                        if (((typeof text === 'string') || text === null) && ((typeof name === 'string') || name === null) && ((typeof justifyContent === 'string') || justifyContent === null)) {
-                            return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String(text, name, justifyContent);
+                    createRadioResponse(id, text, name, justifyContent) {
+                        if (((typeof id === 'string') || id === null) && ((typeof text === 'string') || text === null) && ((typeof name === 'string') || name === null) && ((typeof justifyContent === 'string') || justifyContent === null)) {
+                            return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(id, text, name, justifyContent);
                         }
-                        else if (((typeof text === 'string') || text === null) && ((typeof name === 'string') || name === null) && justifyContent === undefined) {
-                            return this.createRadioResponse$java_lang_String$java_lang_String(text, name);
+                        else if (((typeof id === 'string') || id === null) && ((typeof text === 'string') || text === null) && ((typeof name === 'string') || name === null) && justifyContent === undefined) {
+                            return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String(id, text, name);
                         }
                         else
                             throw new Error('invalid overload');
                     }
-                    createRadioResponse$java_lang_String$java_lang_String(text, name) {
-                        return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String(text, name, "");
+                    createRadioResponse$java_lang_String$java_lang_String$java_lang_String(id, text, name) {
+                        return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(id, text, name, "");
                     }
                     createBottomButtons(divId, justifyContent) {
                         let elem = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder(divId).addClass("horizontal container " + justifyContent).build();
@@ -63,7 +63,7 @@ var it;
                         $(secondButton).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addType("button").addText("SKIP").build());
                         return elem;
                     }
-                    fillTaskContext() {
+                    fillTaskContext$() {
                         $.getJSON(TaskPage.REST_URL, "task=" + this.taskName, (result, a, ctx) => {
                             let json = result;
                             for (let index121 = 0; index121 < this.contextElems.length; index121++) {
@@ -75,6 +75,33 @@ var it;
                             }
                             return null;
                         });
+                    }
+                    fillTaskContext$java_lang_String$int(responsesName, nResponses) {
+                        $.getJSON(TaskPage.REST_URL, "task=" + this.taskName, (result, a, ctx) => {
+                            let json = result;
+                            for (let index122 = 0; index122 < this.contextElems.length; index122++) {
+                                let elem = this.contextElems[index122];
+                                {
+                                    let response = (json[elem.toLowerCase()]);
+                                    $("#" + elem.toLowerCase()).text(response);
+                                }
+                            }
+                            let senses = (json[responsesName]);
+                            for (let i = 1; i <= nResponses; i++) {
+                                $("#response-" + i).text(senses[i - 1]);
+                            }
+                            return null;
+                        });
+                    }
+                    fillTaskContext(responsesName, nResponses) {
+                        if (((typeof responsesName === 'string') || responsesName === null) && ((typeof nResponses === 'number') || nResponses === null)) {
+                            return this.fillTaskContext$java_lang_String$int(responsesName, nResponses);
+                        }
+                        else if (responsesName === undefined && nResponses === undefined) {
+                            return this.fillTaskContext$();
+                        }
+                        else
+                            throw new Error('invalid overload');
                     }
                 }
                 TaskPage.REST_URL = "./nextExample.jsp";

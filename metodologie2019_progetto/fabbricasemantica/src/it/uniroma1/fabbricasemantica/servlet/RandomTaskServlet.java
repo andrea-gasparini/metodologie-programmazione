@@ -21,13 +21,14 @@ public class RandomTaskServlet extends BaseServlet
 		response.getWriter().write(getRandomTaskUrl());
 	}
 	
-	public String getRandomTaskUrl()
+	public static String getRandomTaskUrl()
 	{	//TODO aggiungere il MyTask
 		Task[] taskArray = StandardTask.values();
 		String randomTask = taskArray[(int) (Math.random() * taskArray.length)].getTaskID().toLowerCase();
 		
 		StringBuilder sb = new StringBuilder(randomTask);
 		sb.setCharAt(randomTask.indexOf("_") + 1, Character.toUpperCase((randomTask.charAt(randomTask.indexOf("_") + 1))));
+		
 		return sb.toString().replace("_", "") + ".html";
 	}
 }

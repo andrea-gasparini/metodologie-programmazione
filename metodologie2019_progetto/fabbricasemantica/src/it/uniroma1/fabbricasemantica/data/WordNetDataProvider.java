@@ -1,14 +1,7 @@
 package it.uniroma1.fabbricasemantica.data;
 
-/**
- * Questa classe restituisce i dati necessari per il task ricevuto in input.
- * Il metodo {@link #getData(Task)} restituira' una stringa in formato JSON
- * che le pagine in JSweet andranno a formattare.
- * N.B. Il proprio {@link DataProvider} dovrebbe evitare di avere stringhe codificate, questo e' solo un esempio.
- * */
-public class StandardDataProvider implements DataProvider<String>
-{
-
+public class WordNetDataProvider implements DataProvider<String>
+{	//TODO implementare dati dinamici da WordNet
 	@Override 
 	public String getData(Task task)
 	{

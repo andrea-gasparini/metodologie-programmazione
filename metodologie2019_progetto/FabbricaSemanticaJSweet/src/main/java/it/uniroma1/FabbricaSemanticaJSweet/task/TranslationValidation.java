@@ -2,8 +2,6 @@ package it.uniroma1.FabbricaSemanticaJSweet.task;
 
 import static def.jquery.Globals.$;
 
-import def.jquery.JQueryXHR;
-import def.js.JSON;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder;
 
@@ -18,26 +16,11 @@ public class TranslationValidation extends TaskPage
 		$("#form").append(
 				new HTMLDivElementBuilder("form-div").addClass("vertical container grey-text").build(),
 				createBottomButtons("bottom-buttons", "space-between"));
-		$("#form-div").append( //TODO inserire le risposte dal dataProvider
-				createRadioResponse("test1", "translation"),
-				createRadioResponse("test2", "translation"),
-				createRadioResponse("test3", "translation"),
-				createRadioResponse("Nessuna", "translation"));
-		fillTaskContext();
+		$("#form-div").append(
+				createRadioResponse("response-1", "test1", "translation"),
+				createRadioResponse("response-2", "test2", "translation"),
+				createRadioResponse("response-3", "test3", "translation"),
+				createRadioResponse("response-4", "Nessuna", "translation"));
+		fillTaskContext("translations", 3);
 	}
-	
-	@Override
-	protected void fillTaskContext()
-	{	
-		$.getJSON(REST_URL, "task=" + taskName, (Object result, String a, JQueryXHR ctx) -> 
-		{
-			JSON json = (JSON) result;
-			for (String elem : contextElems)
-			{
-				String response = json.$get(elem.toLowerCase());
-				$("#" + elem.toLowerCase()).text(response);
-			}
-			return null;
-		});
-	}	
 }

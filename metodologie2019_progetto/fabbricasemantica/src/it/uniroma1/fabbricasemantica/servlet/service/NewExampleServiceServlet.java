@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.uniroma1.fabbricasemantica.data.DataProvider;
-import it.uniroma1.fabbricasemantica.data.StandardDataProvider;
+import it.uniroma1.fabbricasemantica.data.WordNetDataProvider;
 import it.uniroma1.fabbricasemantica.data.StandardTask;
 import it.uniroma1.fabbricasemantica.data.Task;
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
@@ -33,7 +33,7 @@ public class NewExampleServiceServlet extends BaseServlet
 	{
 		super.init();
 		//TODO se implementata, instanziare la propria classe DataProvider
-		dataProvider = new StandardDataProvider();
+		dataProvider = new WordNetDataProvider();
 		tasks = Arrays.stream(StandardTask.values()).collect(Collectors.toMap(Task::getTaskID, s -> s));
 		//TODO tasks.put(myTask.getTaskID(), myTask);
 		

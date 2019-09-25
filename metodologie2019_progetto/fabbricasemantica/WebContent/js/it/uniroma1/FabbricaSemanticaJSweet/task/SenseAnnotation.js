@@ -12,8 +12,8 @@ var it;
                         super("SENSE_ANNOTATION", "Select the correct meaning of the word in the following sentence", ["Word", "Sentence"], "./senseAnnotation.jsp");
                         $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form").changeMethod("POST").addAction(this.servletUrl).build());
                         $("#form").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("form-div").addClass("vertical container grey-text").build(), this.createBottomButtons("bottom-buttons", "space-between"));
-                        $("#form-div").append(this.createRadioResponse$java_lang_String$java_lang_String("test1", "sentence"), this.createRadioResponse$java_lang_String$java_lang_String("test2", "sentence"), this.createRadioResponse$java_lang_String$java_lang_String("test3", "sentence"), this.createRadioResponse$java_lang_String$java_lang_String("test4", "sentence"));
-                        this.fillTaskContext();
+                        $("#form-div").append(this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String("response-1", "test1", "sentence"), this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String("response-2", "test2", "sentence"), this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String("response-3", "test3", "sentence"), this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String("response-4", "test4", "sentence"));
+                        this.fillTaskContext$java_lang_String$int("senses", 4);
                     }
                     static main(args) {
                         new SenseAnnotation();

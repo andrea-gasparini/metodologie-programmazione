@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
+import it.uniroma1.fabbricasemantica.servlet.RandomTaskServlet;
 
 @WebServlet(name = "TaskTranslationAnnotationServlet", urlPatterns = "/translationAnnotation.jsp")
 public class TaskTranslationAnnotationServlet extends BaseServlet
@@ -18,8 +19,7 @@ public class TaskTranslationAnnotationServlet extends BaseServlet
 	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		//TODO Salvare i dati
-		//TODO reinderizzare a un task a caso.
-		response.sendRedirect("translationAnnotation.html");
+		response.sendRedirect(RandomTaskServlet.getRandomTaskUrl());
 	}
 
 }
