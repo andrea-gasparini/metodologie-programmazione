@@ -18,6 +18,21 @@ var it;
                     static main(args) {
                         new SenseValidation();
                     }
+                    /**
+                     *
+                     */
+                    fillTaskContext() {
+                        $.getJSON(it.uniroma1.FabbricaSemanticaJSweet.task.TaskPage.REST_URL, "task=" + this.taskName, (result, a, ctx) => {
+                            let json = result;
+                            let response = (json["word"]);
+                            $("#word").text(response);
+                            response = (json["sentence"]);
+                            $("#sentence").text(response);
+                            response = (json["definition"]);
+                            $("#definition").text(response);
+                            return null;
+                        });
+                    }
                 }
                 task.SenseValidation = SenseValidation;
                 SenseValidation["__class"] = "it.uniroma1.FabbricaSemanticaJSweet.task.SenseValidation";

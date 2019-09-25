@@ -54,6 +54,14 @@ var it;
                         this.buttonElement.type = type;
                         return this;
                     }
+                    addValue(value) {
+                        this.buttonElement.value = value;
+                        return this;
+                    }
+                    addName(name) {
+                        this.buttonElement.name = name;
+                        return this;
+                    }
                     build() {
                         return this.buttonElement;
                     }

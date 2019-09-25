@@ -22,7 +22,7 @@ public class TaskPage extends FabbricaSemanticaPage
 	
 	protected String servletUrl;
 	
-	private String taskName;
+	protected String taskName;
 	
 	private String[] contextElems;
 	
@@ -57,8 +57,8 @@ public class TaskPage extends FabbricaSemanticaPage
 				new HTMLAnchorElementBuilder("button-2").addHref(servletUrl).build());
 		$("#form-1").append(
 				new HTMLInputElementBuilder().addClass("form-field").isRequired().addName("translation").build(),
-				new HTMLInputElementBuilder("fixd-margin-top").addType("submit").addValue("NEXT").build());
-		$("#button-2").append(new HTMLButtonElementBuilder("form-button").addText("SKIP").build());
+				new HTMLInputElementBuilder("fixd-margin-top").addType("submit").addName("submit").addValue("NEXT").build());
+		$("#button-2").append(new HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addText("SKIP").build());
 		
 		fillTaskContext();
 	}
@@ -78,13 +78,13 @@ public class TaskPage extends FabbricaSemanticaPage
 	{
 		HTMLDivElement elem = new HTMLDivElementBuilder(divId).addClass("horizontal container " + justifyContent).build();
 		HTMLAnchorElement secondButton = new HTMLAnchorElementBuilder("skip-button").addHref(servletUrl).build();
-		$(elem).append(new HTMLInputElementBuilder().isRequired().addType("submit").addValue("NEXT").build(), secondButton);
-		$(secondButton).append(new HTMLButtonElementBuilder("form-button").addType("button").addText("SKIP").build());
+		$(elem).append(new HTMLInputElementBuilder().isRequired().addType("submit").addName("submit").addValue("NEXT").build(), secondButton);
+		$(secondButton).append(new HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addType("button").addText("SKIP").build());
 		return elem;
 	}
 	
 	protected void fillTaskContext()
-	{	//TODO SenseValidation non legge tutto dal JSON
+	{	
 		$.getJSON(REST_URL, "task=" + taskName, (Object result, String a, JQueryXHR ctx) -> 
 		{
 			JSON json = (JSON) result;

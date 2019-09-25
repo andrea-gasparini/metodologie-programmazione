@@ -47,6 +47,16 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
             return this;
         }
 
+        public addValue(value : string) : HTMLButtonElementBuilder {
+            this.buttonElement.value = value;
+            return this;
+        }
+
+        public addName(name : string) : HTMLButtonElementBuilder {
+            this.buttonElement.name = name;
+            return this;
+        }
+
         public build() : HTMLButtonElement {
             return this.buttonElement;
         }

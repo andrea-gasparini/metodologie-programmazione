@@ -52,8 +52,8 @@ public class StandardDataProvider implements DataProvider<String>
 		{
 			return "{" +
 					"\"word\": \"bank\"," +
-					"\"sentence\": \"He cashed a check at the bank\"" +
-//					"\"definition\": \"09213565n\"" +
+					"\"sentence\": \"He cashed a check at the bank\"," +
+					"\"definition\": \"09213565n\"" +
 					"}";
 		}
 		return null; 
