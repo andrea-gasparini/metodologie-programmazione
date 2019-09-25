@@ -66,8 +66,9 @@ public class TaskPage extends FabbricaSemanticaPage
 	protected HTMLDivElement createCheckResponse(String text, String type, String name, String justifyContent)
 	{
 		HTMLDivElement elem = new HTMLDivElementBuilder().addClass("horizontal container radio-div " + justifyContent).build();
+		HTMLInputElementBuilder in = new HTMLInputElementBuilder().addType(type).addName(name);
 		$(elem).append(
-				new HTMLInputElementBuilder().isRequired().addType(type).addName(name).build(),
+				type.equals("radio") ? in.isRequired().build() : in.build(),
 				new HTMLSpanElementBuilder().addClass("form-text").addText(text).build());
 		return elem;
 	}

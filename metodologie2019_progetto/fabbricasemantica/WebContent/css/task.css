@@ -18,6 +18,9 @@ input[type="submit"]:active {
 input[type="radio"] {
 	margin-bottom: 10px;
 }
+input[type="checkbox"] {
+	margin-left: 5px;
+}
 form {
 	align-items: center;
 }

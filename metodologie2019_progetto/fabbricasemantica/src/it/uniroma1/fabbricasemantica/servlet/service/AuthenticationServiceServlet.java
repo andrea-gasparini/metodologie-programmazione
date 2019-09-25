@@ -18,10 +18,6 @@ public class AuthenticationServiceServlet extends BaseServlet
 	@Override
 	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		//TODO capire dove e come utilizzare questa servlet
-		// L'oggetto writer scrive qualsiasi informazione si voglia restituire al chiamante 
-		// (di solito ci si scrive la pagina html da restituire)
-		// nel nostro caso ci scriviamo "true" o "false" a seconda se l'utente e' loggato o meno.
 		HttpSession session = request.getSession();
 		boolean isLoggedIn = session.getAttribute("username") != null;
 		response.getWriter().write(isLoggedIn + "");

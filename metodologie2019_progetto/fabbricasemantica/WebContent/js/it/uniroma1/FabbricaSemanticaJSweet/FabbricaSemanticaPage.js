@@ -44,7 +44,7 @@ var it;
                         else {
                             return o1 === o2;
                         } })(result, "false"))
-                            location.replace("./login.html");
+                            window.location.replace("./login.html");
                         return null;
                     });
                 }

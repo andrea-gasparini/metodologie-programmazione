@@ -1,12 +1,12 @@
 package it.uniroma1.FabbricaSemanticaJSweet;
 
 import static def.jquery.Globals.$;
+import static def.dom.Globals.window;
 
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder;
-import def.dom.Globals;
 import def.dom.HTMLButtonElement;
 import def.jquery.JQueryXHR;
 
@@ -55,7 +55,7 @@ public class FabbricaSemanticaPage
 		$.get("./isLoggedIn.jsp", (Object result, String a, JQueryXHR ctx) -> 
 		{ 
 			if (((String) result).equals("false"))
-				Globals.location.replace("./login.html");
+				window.location.replace("./login.html");
 			return null;
 		});
 	}

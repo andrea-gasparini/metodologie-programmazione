@@ -35,7 +35,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet {
 
         /*private*/ checkLoggedIn() {
             $.get("./isLoggedIn.jsp", (result, a, ctx) => {
-                if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })((<string>result),"false"))) location.replace("./login.html");
+                if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })((<string>result),"false"))) window.location.replace("./login.html");
                 return null;
             });
         }

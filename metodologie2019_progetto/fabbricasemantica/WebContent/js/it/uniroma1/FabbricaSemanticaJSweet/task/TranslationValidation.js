@@ -10,13 +10,20 @@ var it;
                 class TranslationValidation extends it.uniroma1.FabbricaSemanticaJSweet.task.TaskPage {
                     constructor() {
                         super("TRANSLATION_VALIDATION", "Select the correct translation of this word and his definition", ["Word", "Definition"], "./translationValidation.jsp");
-                        $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form").changeMethod("POST").addAction(this.servletUrl).build());
+                        $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form").changeMethod("POST").addAction(this.servletUrl).onSubmit((event) => { return this.checkForm(event); }).build());
                         $("#form").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("form-div").addClass("vertical container grey-text").build(), this.createBottomButtons("bottom-buttons", "space-between"));
-                        $("#form-div").append(this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("test1", "radio", "translation"), this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("test2", "radio", "translation"), this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("test3", "radio", "translation"), this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("Nessuna", "radio", "translation"));
+                        $("#form-div").append(this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("test1", "checkbox", "translation"), this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("test2", "checkbox", "translation"), this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("test3", "checkbox", "translation"), this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String("Nessuna", "checkbox", "translation"));
                         this.fillTaskContext();
                     }
                     static main(args) {
                         new TranslationValidation();
+                    }
+                    /*private*/ checkForm(event) {
+                        if ($("input[type=\'checkbox\']:checked").length === 0) {
+                            alert("You must choose at least 1 option!");
+                            return false;
+                        }
+                        return true;
                     }
                 }
                 task.TranslationValidation = TranslationValidation;

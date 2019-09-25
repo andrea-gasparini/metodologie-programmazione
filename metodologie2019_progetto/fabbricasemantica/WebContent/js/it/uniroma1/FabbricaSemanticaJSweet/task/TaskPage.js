@@ -40,7 +40,13 @@ var it;
                     }
                     createCheckResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(text, type, name, justifyContent) {
                         let elem = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder().addClass("horizontal container radio-div " + justifyContent).build();
-                        $(elem).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().isRequired().addType(type).addName(name).build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder().addClass("form-text").addText(text).build());
+                        let __in = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().addType(type).addName(name);
+                        $(elem).append(/* equals */ ((o1, o2) => { if (o1 && o1.equals) {
+                            return o1.equals(o2);
+                        }
+                        else {
+                            return o1 === o2;
+                        } })(type, "radio") ? __in.isRequired().build() : __in.build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder().addClass("form-text").addText(text).build());
                         return elem;
                     }
                     createCheckResponse(text, type, name, justifyContent) {
