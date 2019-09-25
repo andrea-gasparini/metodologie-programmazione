@@ -12,7 +12,7 @@ var it;
                         super("SENSE_VALIDATION", "Is the word in the following sentence the right term for this definition?", ["Word", "Sentence", "Definition"], "./senseValidation.jsp");
                         $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form").changeMethod("POST").addAction(this.servletUrl).build());
                         $("#form").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("radio-div").addClass("horizontal container grey-text align-center").build(), this.createBottomButtons("buttons-div", "align-center"));
-                        $("#radio-div").append(this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String("Yes", "radio", "response", "space-between"), this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String("No", "radio", "response", "space-between"));
+                        $("#radio-div").append(this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String("Yes", "response", "space-between"), this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String("No", "response", "space-between"));
                         this.fillTaskContext();
                     }
                     static main(args) {

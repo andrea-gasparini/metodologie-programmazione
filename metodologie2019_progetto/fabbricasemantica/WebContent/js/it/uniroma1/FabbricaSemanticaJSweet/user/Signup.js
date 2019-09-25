@@ -34,8 +34,8 @@ var it;
                     /*private*/ createOtherLanguageDiv() {
                         let otherLanguageDiv = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder().addClass("other-language horizontal container").build();
                         let otherLanguageSelect = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSelectElementBuilder().addName("language-level").addClass("level-select");
-                        for (let index122 = 0; index122 < Signup.LANGUAGE_LEVELS_$LI$().length; index122++) {
-                            let level = Signup.LANGUAGE_LEVELS_$LI$()[index122];
+                        for (let index123 = 0; index123 < Signup.LANGUAGE_LEVELS_$LI$().length; index123++) {
+                            let level = Signup.LANGUAGE_LEVELS_$LI$()[index123];
                             otherLanguageSelect.addOptionElement(level);
                         }
                         $(otherLanguageDiv).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().addName("other-language").addClass("language-field").build(), otherLanguageSelect.build());

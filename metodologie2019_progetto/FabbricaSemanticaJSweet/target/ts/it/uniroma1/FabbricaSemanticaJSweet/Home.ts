@@ -7,9 +7,13 @@ namespace it.uniroma1.FabbricaSemanticaJSweet {
 
         public constructor(pageName : it.uniroma1.FabbricaSemanticaJSweet.PageType) {
             super(pageName);
-            $("#page").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("play-border").addClass("vertical container clickable").build());
+            $("#page").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder("play-border").addClass("vertical container clickable").build());
             $("#play-border").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("play-box").addClass("vertical container").build());
             $("#play-box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("play-triangle").build());
+            $.get("./randomTask.jsp", (result, a, ctx) => {
+                (<HTMLAnchorElement>document.getElementById("play-border")).href = <string>result;
+                return null;
+            });
         }
     }
     Home["__class"] = "it.uniroma1.FabbricaSemanticaJSweet.Home";

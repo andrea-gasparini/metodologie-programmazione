@@ -24,7 +24,7 @@ public class TaskPage extends FabbricaSemanticaPage
 	
 	protected String taskName;
 	
-	private String[] contextElems;
+	protected String[] contextElems;
 	
 	public TaskPage(String taskName, String title, String[] contextElems, String servletUrl) 
 	{ 
@@ -63,17 +63,16 @@ public class TaskPage extends FabbricaSemanticaPage
 		fillTaskContext();
 	}
 	
-	protected HTMLDivElement createCheckResponse(String text, String type, String name, String justifyContent)
+	protected HTMLDivElement createRadioResponse(String text, String name, String justifyContent)
 	{
 		HTMLDivElement elem = new HTMLDivElementBuilder().addClass("horizontal container radio-div " + justifyContent).build();
-		HTMLInputElementBuilder in = new HTMLInputElementBuilder().addType(type).addName(name);
 		$(elem).append(
-				type.equals("radio") ? in.isRequired().build() : in.build(),
+				new HTMLInputElementBuilder().isRequired().addType("radio").addName(name).build(),
 				new HTMLSpanElementBuilder().addClass("form-text").addText(text).build());
 		return elem;
 	}
 	
-	protected HTMLDivElement createCheckResponse(String text, String type, String name) { return createCheckResponse(text, type, name, ""); }
+	protected HTMLDivElement createRadioResponse(String text, String name) { return createRadioResponse(text, name, ""); }
 
 	protected HTMLDivElement createBottomButtons(String divId, String justifyContent)
 	{

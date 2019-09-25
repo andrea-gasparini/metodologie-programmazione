@@ -38,29 +38,23 @@ var it;
                         $("#button-2").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addText("SKIP").build());
                         this.fillTaskContext();
                     }
-                    createCheckResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(text, type, name, justifyContent) {
+                    createRadioResponse$java_lang_String$java_lang_String$java_lang_String(text, name, justifyContent) {
                         let elem = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder().addClass("horizontal container radio-div " + justifyContent).build();
-                        let __in = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().addType(type).addName(name);
-                        $(elem).append(/* equals */ ((o1, o2) => { if (o1 && o1.equals) {
-                            return o1.equals(o2);
-                        }
-                        else {
-                            return o1 === o2;
-                        } })(type, "radio") ? __in.isRequired().build() : __in.build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder().addClass("form-text").addText(text).build());
+                        $(elem).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().isRequired().addType("radio").addName(name).build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder().addClass("form-text").addText(text).build());
                         return elem;
                     }
-                    createCheckResponse(text, type, name, justifyContent) {
-                        if (((typeof text === 'string') || text === null) && ((typeof type === 'string') || type === null) && ((typeof name === 'string') || name === null) && ((typeof justifyContent === 'string') || justifyContent === null)) {
-                            return this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(text, type, name, justifyContent);
+                    createRadioResponse(text, name, justifyContent) {
+                        if (((typeof text === 'string') || text === null) && ((typeof name === 'string') || name === null) && ((typeof justifyContent === 'string') || justifyContent === null)) {
+                            return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String(text, name, justifyContent);
                         }
-                        else if (((typeof text === 'string') || text === null) && ((typeof type === 'string') || type === null) && ((typeof name === 'string') || name === null) && justifyContent === undefined) {
-                            return this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String(text, type, name);
+                        else if (((typeof text === 'string') || text === null) && ((typeof name === 'string') || name === null) && justifyContent === undefined) {
+                            return this.createRadioResponse$java_lang_String$java_lang_String(text, name);
                         }
                         else
                             throw new Error('invalid overload');
                     }
-                    createCheckResponse$java_lang_String$java_lang_String$java_lang_String(text, type, name) {
-                        return this.createCheckResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(text, type, name, "");
+                    createRadioResponse$java_lang_String$java_lang_String(text, name) {
+                        return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String(text, name, "");
                     }
                     createBottomButtons(divId, justifyContent) {
                         let elem = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder(divId).addClass("horizontal container " + justifyContent).build();
