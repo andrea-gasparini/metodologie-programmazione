@@ -11,6 +11,7 @@ var it;
                     constructor() {
                         super("DEFINITION_ANNOTATION", "Provide a definition in your Mother Tongue of this word and his hypernym", ["Word", "Hypernym"], "./definitionAnnotation.jsp");
                         this.createBasicTask();
+                        $("#form-1").append(this.createInputHiddenElem(0), this.createInputHiddenElem(1));
                     }
                     static main(args) {
                         new DefinitionAnnotation();

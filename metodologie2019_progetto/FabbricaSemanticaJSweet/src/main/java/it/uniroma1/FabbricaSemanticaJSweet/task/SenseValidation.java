@@ -15,8 +15,11 @@ public class SenseValidation extends TaskPage
 		$("#box").append(new HTMLFormElementBuilder("form").changeMethod("POST").addAction(servletUrl).build());
 		$("#form").append(
 				new HTMLDivElementBuilder("radio-div").addClass("horizontal container grey-text align-center").build(),
+				createInputHiddenElem(0),
+				createInputHiddenElem(1),
+				createInputHiddenElem(2),
 				createBottomButtons("buttons-div", "align-center"));
-		$("#radio-div").append(
+		$("#radio-div").append( //TODO aggiungere i value ai radio
 				createRadioResponse("Yes", "Yes", "response", "space-between"),
 				createRadioResponse("No", "No", "response", "space-between"));
 		fillTaskContext();

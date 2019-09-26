@@ -63,6 +63,9 @@ var it;
                         $(secondButton).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addType("button").addText("SKIP").build());
                         return elem;
                     }
+                    createInputHiddenElem(contextElemIndex) {
+                        return new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder(this.contextElems[contextElemIndex].toLowerCase() + "-hidden").addName(this.contextElems[contextElemIndex].toLowerCase()).addType("hidden").build();
+                    }
                     fillTaskContext$() {
                         $.getJSON(TaskPage.REST_URL, "task=" + this.taskName, (result, a, ctx) => {
                             let json = result;
@@ -71,6 +74,7 @@ var it;
                                 {
                                     let response = (json[elem.toLowerCase()]);
                                     $("#" + elem.toLowerCase()).text(response);
+                                    $("#" + elem.toLowerCase() + "-hidden").val(response);
                                 }
                             }
                             return null;
@@ -84,6 +88,7 @@ var it;
                                 {
                                     let response = (json[elem.toLowerCase()]);
                                     $("#" + elem.toLowerCase()).text(response);
+                                    $("#" + elem.toLowerCase() + "-hidden").val(response);
                                 }
                             }
                             let senses = (json[responsesName]);

@@ -4,6 +4,7 @@ import static def.jquery.Globals.$;
 
 import def.dom.HTMLAnchorElement;
 import def.dom.HTMLDivElement;
+import def.dom.HTMLInputElement;
 import def.jquery.JQueryXHR;
 import def.js.JSON;
 import it.uniroma1.FabbricaSemanticaJSweet.FabbricaSemanticaPage;
@@ -83,6 +84,11 @@ public class TaskPage extends FabbricaSemanticaPage
 		return elem;
 	}
 	
+	protected HTMLInputElement createInputHiddenElem(int contextElemIndex)
+	{
+		return new HTMLInputElementBuilder(contextElems[contextElemIndex].toLowerCase() + "-hidden").addName(contextElems[contextElemIndex].toLowerCase()).addType("hidden").build();
+	}
+	
 	protected void fillTaskContext()
 	{	
 		$.getJSON(REST_URL, "task=" + taskName, (Object result, String a, JQueryXHR ctx) -> 
@@ -92,6 +98,7 @@ public class TaskPage extends FabbricaSemanticaPage
 			{
 				String response = json.$get(elem.toLowerCase());
 				$("#" + elem.toLowerCase()).text(response);
+				$("#" + elem.toLowerCase() + "-hidden").val(response);
 			}
 			return null;
 		});
@@ -106,6 +113,7 @@ public class TaskPage extends FabbricaSemanticaPage
 			{
 				String response = json.$get(elem.toLowerCase());
 				$("#" + elem.toLowerCase()).text(response);
+				$("#" + elem.toLowerCase() + "-hidden").val(response);
 			}
 			String[] senses = json.$get(responsesName);
 			for (int i = 1; i <= nResponses; i++)

@@ -69,7 +69,8 @@ public class XMLWriter
 
 			DOMSource source = new DOMSource(doc);
 			StreamResult file = new StreamResult(dataFile);
-			
+			StreamResult out = new StreamResult(System.out);
+			transf.transform(source, out);
 			transf.transform(source, file);
 		}
 		catch (TransformerException e)
@@ -78,7 +79,7 @@ public class XMLWriter
 		}
 	}
 	
-	protected Node createElement(String name, String value) 
+	protected Node createNode(String name, String value) 
 	{
 		Element node = doc.createElement(name);
 		node.appendChild(doc.createTextNode(value));

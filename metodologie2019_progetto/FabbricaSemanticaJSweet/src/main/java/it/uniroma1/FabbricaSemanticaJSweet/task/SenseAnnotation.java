@@ -15,12 +15,14 @@ public class SenseAnnotation extends TaskPage
 		$("#box").append(new HTMLFormElementBuilder("form").changeMethod("POST").addAction(servletUrl).build());
 		$("#form").append(
 				new HTMLDivElementBuilder("form-div").addClass("vertical container grey-text").build(),
+				createInputHiddenElem(0),
+				createInputHiddenElem(1),
 				createBottomButtons("bottom-buttons", "space-between"));
-		$("#form-div").append(
-				createRadioResponse("response-1", "test1", "sentence"),
-				createRadioResponse("response-2", "test2", "sentence"),
-				createRadioResponse("response-3", "test3", "sentence"),
-				createRadioResponse("response-4", "test4", "sentence"));
+		$("#form-div").append( //TODO aggiungere i value ai radio
+				createRadioResponse("response-1", "test1", "meaning"),
+				createRadioResponse("response-2", "test2", "meaning"),
+				createRadioResponse("response-3", "test3", "meaning"),
+				createRadioResponse("response-4", "test4", "meaning"));
 		fillTaskContext("senses", 4);
 	}
 }
