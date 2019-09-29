@@ -69,8 +69,7 @@ public class XMLWriter
 
 			DOMSource source = new DOMSource(doc);
 			StreamResult file = new StreamResult(dataFile);
-			StreamResult out = new StreamResult(System.out);
-			transf.transform(source, out);
+			
 			transf.transform(source, file);
 		}
 		catch (TransformerException e)
