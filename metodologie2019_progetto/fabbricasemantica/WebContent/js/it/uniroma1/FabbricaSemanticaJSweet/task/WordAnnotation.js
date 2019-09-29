@@ -11,7 +11,7 @@ var it;
                     constructor() {
                         super("WORD_ANNOTATION", "Try to guess the right term for the definition", ["Definition"], "./wordAnnotation.jsp");
                         this.createBasicTask();
-                        $("#form-1").append(this.createInputHiddenElem(0));
+                        $("#form-1").append(this.createInputHiddenElem(this.contextElems[0]));
                     }
                     static main(args) {
                         new WordAnnotation();

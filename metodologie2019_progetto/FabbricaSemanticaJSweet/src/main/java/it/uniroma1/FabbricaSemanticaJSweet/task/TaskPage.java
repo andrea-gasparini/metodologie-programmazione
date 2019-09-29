@@ -57,7 +57,7 @@ public class TaskPage extends FabbricaSemanticaPage
 				new HTMLFormElementBuilder("form-1").addClass("horizontal container width-90").changeMethod("POST").addAction(servletUrl).build(),
 				new HTMLAnchorElementBuilder("button-2").addHref(servletUrl).build());
 		$("#form-1").append(
-				new HTMLInputElementBuilder().addClass("form-field").isRequired().addName("translation").build(),
+				new HTMLInputElementBuilder().addClass("form-field").isRequired().addName("response").build(),
 				new HTMLInputElementBuilder("fixd-margin-top").addType("submit").addName("submit").addValue("NEXT").build());
 		$("#button-2").append(new HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addText("SKIP").build());
 		
@@ -68,13 +68,15 @@ public class TaskPage extends FabbricaSemanticaPage
 	{
 		HTMLDivElement elem = new HTMLDivElementBuilder().addClass("horizontal container radio-div " + justifyContent).build();
 		$(elem).append(
-				new HTMLInputElementBuilder().isRequired().addType("radio").addName(name).build(),
+				new HTMLInputElementBuilder(id + "-radio").isRequired().addType("radio").addName(name).addValue(text).build(),
 				new HTMLSpanElementBuilder(id).addClass("form-text").addText(text).build());
 		return elem;
 	}
 	
 	protected HTMLDivElement createRadioResponse(String id, String text, String name) { return createRadioResponse(id, text, name, ""); }
-
+	
+	protected HTMLDivElement createRadioResponse(String id, String name) { return createRadioResponse(id, "", name, ""); }
+	
 	protected HTMLDivElement createBottomButtons(String divId, String justifyContent)
 	{
 		HTMLDivElement elem = new HTMLDivElementBuilder(divId).addClass("horizontal container " + justifyContent).build();
@@ -84,9 +86,9 @@ public class TaskPage extends FabbricaSemanticaPage
 		return elem;
 	}
 	
-	protected HTMLInputElement createInputHiddenElem(int contextElemIndex)
+	protected HTMLInputElement createInputHiddenElem(String contextElem)
 	{
-		return new HTMLInputElementBuilder(contextElems[contextElemIndex].toLowerCase() + "-hidden").addName(contextElems[contextElemIndex].toLowerCase()).addType("hidden").build();
+		return new HTMLInputElementBuilder(contextElem.toLowerCase() + "-hidden").addName(contextElem.toLowerCase()).addType("hidden").build();
 	}
 	
 	protected void fillTaskContext()
@@ -96,9 +98,9 @@ public class TaskPage extends FabbricaSemanticaPage
 			JSON json = (JSON) result;
 			for (String elem : contextElems)
 			{
-				String response = json.$get(elem.toLowerCase());
-				$("#" + elem.toLowerCase()).text(response);
-				$("#" + elem.toLowerCase() + "-hidden").val(response);
+				String text = json.$get(elem.toLowerCase());
+				$("#" + elem.toLowerCase()).text(text);
+				$("#" + elem.toLowerCase() + "-hidden").val(text);
 			}
 			return null;
 		});
@@ -111,14 +113,16 @@ public class TaskPage extends FabbricaSemanticaPage
 			JSON json = (JSON) result;
 			for (String elem : contextElems)
 			{
-				String response = json.$get(elem.toLowerCase());
-				$("#" + elem.toLowerCase()).text(response);
-				$("#" + elem.toLowerCase() + "-hidden").val(response);
+				String text = json.$get(elem.toLowerCase());
+				$("#" + elem.toLowerCase()).text(text);
+				$("#" + elem.toLowerCase() + "-hidden").val(text);
 			}
 			String[] senses = json.$get(responsesName);
 			for (int i = 1; i <= nResponses; i++)
+			{
 				$("#response-" + i).text(senses[i-1]);
-			
+				$("#response-" + i + "-radio").val(senses[i-1]);
+			}
 			return null;
 		});
 	}	

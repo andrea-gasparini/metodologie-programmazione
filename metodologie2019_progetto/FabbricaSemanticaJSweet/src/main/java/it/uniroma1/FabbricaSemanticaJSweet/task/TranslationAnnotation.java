@@ -11,7 +11,7 @@ public class TranslationAnnotation extends TaskPage
 		super("TRANSLATION_ANNOTATION", "Provide a translation in your Mother Tongue",	new String[] {"Word", "Definition"}, "./translationAnnotation.jsp");
 		createBasicTask();
 		$("#form-1").append(
-				createInputHiddenElem(0),
-				createInputHiddenElem(1));
+				createInputHiddenElem(contextElems[0]),
+				createInputHiddenElem(contextElems[1]));
 	}
 }

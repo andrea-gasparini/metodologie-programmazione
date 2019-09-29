@@ -34,13 +34,13 @@ var it;
                     createBasicTask() {
                         $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("div-form").addClass("horizontal container").build());
                         $("#div-form").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form-1").addClass("horizontal container width-90").changeMethod("POST").addAction(this.servletUrl).build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder("button-2").addHref(this.servletUrl).build());
-                        $("#form-1").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().addClass("form-field").isRequired().addName("translation").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder("fixd-margin-top").addType("submit").addName("submit").addValue("NEXT").build());
+                        $("#form-1").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().addClass("form-field").isRequired().addName("response").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder("fixd-margin-top").addType("submit").addName("submit").addValue("NEXT").build());
                         $("#button-2").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addText("SKIP").build());
                         this.fillTaskContext();
                     }
                     createRadioResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(id, text, name, justifyContent) {
                         let elem = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder().addClass("horizontal container radio-div " + justifyContent).build();
-                        $(elem).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().isRequired().addType("radio").addName(name).build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder(id).addClass("form-text").addText(text).build());
+                        $(elem).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder(id + "-radio").isRequired().addType("radio").addName(name).addValue(text).build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder(id).addClass("form-text").addText(text).build());
                         return elem;
                     }
                     createRadioResponse(id, text, name, justifyContent) {
@@ -50,11 +50,17 @@ var it;
                         else if (((typeof id === 'string') || id === null) && ((typeof text === 'string') || text === null) && ((typeof name === 'string') || name === null) && justifyContent === undefined) {
                             return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String(id, text, name);
                         }
+                        else if (((typeof id === 'string') || id === null) && ((typeof text === 'string') || text === null) && name === undefined && justifyContent === undefined) {
+                            return this.createRadioResponse$java_lang_String$java_lang_String(id, text);
+                        }
                         else
                             throw new Error('invalid overload');
                     }
                     createRadioResponse$java_lang_String$java_lang_String$java_lang_String(id, text, name) {
                         return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(id, text, name, "");
+                    }
+                    createRadioResponse$java_lang_String$java_lang_String(id, name) {
+                        return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(id, "", name, "");
                     }
                     createBottomButtons(divId, justifyContent) {
                         let elem = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder(divId).addClass("horizontal container " + justifyContent).build();
@@ -63,8 +69,8 @@ var it;
                         $(secondButton).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addType("button").addText("SKIP").build());
                         return elem;
                     }
-                    createInputHiddenElem(contextElemIndex) {
-                        return new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder(this.contextElems[contextElemIndex].toLowerCase() + "-hidden").addName(this.contextElems[contextElemIndex].toLowerCase()).addType("hidden").build();
+                    createInputHiddenElem(contextElem) {
+                        return new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder(contextElem.toLowerCase() + "-hidden").addName(contextElem.toLowerCase()).addType("hidden").build();
                     }
                     fillTaskContext$() {
                         $.getJSON(TaskPage.REST_URL, "task=" + this.taskName, (result, a, ctx) => {
@@ -72,9 +78,9 @@ var it;
                             for (let index121 = 0; index121 < this.contextElems.length; index121++) {
                                 let elem = this.contextElems[index121];
                                 {
-                                    let response = (json[elem.toLowerCase()]);
-                                    $("#" + elem.toLowerCase()).text(response);
-                                    $("#" + elem.toLowerCase() + "-hidden").val(response);
+                                    let text = (json[elem.toLowerCase()]);
+                                    $("#" + elem.toLowerCase()).text(text);
+                                    $("#" + elem.toLowerCase() + "-hidden").val(text);
                                 }
                             }
                             return null;
@@ -86,14 +92,18 @@ var it;
                             for (let index122 = 0; index122 < this.contextElems.length; index122++) {
                                 let elem = this.contextElems[index122];
                                 {
-                                    let response = (json[elem.toLowerCase()]);
-                                    $("#" + elem.toLowerCase()).text(response);
-                                    $("#" + elem.toLowerCase() + "-hidden").val(response);
+                                    let text = (json[elem.toLowerCase()]);
+                                    $("#" + elem.toLowerCase()).text(text);
+                                    $("#" + elem.toLowerCase() + "-hidden").val(text);
                                 }
                             }
                             let senses = (json[responsesName]);
                             for (let i = 1; i <= nResponses; i++) {
-                                $("#response-" + i).text(senses[i - 1]);
+                                {
+                                    $("#response-" + i).text(senses[i - 1]);
+                                    $("#response-" + i + "-radio").val(senses[i - 1]);
+                                }
+                                ;
                             }
                             return null;
                         });

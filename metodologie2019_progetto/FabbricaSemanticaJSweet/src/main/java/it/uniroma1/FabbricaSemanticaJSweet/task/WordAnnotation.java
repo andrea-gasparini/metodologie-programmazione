@@ -10,6 +10,6 @@ public class WordAnnotation extends TaskPage
 	{
 		super("WORD_ANNOTATION", "Try to guess the right term for the definition", new String[] {"Definition"}, "./wordAnnotation.jsp");
 		createBasicTask();
-		$("#form-1").append(createInputHiddenElem(0));
+		$("#form-1").append(createInputHiddenElem(contextElems[0]));
 	}
 }

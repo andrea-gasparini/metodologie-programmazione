@@ -7,19 +7,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
-import it.uniroma1.fabbricasemantica.servlet.RandomTaskServlet;
+import it.uniroma1.fabbricasemantica.data.StandardTask;
 
 @WebServlet(name = "TaskSenseValidationServlet", urlPatterns = "/senseValidation.jsp")
-public class TaskSenseValidationServlet extends BaseServlet
+public class TaskSenseValidationServlet extends TaskServlet
 {
 	private static final long serialVersionUID = 1L;
 
+	public void init() throws ServletException
+	{
+		super.init(StandardTask.SENSE_VALIDATION, new String[] {"word", "sentence", "definition"});
+	}
+	
 	@Override
 	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		//TODO Salvare i dati
-		response.sendRedirect(RandomTaskServlet.getRandomTaskUrl());
+		super.doSomething(request, response);
 	}
-
 }

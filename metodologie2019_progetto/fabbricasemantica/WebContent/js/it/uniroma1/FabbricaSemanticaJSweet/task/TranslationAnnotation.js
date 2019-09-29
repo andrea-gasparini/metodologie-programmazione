@@ -11,7 +11,7 @@ var it;
                     constructor() {
                         super("TRANSLATION_ANNOTATION", "Provide a translation in your Mother Tongue", ["Word", "Definition"], "./translationAnnotation.jsp");
                         this.createBasicTask();
-                        $("#form-1").append(this.createInputHiddenElem(0), this.createInputHiddenElem(1));
+                        $("#form-1").append(this.createInputHiddenElem(this.contextElems[0]), this.createInputHiddenElem(this.contextElems[1]));
                     }
                     static main(args) {
                         new TranslationAnnotation();

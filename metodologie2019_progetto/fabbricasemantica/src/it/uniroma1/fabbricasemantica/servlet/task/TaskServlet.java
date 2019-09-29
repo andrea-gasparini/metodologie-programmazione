@@ -12,42 +12,42 @@ import it.uniroma1.fabbricasemantica.data.management.XMLTaskWriter;
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 import it.uniroma1.fabbricasemantica.servlet.RandomTaskServlet;
 
-abstract public class TaskServlet extends BaseServlet
+public class TaskServlet extends BaseServlet
 {
 	private static final long serialVersionUID = 1L;
 
-	protected Task taskName;
+	private Task taskName;
 	
-	protected String[] params;
+	private String[] contextElemNames;
 	
-	HttpServletRequest request;
+	private String responseName;
 	
-	HttpServletResponse response;
-	
-	public void init(HttpServletRequest request, HttpServletResponse response, Task taskName, String[] params) throws ServletException
+	public void init(Task taskName, String[] contextElemNames, String responseName) throws ServletException
 	{
 		this.taskName = taskName;
-		this.params = params;
-		this.request = request;
-		this.response = response;
+		this.contextElemNames = contextElemNames;
+		this.responseName = responseName;
 	}
 	
-	protected void doSomething() throws ServletException, IOException
-	{	//TODO modularizzare che altrimenti tutte le servlet hanno il metodo copincollato
+	public void init(Task taskName, String[] contextElemNames) throws ServletException { init(taskName, contextElemNames, "response"); }	
+	
+	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{	
 		if (request.getParameter("submit") != null)
 		{
-			String word = request.getParameter(params[0]);
-			String hypernym = request.getParameter(params[1]);
-			String translation = request.getParameter(params[2]);
+			String[] contextElems = new String[contextElemNames.length];
+			for (int i = 0; i < contextElemNames.length; i++)
+				contextElems[i] = request.getParameter(contextElemNames[i]);
+			String answer = request.getParameter(responseName);
 			
 			HttpSession session = request.getSession();
 			String username = (String) session.getAttribute("username");
 			
 			XMLTaskWriter taskData = new XMLTaskWriter();
-			taskData.addResponse(username, taskName, new String[] {params[0], params[1]}, new String[] {word, hypernym}, translation);
+			taskData.addResponse(username, taskName, contextElemNames, contextElems, answer);
 			taskData.saveFile();
 		}
-		
+
 		response.sendRedirect(RandomTaskServlet.getRandomTaskUrl());
 	}
 }
