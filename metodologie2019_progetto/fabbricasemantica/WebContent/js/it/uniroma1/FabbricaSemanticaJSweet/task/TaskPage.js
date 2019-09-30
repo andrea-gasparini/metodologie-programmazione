@@ -75,8 +75,8 @@ var it;
                     fillTaskContext$() {
                         $.getJSON(TaskPage.REST_URL, "task=" + this.taskName, (result, a, ctx) => {
                             let json = result;
-                            for (let index121 = 0; index121 < this.contextElems.length; index121++) {
-                                let elem = this.contextElems[index121];
+                            for (let index122 = 0; index122 < this.contextElems.length; index122++) {
+                                let elem = this.contextElems[index122];
                                 {
                                     let text = (json[elem.toLowerCase()]);
                                     $("#" + elem.toLowerCase()).text(text);
@@ -89,8 +89,8 @@ var it;
                     fillTaskContext$java_lang_String$int(responsesName, nResponses) {
                         $.getJSON(TaskPage.REST_URL, "task=" + this.taskName, (result, a, ctx) => {
                             let json = result;
-                            for (let index122 = 0; index122 < this.contextElems.length; index122++) {
-                                let elem = this.contextElems[index122];
+                            for (let index123 = 0; index123 < this.contextElems.length; index123++) {
+                                let elem = this.contextElems[index123];
                                 {
                                     let text = (json[elem.toLowerCase()]);
                                     $("#" + elem.toLowerCase()).text(text);

@@ -1,0 +1,51 @@
+h3 {
+	margin-top: 10px;
+}
+img {
+	heigth: 125px;
+	width: 75px;
+	-khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+#final-word {
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lightgrey;
+	background-color: whitesmoke;
+	text-align: center;
+	padding: 10px;
+	min-width: 20%;
+	margin-top: 15px;
+}
+#keyboard {
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lightgrey;
+	background-color: whitesmoke;	
+	padding: 5px;
+	margin-top: 15px;
+}
+#bottom-buttons {
+	width: 100%;
+}
+.letter {
+	border-width: 1px;
+	border-radius: 6px;
+	border-style: solid;
+	border-color: lightgrey;
+	background-color: lightgrey;
+	text-align: center;
+	color: grey;
+	min-width: 15px;
+	padding: 5px;
+	margin: 5px;
+}
+.letter:active {
+	background-color: grey;
+	color: lightgrey;
+}

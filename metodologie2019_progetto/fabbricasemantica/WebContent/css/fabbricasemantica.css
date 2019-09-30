@@ -30,6 +30,7 @@ textarea:focus {
 }
 a {
 	color: lightgray;
+	cursor: pointer;
 	text-decoration: none;
 }
 #actual-page {

@@ -2,7 +2,10 @@ package it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders;
 
 import static def.dom.Globals.document;
 
+import java.util.function.Function;
+
 import def.dom.HTMLAnchorElement;
+import def.dom.MouseEvent;
 import jsweet.util.StringTypes;
 
 public class HTMLAnchorElementBuilder implements HTMLElementBuilder
@@ -20,6 +23,8 @@ public class HTMLAnchorElementBuilder implements HTMLElementBuilder
 	public HTMLAnchorElementBuilder addHref(String url) { anchorElement.href = url; return this; }
 	
 	public HTMLAnchorElementBuilder addText(String text) { anchorElement.innerText = text; return this; }
+	
+	public HTMLAnchorElementBuilder onClick(Function<MouseEvent, Object> func) { anchorElement.onclick = func; return this; }
 	
 	public HTMLAnchorElement build() { return anchorElement; }
 }

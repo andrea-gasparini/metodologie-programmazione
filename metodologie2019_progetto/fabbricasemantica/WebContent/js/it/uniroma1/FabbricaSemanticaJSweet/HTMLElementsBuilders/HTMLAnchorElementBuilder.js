@@ -54,6 +54,10 @@ var it;
                         this.anchorElement.innerText = text;
                         return this;
                     }
+                    onClick(func) {
+                        this.anchorElement.onclick = (func);
+                        return this;
+                    }
                     build() {
                         return this.anchorElement;
                     }

@@ -22,7 +22,7 @@ public class HTMLFormElementBuilder implements HTMLElementBuilder
 	
 	public HTMLFormElementBuilder addAction(String action) { formElement.action = action; return this; }
 	
-	public HTMLFormElementBuilder changeMethod(String method) { formElement.method = method; return this; } // potrei metterlo come enum
+	public HTMLFormElementBuilder changeMethod(String method) { formElement.method = method; return this; }
 	
 	public HTMLFormElementBuilder onSubmit(Function<Event, Object> func) { formElement.onsubmit = func; return this; }
 	

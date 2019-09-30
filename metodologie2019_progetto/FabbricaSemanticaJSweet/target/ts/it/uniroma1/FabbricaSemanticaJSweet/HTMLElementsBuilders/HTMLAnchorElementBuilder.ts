@@ -47,6 +47,11 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
             return this;
         }
 
+        public onClick(func : (p1: MouseEvent) => any) : HTMLAnchorElementBuilder {
+            this.anchorElement.onclick = <any>(func);
+            return this;
+        }
+
         public build() : HTMLAnchorElement {
             return this.anchorElement;
         }
