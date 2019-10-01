@@ -1,0 +1,396 @@
+
+
+
+WN(1WN)		   WordNet Interface Commands		  WN(1WN)
+
+
+
+NAME
+     wn	- command line interface to WordNet lexical database
+
+SYNOPSIS
+     wn	[ searchstr ] [	-h] [ -g ] [ -a	]  [  -l  ]  [	-n#  ]	[
+     searchoption... ]
+
+DESCRIPTION
+     Word forms	in WordNet  are	 represented  in  their	 familiar
+     orthography;  word	 meanings are represented by synonym sets
+     (synset) -	lists of synonymous word forms	that  are  inter-
+     changeable	 in  some  context.   Two  kinds of relations are
+     recognized: lexical and semantic.	 Lexical  relations  hold
+     between  word  forms;  semantic  relations	hold between word
+     meanings.
+
+     Each synset consists of a list of synonymous words	or collo-
+     cations  (eg.  "fountain pen", "take in"),	and pointers that
+     describe the relations between this synset	 and  other  syn-
+     sets.   These  relations  include	(but  are not limited to)
+     hypernymy/hyponymy,      antonymy,	     entailment	      and
+     meronymy/holonymy.	 A word	or collocation may appear in more
+     than one synset, and in more than one part	of  speech.   The
+     words  in	a synset are logically grouped such that they are
+     interchangeable in	some context.  Adjectives  are	organized
+     into clusters containing head synsets and satellite synsets.
+     Adverbs generally point to	the adjectives	from  which  they
+     are derived.
+
+     The WordNet database is created from a set	of  lexicographer
+     files  that  organize  synsets into different files based on
+     part of speech and	logical	groupings.  See	wninput(5WN)  for
+     a	complete description of	the lexicographer file format and
+     a list of pointer types.
+
+     wn	provides a command line	interface to  the  WordNet  data-
+     base, allowing synsets and	relations to be	displayed as for-
+     matted text.  For each word,  different  searches	are  pro-
+     vided,  based  on	syntactic  category  and  pointer  types.
+     Although only base	forms of  words	 are  usually  stored  in
+     WordNet,  you may search for inflected forms.  A morphologi-
+     cal process is applied to the search string  to  generate	a
+     form that is present in WordNet.
+
+     All of the	interfaces to the WordNet database use	a  common
+     library of	search and morphology code.  See wnintro(3WN) for
+     an	overview of the	WordNet	library.
+
+     See wngloss(7WN) for a glossary of	WordNet	terminology and	a
+     discussion	 of  the database's content and	logical	organiza-
+     tion.
+
+
+
+
+WordNet		    Last change: 3 March 1995			1
+
+
+
+
+
+
+WN(1WN)		   WordNet Interface Commands		  WN(1WN)
+
+
+
+OPTIONS
+     Note that the last	letter of searchoption	denotes	the  part
+     of	 speech	 that  the  search applies to: n for nouns, v for
+     verbs,  a	for  adjectives,  and  r  for  adverbs.	 Multiple
+     searches  may be done for searchstr with a	single command by
+     specifying	all the	appropriate search options.
+
+
+     -h		    Print help text before search results.
+
+     -g		    Display textual glosses associated with  syn-
+		    sets.
+
+     -a		    Display lexicographer file information
+
+     -l		    Display the	WordNet	copyright notice, version
+		    number, and	license.
+
+     -n#	    Perform search on sense number # only.
+
+     -syns(n | v | a | r)
+		    Display synonyms and immediate  hypernyms  of
+		    synsets  containing	 searchstr.   Synsets are
+		    ordered by frequency of use.  For adjectives,
+		    if	 searchstr  is	in  a  head  synset,  the
+		    cluster's satellite	synsets	are displayed  in
+		    place  of  hypernyms.  If  searchstr  is in	a
+		    satellite synset, its  head	 synset	 is  also
+		    displayed.
+
+     -simsn	    Display noun synonyms and immediate	hypernyms
+		    of synsets containing searchstr.  Synsets are
+		    grouped by similarity of meaning.
+
+     -ants(n | v | a | r)
+		    Display  synsets   containing   antonyms   of
+		    searchstr.	 For  adjectives, if searchstr is
+		    in a head  synset,	searchstr  has	a  direct
+		    antonym.   The  head  synset  for  the direct
+		    antonym is displayed along	with  the  direct
+		    antonym's satellite	synsets.  If searchstr is
+		    in	a  satellite  synset,  searchstr  has  an
+		    indirect  antonym  via the head synset, which
+		    is displayed.
+
+     -faml(n | v | a | r)
+		    Display familiarity	and polysemy  information
+		    for	searchstr.
+
+     -hype(n | v)   Recursively	display	hypernym  (superordinate)
+		    tree  for  searchstr  (searchstr IS	A KIND OF
+		     relation).
+
+
+
+WordNet		    Last change: 3 March 1995			2
+
+
+
+
+
+
+WN(1WN)		   WordNet Interface Commands		  WN(1WN)
+
+
+
+     -hypo(n | v)   Display immediate hyponyms (subordinates) for
+		    searchstr ( IS	A KIND OF searchstr rela-
+		    tion).
+
+     -tree(n | v)   Display  hyponym   (subordinate)   tree   for
+		    searchstr.	 This  is a recursive search that
+		    finds the hyponyms of each hyponym.
+
+     -coor(n | v)   Display   the   coordinates	  (sisters)    of
+		    searchstr.	 This search prints the	immediate
+		    hypernym  for  each	 synset	  that	 contains
+		    searchstr  and the hypernym's immediate hypo-
+		    nyms.
+
+     -subsn	    Display substance meronyms of searchstr  (HAS
+		    SUBSTANCE relation).
+
+     -partn	    Display part meronyms of searchstr (HAS  PART
+		    relation).
+
+     -membn	    Display member  meronyms  of  searchstr  (HAS
+		    MEMBER relation).
+
+     -meron	    Display all	meronyms of searchstr (HAS  PART,
+		    HAS	MEMBER,	HAS SUBSTANCE relations).
+
+     -hmern	    Display meronyms for searchstr tree.  This is
+		    a  recursive search	that prints all	the mero-
+		    nyms of searchstr and all of its hypernyms.
+
+     -sprtn	    Display part of holonyms of	 searchstr  (PART
+		    OF relation).
+
+     -smemn	    Display  member  of	 holonyms  of	searchstr
+		    (MEMBER OF relation).
+
+     -ssubn	    Display substance of  holonyms  of	searchstr
+		    (SUBSTANCE OF relation).
+
+     -holon	    Display all	holonyms of searchstr  (PART  OF,
+		    MEMBER OF, SUBSTANCE OF relations).
+
+     -hholn	    Display holonyms for searchstr tree.  This is
+		    a  recursive search	that prints all	the holo-
+		    nyms of searchstr and all of  each	holonym's
+		    holonyms.
+
+     -entav	    Display entailment relations of searchstr.
+
+     -framv	    Display applicable verb sentence  frames  for
+		    searchstr.
+
+
+
+
+WordNet		    Last change: 3 March 1995			3
+
+
+
+
+
+
+WN(1WN)		   WordNet Interface Commands		  WN(1WN)
+
+
+
+     -causv	    Display cause to relations of searchstr.
+
+      -pert(a |	r)  Display pertainyms of searchstr.
+
+      -attr(n |	a)  Display adjective values for noun  attribute,
+		    or noun attributes of adjective values.
+
+OUTPUT
+     The output	of a search is written to  the	standard  output.
+     The  output  consists  a  one line	description of the search
+     type, followed by the search results.  Each sense is  output
+     as	 a sense number	followed by a line with	a synset contain-
+     ing searchstr, followed by	the search results.  Each line of
+     search  output  is	preceded by a marker (usually =>), then	a
+     synset.  If a search traverses more than one  level  of  the
+     tree,   then   successive	 lines	are  indented  by  spaces
+     corresponding to its level	in the hierarchy.   When  the  -g
+     option   is  specified,  synset  glosses  are  displayed  in
+     parentheses at the	end of each synset.
+
+     Senses are	generally ordered from most to	least  frequently
+     used,  with  the  most common sense numbered 1.  Senses that
+     have occurred in corpora that have	been semantically  tagged
+     determine the frequency of	the senses.  Senses that have not
+     occurred are presented in haphazard order.	 At this time, no
+     indication	 is  given as to which sense numbers are based on
+     semantic tag frequency counts and which are haphazard.
+
+     Noun senses can be	grouped	by similarity of meaning,  rather
+     than  by frequency	of use.	 With this option all senses that
+     are close in meaning are displayed	together, with a line  of
+     dashes indicating the end of a group.  See	groups(7WN) for	a
+     discussion	how senses are grouped.
+
+     If	a search cannot	be performed on	senses of searchstr,  the
+     search results are	headed by a string of the form:
+	  X of Y senses	of searchstr
+
+     When "Sentence frames for verb " is selected,	verb sen-
+     tence  frames  that are acceptable	for all	words in a synset
+     are preceded by the marker	*>.  If	a frame	is acceptable for
+     searchstr only, it	is preceded by the marker =>.
+
+     Search results for	adjectives are	slightly  different  from
+     those  for	 other	parts  of  speech.   When an adjective is
+     printed, its direct antonym, if it	has one, is also  printed
+     in	 parentheses.  When searchstr is in a head synset, all of
+     the head synset's satellites are also displayed.  The  posi-
+     tion  of  an  adjective  in relation to the noun may be res-
+     tricted to	the prenominal,	postnominal or predicative  posi-
+     tion.   Where  present,  these  restrictions  are	noted  in
+     parentheses.
+
+
+
+WordNet		    Last change: 3 March 1995			4
+
+
+
+
+
+
+WN(1WN)		   WordNet Interface Commands		  WN(1WN)
+
+
+
+     When an adjective is a participle	of  a  verb,  the  output
+     indicates the verb	and displays its synset.
+
+     When an adverb is derived from an	adjective,  the	 specific
+     adjectival	sense on which it is based is indicated.
+
+ENVIRONMENT VARIABLES
+     WNSEARCHDIR	 Directory in which the	WordNet	 database
+			 has  been  installed.	 Unix  default is
+			 /usr/local/wordnet/dict, PC  default  is
+			 c:\wordnet\dict.
+
+FILES
+     $WNSEARCHDIR/index.*		database   index    files
+					(Unix)
+
+     $WNSEARCHDIR\*.idx			database index files (PC)
+
+     $WNSEARCHDIR/data.*		database    data    files
+					(Unix)
+
+     $WNSEARCHDIR\*.dat			database data files (PC)
+
+     $WNSEARCHDIR/*.exc			morphology	exception
+					lists (Unix)
+
+     $WNSEARCHDIR\*.exc			morphology	exception
+					lists (PC)
+
+     $WNSEARCHDIR/cousin.*		files used to group simi-
+					lar senses (Unix)
+
+     $WNSEARCHDIR\cousin.*		files used to group simi-
+					lar senses (PC)
+
+     $WNSEARCHDIR/verb.Framestext	text  of  verb	 sentence
+					frames (Unix)
+
+     $WNSEARCHDIR\vframes.txt		text  of  verb	 sentence
+					frames (PC)
+
+SEE ALSO
+     wnintro(3WN),  lexnames(5WN),  senseindex(5WN),   wndb(5WN),
+     wninput(5WN), groups(7WN),	morph(7WN), wngloss(7WN).
+
+BUGS
+     At	this time, no indication is  given  in	the  database  or
+     search  output as to which	sense numbers are based	on seman-
+     tic tag frequency	counts	and  which  are	 haphazard.   See
+     wndb(5WN) for a way to determine this from	the cntlist file.
+
+     The frequency of senses  is  based	 on  semantically  tagged
+
+
+
+WordNet		    Last change: 3 March 1995			5
+
+
+
+
+
+
+WN(1WN)		   WordNet Interface Commands		  WN(1WN)
+
+
+
+     corpora  covering	various	domains	which are not necessarily
+     balanced.	The repeated use of a rare sense in  one  passage
+     my	cause that sense to have an artificially high ranking.
+
+     The grouped noun search may be extremely slow.
+
+     The grep searches may be very slow.
+
+     Please report bugs	to wordnet@princeton.edu.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WordNet		    Last change: 3 March 1995			6
+
+
+

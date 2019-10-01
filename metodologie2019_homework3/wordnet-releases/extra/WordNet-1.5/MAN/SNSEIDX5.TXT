@@ -1,0 +1,198 @@
+
+
+
+SENSEINDEX(5WN)	      WordNet File Formats	  SENSEINDEX(5WN)
+
+
+
+NAME
+     WordNet's sense index
+
+DESCRIPTION
+     The WordNet sense index provides  an  alternate  method  for
+     accessing	synsets	 and word senses in the	WordNet	database.
+     It	is useful to programs that are interested  in  retrieving
+     synsets  or other information related to a	specific sense in
+     WordNet, rather than all the senses of a  word  or	 colloca-
+     tion.  It can also	be used	with Unix tools	like grep to find
+     all senses	of a word in one or  more  parts  of  speech.	A
+     specific  WordNet	sense  can be used to directly index into
+     this file and obtain both the WordNet sense number	 for  the
+     sense, and	the database byte offset of the	synset containing
+     the sense of the word.
+
+     ConText and Escort	use the	sense index in various ways.  The
+     concatenation  of	the  lemma and lexsn fields of a semanti-
+     cally tagged word in a Semantic Concordance file, using % as
+     the  concatenation	 character, results in a string	that is	a
+     sense encoding.  This can then be used as a key field for	a
+     binary search of the sense	index file.
+
+     See wndb(5WN) for a thorough discussion of	the WordNet data-
+     base files.
+
+     (Note that	the sense index	is a very large	file (5.6MB), and
+     is	 not  used  by the WordNet searching software.	It can be
+     useful to many other applications that the	user may wish  to
+     write,  however,  and  is	therefore included in the WordNet
+     package.  If you are not using Escort and the Semantic  Con-
+     cordance,	and  are  not  doing research or development that
+     requires this file, you can delete	it from	the  installation
+     directory in order	to save	disk space.)
+
+  File Format
+     The sense index contains all of the senses	found in  WordNet
+     in	 one  file.   Each line	of the sense index represents one
+     sense in the WordNet database.  The fields	are separated  by
+     one space,	and the	file is	in alphabetical	order.
+
+     Each line is of the form:
+
+	  senseencoding  synsetoffset	 sensenumber
+
+     The first field is	an encoding of the word	sense.	 Programs
+     can  construct a sense encoding in	this format and	use it as
+     a binary search key into the sense	index file.   The  format
+     of	this field is described	below.
+
+     The second	field is the byte offset that the synset contain-
+     ing  the  sense  is  found	 at  in	 the database "data" file
+
+
+
+WordNet		    Last change: 3 March 1995			1
+
+
+
+
+
+
+SENSEINDEX(5WN)	      WordNet File Formats	  SENSEINDEX(5WN)
+
+
+
+     corresponding  to	the  part  of  speech  encoded	 in   the
+     senseencoding.   synsetoffset  is an 8 digit, right justi-
+     fied, zero-filled decimal integer,	 and  can  be  used  with
+     fseek(3) to read a	synset from the	data file.
+
+     The last field is the decimal integer sense  number  of  the
+     sense in the WordNet database.
+
+  Word Sense Encoding
+     A word sense is encoded as:
+
+	  lemma%pos:lexfilenum:id:headword:headid
+
+     where lemma is the	ASCII text of the word or collocation  as
+     found  in	the  WordNet  database index files.  Words are in
+     lower case, and collocations are formed by	 joining  indivi-
+     dual words	with underscore	() characters.
+
+     pos is a one digit	decimal	integer	representing the  syntac-
+     tic  category  for	the sense.  See	Part of	Speech for a list
+     of	the syntactic categories and their corresponding numbers.
+
+     lexfilenum is a two digit decimal integer corresponding to
+     the  lexicographer	 file  name  of	the synset containing the
+     sense.  See lexnames(5WN) for the list of lexnames	and their
+     corresponding numbers.
+
+     id	is a two digit decimal integer that, when  appended  onto
+     lemma,  uniquely identifies the sense within a lexicographer
+     file.  id numbers start with  00,	and  are  incremented  as
+     additional	senses of the word are added to	the same file.
+
+     headword only has	a value	if the sense is	in  an	adjective
+     satellite	synset.	  If present, it is the	first word of the
+     satellite's head synset.
+
+     headid is	a two digit decimal integer that,  when	 appended
+     onto  headword,  uniquely	identifies the sense of	headword
+     within a lexicographer file.  There is a value in this field
+     only if headword has a value.
+
+     For non-satellite senses the headword  and  headid  fields
+     have  null	values,	however	the field separator character (:)
+     is	present.
+
+  Part of Speech
+     The part of speech	is encoded in a	sense as follows:
+
+	  1    NOUN
+	  2    VERB
+	  3    ADJECTIVE
+	  4    ADVERB
+
+
+
+WordNet		    Last change: 3 March 1995			2
+
+
+
+
+
+
+SENSEINDEX(5WN)	      WordNet File Formats	  SENSEINDEX(5WN)
+
+
+
+	  5    ADJECTIVE SATELLITE
+
+ENVIRONMENT VARIABLES
+     WNSEARCHDIR	 Directory in which the	WordNet	 database
+			 has  been  installed.	 Unix  default is
+			 /usr/local/wordnet/dict, PC  default  is
+			 c:\wordnet\dict,  Macintosh  default  is
+			 :Database.
+
+FILES
+     $WNSEARCHDIR/index.sense		sense index (Unix)
+
+     $WNSEARCHDIR/index.sen		sense index (PC)
+
+     $WNSEARCHDIR/lexnames		list   of   lexicographer
+					file names and numbers
+
+SEE ALSO
+     binsearch(3WN), lexnames(5WN), wndb(5WN), wngloss(7WN).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WordNet		    Last change: 3 March 1995			3
+
+
+

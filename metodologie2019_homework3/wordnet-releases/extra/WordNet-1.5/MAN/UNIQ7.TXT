@@ -1,0 +1,66 @@
+
+
+
+UNIQBEGIN(7WN)		     WordNet		   UNIQBEGIN(7WN)
+
+
+
+NAME
+     uniqbegin - unique	beginners for noun hierarchies
+
+DESCRIPTION
+     All of the	WordNet	noun synsets are organized  into  hierar-
+     chies.   Each  synset  is	part  of  at least one hierarchy,
+     headed by a synset	called a unique	beginner.  All	of  these
+     synsets originate in the lexicographer file noun.Tops.  From
+     any noun synset (excluding	the unique beginners), the hyper-
+     nym pointers can be traced	up to one of the following unique
+     beginners:
+
+	  { entity, (something having concrete existence; living or nonliving) }
+	  { psychologicalfeature, (a feature of the mental life of a living organism) }
+	  { abstraction, (a concept formed by extracting common	features from examples)	}
+	  { location, space,#p (a point	or extent in space) }
+	  { shape, form, (the spatial arrangement of something as distinct from	its substance) }
+	  { state, (the	way something is with respect to its main attributes; "the current state of knowledge";
+	     "his state	of health"; "in	a weak financial state") }
+	  { event, (something that happens at a	given place and	time) }
+	  { act, humanaction, humanactivity, (something that people do or cause to happen) }
+	  { group, grouping, (any number of entities (members) considered as a unit) }
+	  { possession,	(anything owned	or possessed) }
+	  { phenomenon,	(any state or process known through the	senses rather than by intuition	or reasoning) }
+
+FILES
+     noun.Tops		 unique	beginners for nouns
+
+SEE ALSO
+     wninput(5WN), wndb(5WN), wngloss(7WN).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WordNet		    Last change: 3 March 1995			1
+
+
+

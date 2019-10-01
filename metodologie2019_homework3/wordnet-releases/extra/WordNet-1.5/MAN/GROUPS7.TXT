@@ -1,0 +1,132 @@
+
+
+
+GROUPS(7WN)		     WordNet		      GROUPS(7WN)
+
+
+
+NAME
+     groups - discussion of WordNet search code	to group  similar
+     senses
+
+DESCRIPTION
+     Standard dictionaries commonly group  related  senses  of	a
+     word  with	 expressions such as "the act, process,	or result
+     of	X", or else they  enter	 the  act,  process,  and  result
+     senses as subheads	under a	single sense number. Unlike stan-
+     dard dictionaries,	the default display  for  WordNet  is  to
+     show  senses  in  order of	frequency of use in written text.
+     The  grouped  search  displays  similar  senses  of  a  word
+     together.	 At  the  present  time,  only	nouns  have  been
+     grouped.
+
+     Three relations are used to  group	 noun  senses.	 We  call
+     these relations cousins, sisters, and twins.
+
+     The cousin	groupings exploit the hyponym relation	in  Word-
+     Net.   WordNet nodes whose	hyponyms bear a	specific relation
+     to	each other have	been identified.  For example,	the  noun
+     crab  refers to an	animal,	as well	as the edible meat of the
+     animal. The same relation,	that of	an animal and its  edible
+     meat,  holds  for	lobster,  chicken  and all other matching
+     strings under the food and	animal	nodes.	In  WordNet  1.5,
+     relations for 105 node top	pairs have been	identified.
+
+     Another class of related senses in	 the  noun  hierarchy  is
+     called  sisters.  Sisters are matching strings that are both
+     the immediate hyponyms of the same	superordinate. For  exam-
+     ple,  the noun flounder can refer to several kinds	of flatf-
+     ish.
+
+     The third kind of related sense is	called twins.  These  are
+     synsets that have at least	three words in common.	For exam-
+     ple, one sense of duo is a	musical	group and  another  is	a
+     musical composition.  Both	synsets	contain	duet, duette, and
+     duo.
+
+     Transitivity is used to combine groups of overlapping senses
+     resulting in the largest sense groups possible.
+
+  Exception Lists
+     There are,	of course, exceptions to all  of  the  relations.
+     For  example,  the	noun coral is in both the animal and food
+     hierarchies, but does not bear the	relation  of  "an  animal
+     and  its  edible  meat".  Each candidate for cousin and twin
+     groupings has been	checked	by  hand  and,	in  the	 case  of
+     exceptions, added to the exception	list.
+
+BUGS
+     Grouping of similar senses	 is  still  in	the  experimental
+
+
+
+WordNet		    Last change: 8 March 1995			1
+
+
+
+
+
+
+GROUPS(7WN)		     WordNet		      GROUPS(7WN)
+
+
+
+     stage and is being	evaluated.
+
+     Coverage of cousins is incomplete.
+
+     Groups of senses are determined at	 run-time  -  not  stati-
+     cally.   Depending	 on your computer platform and the number
+     of	senses involved, this search may run VERY slowly.
+
+ENVIRONMENT VARIABLES
+     WNSEARCHDIR	 Directory in which the	WordNet	 database
+			 has  been  installed.	 Unix  default is
+			 /usr/local/wordnet/dict, PC  default  is
+			 c:\wordnet\dict,  Macintosh  default  is
+			 :Database.
+
+FILES
+     $WNSEARCHDIR/cousin.tops		pairs of top nodes
+
+     $WNSEARCHDIR/cousin.tps		pairs of top nodes (PC)
+
+     $WNSEARCHDIR/cousin.exc		senses that should not be
+					grouped
+
+SEE ALSO
+     wn(1WN), wnintro(3WN), wndb(5WN), wngloss(7WN).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WordNet		    Last change: 8 March 1995			2
+
+
+

@@ -1,0 +1,132 @@
+
+
+
+WNINTRO(3WN)	    WordNet Library Functions	     WNINTRO(3WN)
+
+
+
+NAME
+     wnintro - introduction to WordNet library functions
+
+DESCRIPTION
+     Section 3	describes  the	user  interface	 to  the  WordNet
+     library functions.	 Functions are organized into the follow-
+     ing  categories:  database	 searching,  morphology,   binary
+     search,  and utility.  The	WordNet	library	is used	by all of
+     the searching interfaces provided with the	 various  WordNet
+     packages.	 Additional  programs in the system, such as Con-
+     Text and Escort, also use functions in this  library.   Many
+     utilities that manipulate or scan the database files use the
+     higher level functions to perform	binary	searches  and  to
+     read synsets.
+
+     The WordNet library is provided in	both  source  and  binary
+     forms  (on	 some platforms) to allow users	to build applica-
+     tions and tools to	their own specifications that utilize the
+     WordNet  database.	 We do not provide programming support or
+     assistance.
+
+     Some externally visible functions are not documented.  These
+     are  mainly functions that	are not	used by	WordNet, and were
+     written for specific applications or tools	used for  WordNet
+     development.
+
+     The code conforms to ANSI C  standards,  and  uses	 function
+     prototyping.   If	you  do	 not have a compiler that accepts
+     prototypes, you must edit the source  code	 and  remove  the
+     prototypes	before compiling.  gcc was used	to compile all of
+     the binaries provided in the package.
+
+ENVIRONMENT VARIABLES
+     WNSEARCHDIR	 Directory in which the	WordNet	 database
+			 has  been  installed.	 Unix  default is
+			 /usr/local/wordnet/dict, PC  default  is
+			 c:\wordnet\dict,  Macintosh  default  is
+			 :Database.
+
+FILES
+     /usr/local/wordnet/lib/libwn.a	WordNet	library
+
+     /usr/local/wordnet/include/*.h	header files for use with
+					WordNet	library
+
+SEE ALSO
+     wnintro(1WN), wnintro(5WN), wnintro(7WN).
+
+     Miller, G.	A. (1990),  ed.	  "WordNet:  An	 On-Line  Lexical
+     Database".	 International Journal of Lexicography,	Volume 3,
+     Number 4.
+
+
+
+
+WordNet		    Last change: 3 March 1995			1
+
+
+
+
+
+
+WNINTRO(3WN)	    WordNet Library Functions	     WNINTRO(3WN)
+
+
+
+BUGS
+     Please report bugs	to wordnet@princeton.edu.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WordNet		    Last change: 3 March 1995			2
+
+
+

@@ -1,0 +1,198 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WordNet								1
+
+
+
+
+
+
+LEXNAMES(5WN)	      WordNet File Formats	    LEXNAMES(5WN)
+
+
+
+NAME
+     List of WordNet lexicographer file	names and numbers
+
+DESCRIPTION
+     WordNet synsets are organized into	forty-five  lexicographer
+     files  based  on  part  of	 speech	 and  logical  groupings.
+     grind(1WN)	processes these	files, producing a database suit-
+     able for use with the WordNet search and interface	code, and
+     other applications.
+
+     Each lexicographer	file has  a  corresponding  file  number.
+     File  numbers  are	 encoded  in various files in the WordNet
+     system as an efficient method of indicating a  lexicographer
+     file  name. The file lexnames lists the mapping between file
+     names and numbers,	and can	be used	by programs or end  users
+     to	correlate the two.
+
+  File Format
+     Each line in lexnames contains 3 tab separated fields.   The
+     first  field is the two digit decimal file	number,	beginning
+     with 00.  The second field	is the name of the  lexicographer
+     file,  such  as  adj.all.	 The  third  field  is an integer
+     representing the syntactic	category  for  the  file,  listed
+     below.   This is merely a shortcut	for programs and scripts,
+     since the syntactic category is also part of the  lexicogra-
+     pher file's name.
+
+  Syntactic Category
+     The part of speech	is encoded as follows:
+	  1    NOUN
+	  2    VERB
+	  3    ADJECTIVE
+	  4    ADVERB
+
+  Lexicographer	Files
+     The names of the lexicographer files and their corresponding
+     file  numbers  are	listed below, along with a brief descrip-
+     tion each file's contents.	 The file names	are  also  listed
+     in	 each of the "data" files in the WordNet database follow-
+     ing the copyright notice, in file number order.
+
+File Number   Name		   Contents
+8
+    00	      adj.all		   all adjective clusters
+    01	      adj.pert		   relational adjectives (pertainyms)
+    02	      adv.all		   all adverbs
+    03	      noun.Tops		   unique beginners for	nouns
+    04	      noun.act		   nouns denoting acts or actions
+    05	      noun.animal	   nouns denoting animals
+    06	      noun.artifact	   nouns denoting man-made objects
+    07	      noun.attribute	   nouns denoting attributes of	people and objects
+    08	      noun.body		   nouns denoting body parts
+    09	      noun.cognition	   nouns denoting cognitive processes and contents
+
+
+
+WordNet		    Last change: 3 March 1995			1
+
+
+9
+
+
+LEXNAMES(5WN)	      WordNet File Formats	    LEXNAMES(5WN)
+
+
+
+    10	      noun.communication   nouns denoting communicative	processes and contents
+    11	      noun.event	   nouns denoting natural events
+    12	      noun.feeling	   nouns denoting feelings and emotions
+    13	      noun.food		   nouns denoting foods	and drinks
+    14	      noun.group	   nouns denoting groupings of people or objects
+    15	      noun.location	   nouns denoting spatial position
+    16	      noun.motive	   nouns denoting goals
+    17	      noun.object	   nouns denoting natural objects (not man-made)
+    18	      noun.person	   nouns denoting people
+    19	      noun.phenomenon	   nouns denoting natural phenomena
+    20	      noun.plant	   nouns denoting plants
+    21	      noun.possession	   nouns denoting possession and transfer of possession
+    22	      noun.process	   nouns denoting natural processes
+    23	      noun.quantity	   nouns denoting quantities and units of measure
+    24	      noun.relation	   nouns denoting relations between people or things or	ideas
+    25	      noun.shape	   nouns denoting two and three	dimensional shapes
+    26	      noun.state	   nouns denoting stable states	of affairs
+    27	      noun.substance	   nouns denoting substances
+    28	      noun.time		   nouns denoting time and temporal relations
+    29	      verb.body		   verbs of grooming, dressing and bodily care
+    30	      verb.change	   verbs of size, temperature change, intensifying, etc.
+    31	      verb.cognition	   verbs of thinking, judging, analyzing, doubting
+    32	      verb.communication   verbs of telling, asking, ordering, singing
+    33	      verb.competition	   verbs of fighting, athletic activities
+    34	      verb.consumption	   verbs of eating and drinking
+    35	      verb.contact	   verbs of touching, hitting, tying, digging
+    36	      verb.creation	   verbs of sewing, baking, painting, performing
+    37	      verb.emotion	   verbs of feeling
+    38	      verb.motion	   verbs of walking, flying, swimming
+    39	      verb.perception	   verbs of seeing, hearing, feeling
+    40	      verb.possession	   verbs of buying, selling, owning
+    41	      verb.social	   verbs of political and social activities and	events
+    42	      verb.stative	   verbs of being, having, spatial relations
+    43	      verb.weather	   verbs of raining, snowing, thawing, thundering
+    44	      adj.ppl		   participial adjectives
+
+ENVIRONMENT VARIABLES
+     WNSEARCHDIR	 Directory in which the	WordNet	 database
+			 has  been  installed.	 Unix  default is
+			 /usr/local/wordnet/dict, PC  default  is
+			 c:\wordnet\dict,  Macintosh  default  is
+			 :Database.
+
+FILES
+     $WNSEARCHDIR/lexnames		list   of   lexicographer
+					file names and numbers
+
+SEE ALSO
+     wndb(5WN),	wninput(5WN), wngloss(7WN).
+
+
+
+
+
+
+WordNet		    Last change: 3 March 1995			2
+
+
+

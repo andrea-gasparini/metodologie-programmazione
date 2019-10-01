@@ -1,0 +1,66 @@
+
+
+
+WNINTRO(7WN)	  Miscellaneous	WordNet	Topics	     WNINTRO(7WN)
+
+
+
+NAME
+     wnintro - introduction to miscellaneous WordNet information
+
+SYNOPSIS
+     morph - discussion	of WordNet's morphological processing
+
+     groups - discussion of WordNet search code	to groups similar
+     senses
+
+     semcor - discussion of Semantic Concordance of  semantically
+     tagged text
+
+     uniqbegin - unique	beginners for noun hierarchies
+
+     wngloss - glossary	of terms used in WordNet
+
+     (Not all manual pages may be present in your package.)
+
+DESCRIPTION
+     Various topics related to WordNet and the	Semantic  Concor-
+     dance are discussed.
+
+SEE ALSO
+     wnintro(1WN), wnintro(3WN), wnintro(5WN).
+
+     Miller, G.	A. (1990),  ed.	  "WordNet:  An	 On-Line  Lexical
+     Database".	 International Journal of Lexicography,	Volume 3,
+     Number 4.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WordNet		    Last change: 3 March 1995			1
+
+
+

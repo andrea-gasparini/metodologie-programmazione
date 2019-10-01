@@ -1,0 +1,132 @@
+
+
+
+WNINTRO(1WN)	   WordNet Interface Commands	     WNINTRO(1WN)
+
+
+
+NAME
+     wnintro - various WordNet user commands
+
+SYNOPSIS
+     xwn - X Windows interface to WordNet database
+
+     wn	- command line interface to WordNet database
+
+     wnwin - Microsoft Windows interface to WordNet database
+
+     MacWordNet	- Macintosh interface to WordNet database
+
+     wngrep - search WordNet database  for  word  or  collocation
+     containing	word
+
+     escort - search Semantic Concordance for semantic tags to	a
+     primary key and co-occurrence keys
+
+     (Not all manual pages may be present in your package.)
+
+DESCRIPTION
+     The WordNet interfaces allow the user to search the  WordNet
+     database and display the information textually.  Escort pro-
+     vides an X	Windows	interface to  the  Semantic  Concordance,
+     and  is  only  available  on Unix platforms.  wngrep is also
+     available only on Unix platforms.
+
+     The WordNet database is organized into  eight  ASCII  files,
+     two  for  each  part  of speech represented in WordNet.  The
+     format of the database is described in wndb(5WN).
+
+     The Semantic Concordance consists	of  103	 files	from  the
+     Brown  Corpus that	have been annotated by hand with semantic
+     tags pointing to senses in	the WordNet database.  The Seman-
+     tic Concordance is	described in semcor(7WN).
+
+     All of the	interfaces to the WordNet database use	a  common
+     library of	search and morphology code.  See wnintro(3WN) for
+     an	overview of the	WordNet	library.
+
+     See wngloss(7WN) for a glossary of	WordNet	terminology and	a
+     discussion	 of  the database's content and	logical	organiza-
+     tion.
+
+ENVIRONMENT VARIABLES
+     WNSEARCHDIR	 Directory in which the	WordNet	 database
+			 has  been  installed.	 Unix  default is
+			 /usr/local/wordnet/dict, PC  default  is
+			 c:\wordnet\dict,  Macintosh  default  is
+			 :Database.
+
+     SEMCORDIR		 Directory   in	  which	  the	 semantic
+
+
+
+WordNet		    Last change: 3 March 1995			1
+
+
+
+
+
+
+WNINTRO(1WN)	   WordNet Interface Commands	     WNINTRO(1WN)
+
+
+
+			 concordance  has  been	 installed.  Unix
+			 default is /usr/local/wordnet/semcor.
+
+SEE ALSO
+     wnintro(3WN), wnintro(5WN), wnintro(7WN).
+
+     Miller, G.	A. (1990),  ed.	  "WordNet:  An	 On-Line  Lexical
+     Database".	 International Journal of Lexicography,	Volume 3,
+     Number 4.
+
+WWW
+     WordNet has a home	page accessible	via the	World Wide Web at
+     the following URL:	http://www.cogsci.princeton.edu/~wn/
+
+     From our Web server you may read about the	WordNet	 project,
+     run  an  interface	 to the	WordNet	database, and ftp various
+     packages including	a copy of WordNet  and	"Five  Papers  on
+     WordNet".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WordNet		    Last change: 3 March 1995			2
+
+
+

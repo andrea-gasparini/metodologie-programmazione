@@ -1,0 +1,66 @@
+
+
+
+WNINTRO(5WN)	      WordNet File Formats	     WNINTRO(5WN)
+
+
+
+NAME
+     wnintro - introduction to descriptions of WordNet file  for-
+     mats
+
+SYNOPSIS
+     wninput - format of WordNet lexicographer files
+
+     wndb - format of WordNet database files
+
+     senseindex	- format of WordNet's sense index file
+
+     lexnames -	list of	lexicographer file names and numbers
+
+     context - format of ConText files
+
+     cntlist - format of cntlist file
+
+     taglist - format of Semantic Concordance taglist file
+
+     (Not all manual pages may be present in your package.)
+
+DESCRIPTION
+     The WordNet system	consists of lexicographer files, code  to
+     convert these files into a	database, and search routines and
+     interfaces	that display information from the database.   The
+     lexicographer  files  organize nouns, verbs, adjectives, and
+     adverbs into groups  of  synonyms,	 and  describe	relations
+     between  synonym groups.  grind(1WN) converts the lexicogra-
+     pher files	 into  a  database  that  encodes  the	relations
+     between the synonym groups.  The different	interfaces to the
+     WordNet database use a common library of search routines  to
+     display these relations.
+
+     ConText is	an X Windows interface	that  is  used	with  the
+     WordNet  lexical  database	 and written texts.  It	is a tool
+     for assisting users in hand annotating  English  prose  with
+     WordNet sense tags.  ConText is not distributed.
+
+     The Semantic Concordance consists of a group of Brown Corpus
+     files  that have been semantically	tagged by hand using Con-
+     Text.  Escort, an X  Windows  interface  for  searching  the
+     Semantic Concordance, uses	the sense index	and taglist files
+     to	find sentences with semantic  tags  to	specific  WordNet
+     senses.   The  Semantic  Concordance  and Escort are distri-
+     buted.
+
+SEE ALSO
+     wnintro(1WN), wnintro(3WN), wnintro(7WN).
+
+     Miller, G.	A. (1990),  ed.	  "WordNet:  An	 On-Line  Lexical
+     Database".	 International Journal of Lexicography,	Volume 3,
+     Number 4.
+
+
+
+WordNet		    Last change: 3 March 1995			1
+
+
+

@@ -1,0 +1,396 @@
+
+
+
+WNWIN(1WN)	   WordNet Interface Commands	       WNWIN(1WN)
+
+
+
+NAME
+     wnwin - Microsoft Windows interface to WordNet
+
+SYNOPSIS
+     wnwin
+
+DESCRIPTION
+     Word forms	in WordNet  are	 represented  in  their	 familiar
+     orthography;  word	 meanings are represented by synonym sets
+     (synset) -	lists of synonymous word forms	that  are  inter-
+     changeable	 in  some  context.   Two  kinds of relations are
+     recognized: lexical and semantic.	 Lexical  relations  hold
+     between  word  forms;  semantic  relations	hold between word
+     meanings.
+
+     Each synset consists of a list of synonymous words	or collo-
+     cations  (eg.  "fountain pen", "take in"),	and pointers that
+     describe the relations between this synset	 and  other  syn-
+     sets.   These  relations  include	(but  are not limited to)
+     hypernymy/hyponymy,      antonymy,	     entailment	      and
+     meronymy/holonymy.	 A word	or collocation may appear in more
+     than one synset, and in more than one part	of  speech.   The
+     words  in	a synset are logically grouped such that they are
+     interchangeable in	some context.  Adjectives  are	organized
+     into clusters containing head synsets and satellite synsets.
+     Adverbs generally point to	the adjectives	from  which  they
+     are derived.
+
+     The WordNet database is created from a set	of  lexicographer
+     files  that  organize  synsets into different files based on
+     part of speech and	logical	groupings.  See	wninput(5WN)  for
+     a	complete description of	the lexicographer file format and
+     a list of pointer types.
+
+     wnwin provides a Microsoft	Windows	interface to the  WordNet
+     database,	allowing synsets and relations to be displayed as
+     formatted text.  For each word, different searches	are  pro-
+     vided,  based  on	syntactic  category  and  pointer  types.
+     Although only base	forms of  words	 are  usually  stored  in
+     WordNet,  you may search for inflected forms.  A morphologi-
+     cal process is applied to the search string  to  generate	a
+     form that is present in WordNet.
+
+     All of the	interfaces to the WordNet database use	a  common
+     library of	search and morphology code.  See wnintro(3WN) for
+     an	overview of the	WordNet	library.
+
+     See wngloss(7WN) for a glossary of	WordNet	terminology and	a
+     discussion	 of  the database's content and	logical	organiza-
+     tion.
+
+
+
+
+
+WordNet		    Last change: 3 March 1995			1
+
+
+
+
+
+
+WNWIN(1WN)	   WordNet Interface Commands	       WNWIN(1WN)
+
+
+
+OPERATION
+     wnwin runs	in the Microsoft Windows environment.
+
+     Use the standard Microsoft	Windows	mouse functions	 to  open
+     and  close	the wnwin window, move the window, and change its
+     size.  The	standard system	menu also contains many	of  these
+     functions.
+
+     Any of the	menus or menu item can be  selected  by	 standard
+     Windows key combinations; typically Alt+key where key is the
+     underlined	character in the menu name.
+
+  Searching the	Database
+     To	search the WordNet database, move the cursor and click on
+     the   horizontal	box  labelled  "Search Word:"  and  enter
+     searchstr,	followed by a carriage return (or click	the  left
+     mouse   button  on	 the  "Find"  button).	 A  single  word,
+     hyphenated	word, or collocation may be entered.  A	pull-down
+     menu  is highlighted corresponding	to each	part of	speech in
+     the WordNet database  that	 contains  searchstr.	Hold  any
+     mouse  button  on a highlighted part-of-speech menu to see	a
+     pull-down menu of searches	specific to that part of  speech.
+     All  of the searches available for	searchstr are highlighted
+     in	the menu.  Select a search by scrolling	through	the  menu
+     with  the	mouse  button pressed until the	desired	search is
+     highlighted.  Then	release	the mouse button.  The search  is
+     performed and the results are displayed in	the lower window.
+     The status	line shows the type of search that was	selected.
+     Only one search can be done at a time.
+
+     By	default, all of	the senses found in  WordNet  that  match
+     the  desired  search  are displayed.  The search may be res-
+     tricted to	one or more specific senses by entering	a  comma-
+     separated list of sense numbers (with no intervening spaces)
+     in	the "Senses:" box.  These sense	numbers	remain in  effect
+     until  either the user changes or deletes them, or	searchstr
+     is	changed.  When searchstr is changed, the "Senses:" box is
+     automatically cleared, defaulting back to all senses.
+
+     If	searchstr is not present exactly  as  typed  (except  for
+     case,  which is ignored), a morphological process is applied
+     to	searchstr in an	 attempt  to  generate	a  form	 that  is
+     present  in  WordNet.   See  morph(7WN)  for a discussion of
+     WordNet's morphological processing.
+
+     Although most searches return very	quickly,  note	that  the
+     WordNet  hierarchies  can	be quite broad and deep, and some
+     searches can take a long time.  Because  of  memory  limita-
+     tions,  some search results may be	too large to be	retrieved
+     and formatted.  If	the limitation is exceeded, wnwin reports
+     this  and	asks  you  to narrow your search.  One way to get
+     around this memory	limitation is to specify  the  particular
+
+
+
+WordNet		    Last change: 3 March 1995			2
+
+
+
+
+
+
+WNWIN(1WN)	   WordNet Interface Commands	       WNWIN(1WN)
+
+
+
+     sense  you	 are  interested  in. Although this method is not
+     foolproof,	it is the remedy of choice in many situations. In
+     situations	 of extreme memory scarcity, wnwin may run out of
+     memory, in	which case it displays a dialog	box informing the
+     user of the problem, before terminating.
+
+     wnwin displays the	standard Microsoft watch cursor	while  it
+     is	searching the database and activates the "Stop"	button in
+     the right hand corner of the wnwin	application  window.  The
+     user  may,	 at any	time while the watch cursor is displayed,
+     click on the "Stop"  button  to  prematurely  terminate  the
+     search.   No  search  results  will be reported. This can be
+     useful when a search appears to be	taking too long	and might
+     need narrowing down.
+
+  File menu
+     The "File"	pull-down menu contains	two entries.  Select  the
+     "About..."	 item  to  see	brief copyright	information about
+     WordNet.  "Quit" terminates wnwin.	(Note that you	can  also
+     exit  wnwin  using	 standard Windows techniques like the key
+     sequence Alt+F4.)
+
+  Edit menu
+      The items	under this menu	are provided to	aid the	 transfer
+     of	 WordNet search	results	to other Windows applications (in
+     plain text	format).  "Copy" copies	any highlighted	text from
+     the  wnwin	 display  area onto the	Windows	system clipboard.
+     The user can then choose "Paste" in  most	Windows	 applica-
+     tions  to transfer	the text from the clipboard to the appli-
+     cation.  This can be especially convenient	if the user needs
+     to	transfer the search results to a Windows word processor.
+
+      "Paste" copies up	to one line of text from the Windows sys-
+     tem  clipboard  into the searchstr	box.  This can be used to
+     do	follow-up searches, by copying text from the display area
+     and  then	choosing  "Paste"  to make it the next searchstr.
+     Choose "Clear" to clear the searchstr box.
+
+  Options
+     This menu displays	a list of options which	are not	 directly
+     associated	with WordNet searches.
+
+     "Show Help" toggles the display of	help information that  is
+     useful  in	 understanding	the search results. When on (menu
+     item is checked), wnwin prints the	help information  in  the
+     output buffer before the search results.
+
+     Many WordNet synsets have a textual gloss that  is	 used  to
+     provide  an  explanation  of  what	the synset represents, an
+     example sentence, or both.	 The  Textual Gloss  option  con-
+     trols this	display.
+
+
+
+
+WordNet		    Last change: 3 March 1995			3
+
+
+
+
+
+
+WNWIN(1WN)	   WordNet Interface Commands	       WNWIN(1WN)
+
+
+
+     In	addition to being viewed in  the  output  buffer,  search
+     results may be appended to	a file.	Log Output, when checked,
+     causes wnwin to append the	results	of each	search to the log
+     file.  This  file	is  "wnoutput.log" in the current working
+     directory.	If the environment variable  WNLOG  is	set,  the
+     filename is the value of the variable, with .log appended.
+
+     Display license allows you	to  view  the  WordNet	copyright
+     notice, version number, and license.
+
+OUTPUT
+      The output of a search is	displayed  in  the  large  window
+     below the status line.  If	the Log	Output option is checked,
+     the output	is also	appended onto the log file.   The  output
+     consists  of a sense number followed by a line with the syn-
+     set that searchstr	is in, followed	by  the	 search	 results.
+     Each  line	of search output is preceded by	a marker (usually
+     =>), then a synset.  If a search  traverses  more	than  one
+     level  of	the  tree,  then successive lines are indented by
+     spaces corresponding to its level in  the	hierarchy.   When
+     the  Textual Gloss	 option	 is  checked  synset  glosses are
+     displayed in parentheses at the end of each synset.
+
+     Senses are	generally ordered from most to	least  frequently
+     used,  with  the  most common sense numbered 1.  Senses that
+     have occurred in corpora that have	been semantically  tagged
+     determine the frequency of	the senses.  Senses that have not
+     occurred are presented in haphazard order.	 At this time, no
+     indication	 is  given as to which sense numbers are based on
+     semantic tag frequency counts and which are haphazard.
+
+     Noun senses can be	grouped	by similarity of meaning,  rather
+     than  by frequency	of use.	 With this option all senses that
+     are close in meaning are displayed	together, with a line  of
+     dashes indicating the end of a group.  See	groups(7WN) for	a
+     discussion	how senses are grouped.
+
+     If	a search cannot	be performed on	all senses of  searchstr,
+     the search	results	are headed by a	string of the form:
+	  X of Y senses	of searchstr
+
+     When "Sample sentences for	verb  "  is  selected,  verb
+     sentence  frames that are acceptable for all words	in a syn-
+     set are preceded by the marker *>.	 If a frame is acceptable
+     for searchstr only, it is preceded	by the marker =>.
+
+     Search results for	adjectives are	slightly  different  from
+     those  for	 other	parts  of  speech.   When an adjective is
+     printed, its direct antonym, if it	has one, is also  printed
+     in	 parentheses.  When searchstr is in a head synset, all of
+     the head synset's satellites are also displayed.  The  posi-
+     tion  of  an  adjective  in  relation  to	the  noun  may be
+
+
+
+WordNet		    Last change: 3 March 1995			4
+
+
+
+
+
+
+WNWIN(1WN)	   WordNet Interface Commands	       WNWIN(1WN)
+
+
+
+     restricted	to the	prenominal,  postnominal  or  predicative
+     position.	 Where	present,  these	restrictions are noted in
+     parentheses.
+
+     When an adjective is a participle	of  a  verb,  the  output
+     indicates the verb	and displays its synset.
+
+     When an adverb is derived from an	adjective,  the	 specific
+     adjectival	sense on which it is based is indicated.
+
+ENVIRONMENT VARIABLES
+     WNSEARCHDIR	 Directory in which the	WordNet	 database
+			 has	been   installed.    Default   is
+			 c:\wordnet\dict.
+
+     WNLOG		 Log file name.
+
+FILES
+     $WNSEARCHDIR\*.idx			database index files
+
+     $WNSEARCHDIR\*.dat			database data files
+
+     $WNSEARCHDIR\*.exc			morphology	exception
+					lists
+
+     $WNSEARCHDIR\cousin.*		files used to group simi-
+					lar senses
+
+     $WNSEARCHDIR\vframes.txt		text  of  verb	 sentence
+					frames
+
+     wnoutput.log			default	file for  logging
+					output
+
+SEE ALSO
+     wnintro(3WN),  lexnames(5WN),  senseindex(5WN),   wndb(5WN),
+     wninput(5WN), groups(7WN),	morph(7WN), wngloss(7WN).
+
+BUGS
+     At	this time, no indication is  given  in	the  database  or
+     search  output as to which	sense numbers are based	on seman-
+     tic tag frequency	counts	and  which  are	 haphazard.   See
+     wndb(5WN) for a way to determine this from	the cntlist file.
+
+     The frequency of senses is	based on semantically tagged cor-
+     pora covering various domains which are not necessarily bal-
+     anced.  The repeated use of a rare	sense in one  passage  my
+     cause that	sense to have an artificially high ranking.
+
+     The grouped noun search may be extremely slow.
+
+     The Grep for searches may be very slow.
+
+
+
+WordNet		    Last change: 3 March 1995			5
+
+
+
+
+
+
+WNWIN(1WN)	   WordNet Interface Commands	       WNWIN(1WN)
+
+
+
+     Please reports bugs to wordnet@princeton.edu.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WordNet		    Last change: 3 March 1995			6
+
+
+
