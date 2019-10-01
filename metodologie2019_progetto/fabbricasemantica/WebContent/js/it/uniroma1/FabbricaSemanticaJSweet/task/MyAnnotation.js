@@ -19,7 +19,8 @@ var it;
                         $(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder(2).addText("The synonyms hangman").build()).insertBefore("h3");
                         $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLImageElementBuilder("Hangman").addSrc("./images/hmstart.gif").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder("final-word").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("keyboard").addClass("vertical container").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form").addClass("vertical container width-90").addAction(this.servletUrl).build());
                         $("#keyboard").append(this.createKeyboardRow$int$int(0, 10), this.createKeyboardRow$int$int(10, 19), this.createKeyboardRow$int(19));
-                        $("#form").append(this.createInputHiddenElem(this.contextElems[0]), this.createInputHiddenElem("synonym"), this.createInputHiddenElem("result", "uncompleted game"), this.createBottomButtons("bottom-buttons", "space-between"));
+                        $("#form").append(this.createInputHiddenElem(this.contextElems[0]), this.createInputHiddenElem("synonym"), this.createInputHiddenElem("result"), this.createBottomButtons("bottom-buttons", "space-between"));
+                        $("#next-button").prop("disabled", this.canPlay + "");
                         this.fillTaskContext();
                         this.synonym = $("#synonym-hidden").val().toUpperCase();
                         this.createMask();
@@ -103,26 +104,29 @@ var it;
                         if (this.synonym.indexOf(letter) !== -1) {
                             $("#" + letter).css("border-color", "green").css("color", "green");
                             this.editMask(letter, this.occurrencesPositions(letter));
-                            if (!($("#final-word").text().indexOf("_") != -1)) {
-                                $("#final-word").css("border-color", "green").css("color", "green");
-                                $("#result-hidden").val("Win!");
-                                this.canPlay = false;
-                            }
+                            if (!($("#final-word").text().indexOf("_") != -1))
+                                this.endGame(true);
                         }
                         else {
                             $("#" + letter).css("border-color", "red").css("color", "red");
                             this.wrongGuesses++;
                             $("#Hangman").attr("src", "images/hm" + this.wrongGuesses + ".gif");
-                            if (this.wrongGuesses === 6) {
-                                $("#final-word").text("The stickman died :(").css("border-color", "red").css("color", "red");
-                                $("#result-hidden").val("Lose :(");
-                                this.canPlay = false;
-                            }
+                            if (this.wrongGuesses === 6)
+                                this.endGame(false);
                         }
                         return true;
                     }
                     /*private*/ selectLetterClick(c) {
                         return (e) => this.selectLetter(c);
+                    }
+                    /*private*/ endGame(outcome) {
+                        if (outcome)
+                            $("#final-word").css("border-color", "green").css("color", "green");
+                        else
+                            $("#final-word").text("The stickman died :(").css("border-color", "red").css("color", "red");
+                        $("#result-hidden").val(outcome ? "Win!" : "Lose :(");
+                        this.canPlay = false;
+                        $("#next-button").removeAttr("disabled");
                     }
                     /*private*/ occurrencesPositions(letter) {
                         let letterIndexes = ([]);

@@ -50,8 +50,9 @@ public class MyAnnotation extends TaskPage
 		$("#form").append( 
 				createInputHiddenElem(contextElems[0]),
 				createInputHiddenElem("synonym"),
-				createInputHiddenElem("result", "uncompleted game"),
+				createInputHiddenElem("result"),
 				createBottomButtons("bottom-buttons", "space-between"));
+		$("#next-button").prop("disabled", canPlay + "");
 		fillTaskContext();
 		synonym = ((String) $("#synonym-hidden").val()).toUpperCase();
 		createMask();
@@ -126,11 +127,7 @@ public class MyAnnotation extends TaskPage
 			editMask(letter, occurrencesPositions(letter));
 			
 			if (! ((String) $("#final-word").text()).contains("_"))
-			{
-				$("#final-word").css("border-color", "green").css("color", "green");
-				$("#result-hidden").val("Win!");
-				canPlay = false;
-			}
+				endGame(true);
 		}
 		else
 		{
@@ -138,16 +135,24 @@ public class MyAnnotation extends TaskPage
 			wrongGuesses++;
 			$("#Hangman").attr("src", "images/hm" + wrongGuesses + ".gif"); //TODO ridisegnare lo stickman
 			if (wrongGuesses == 6)
-			{
-				$("#final-word").text("The stickman died :(").css("border-color", "red").css("color", "red");
-				$("#result-hidden").val("Lose :(");
-				canPlay = false;
-			}
+				endGame(false);
 		}
 		return true;
 	}
 	
 	private Function<MouseEvent, Object> selectLetterClick(Character c) { return e -> selectLetter(c); }
+	
+	private void endGame(boolean outcome)
+	{
+		if (outcome)
+			$("#final-word").css("border-color", "green").css("color", "green");
+		else
+			$("#final-word").text("The stickman died :(").css("border-color", "red").css("color", "red");
+		
+		$("#result-hidden").val(outcome ? "Win!" : "Lose :(");
+		canPlay = false;
+		$("#next-button").removeAttr("disabled");
+	}
 	
 	private List<Integer> occurrencesPositions(Character letter)
 	{

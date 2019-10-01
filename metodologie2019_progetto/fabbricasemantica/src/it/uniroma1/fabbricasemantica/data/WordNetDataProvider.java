@@ -1,10 +1,15 @@
 package it.uniroma1.fabbricasemantica.data;
+
+import it.uniroma1.fabbricasemantica.data.wordnet.WordNet;
+
 //TODO Javadoc everywhere
 public class WordNetDataProvider implements DataProvider<String>
 {	//TODO implementare dati dinamici da WordNet
 	@Override 
 	public String getData(Task task)
 	{
+		WordNet dataProvider = WordNet.getInstance("3.1");
+		
 		if (task == StandardTask.TRANSLATION_ANNOTATION)
 		{
 			return "{" +

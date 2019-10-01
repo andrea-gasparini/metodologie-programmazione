@@ -81,17 +81,15 @@ public class TaskPage extends FabbricaSemanticaPage
 	{
 		HTMLDivElement elem = new HTMLDivElementBuilder(divId).addClass("horizontal container " + justifyContent).build();
 		HTMLAnchorElement secondButton = new HTMLAnchorElementBuilder("skip-button").addHref(servletUrl).build();
-		$(elem).append(new HTMLInputElementBuilder().isRequired().addType("submit").addName("submit").addValue("NEXT").build(), secondButton);
+		$(elem).append(new HTMLInputElementBuilder("next-button").isRequired().addType("submit").addName("submit").addValue("NEXT").build(), secondButton);
 		$(secondButton).append(new HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addType("button").addText("SKIP").build());
 		return elem;
 	}
 	
-	protected HTMLInputElement createInputHiddenElem(String contextElem, String defaultValue)
+	protected HTMLInputElement createInputHiddenElem(String contextElem)
 	{
-		return new HTMLInputElementBuilder(contextElem.toLowerCase() + "-hidden").addName(contextElem.toLowerCase()).addValue(defaultValue).addType("hidden").build();
+		return new HTMLInputElementBuilder(contextElem.toLowerCase() + "-hidden").addName(contextElem.toLowerCase()).addType("hidden").build();
 	}
-	
-	protected HTMLInputElement createInputHiddenElem(String contextElem) { return createInputHiddenElem(contextElem, ""); }
 	
 	protected void fillTaskContext()
 	{	

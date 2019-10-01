@@ -65,12 +65,12 @@ var it;
                     createBottomButtons(divId, justifyContent) {
                         let elem = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder(divId).addClass("horizontal container " + justifyContent).build();
                         let secondButton = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder("skip-button").addHref(this.servletUrl).build();
-                        $(elem).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder().isRequired().addType("submit").addName("submit").addValue("NEXT").build(), secondButton);
+                        $(elem).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder("next-button").isRequired().addType("submit").addName("submit").addValue("NEXT").build(), secondButton);
                         $(secondButton).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addType("button").addText("SKIP").build());
                         return elem;
                     }
-                    createInputHiddenElem(contextElem, defaultValue = "") {
-                        return new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder(contextElem.toLowerCase() + "-hidden").addName(contextElem.toLowerCase()).addValue(defaultValue).addType("hidden").build();
+                    createInputHiddenElem(contextElem) {
+                        return new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder(contextElem.toLowerCase() + "-hidden").addName(contextElem.toLowerCase()).addType("hidden").build();
                     }
                     fillTaskContext$() {
                         $.getJSON(TaskPage.REST_URL, "task=" + this.taskName, (result, a, ctx) => {
