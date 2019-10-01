@@ -108,6 +108,13 @@ public class Synset
 	public Set<String> getSynonyms() { return synonyms; }
 	
 	/**
+	 * Restituisce un sinonimo casuale del Synset
+	 * 
+	 * @return un sinonimo casuale del Synset
+	 */ 
+	public String getRandomSynonym() { return ((String) synonyms.toArray()[(int) (Math.random() * synonyms.size())]).toLowerCase().replace("_", " "); }
+	
+	/**
 	 * Restituisce la glossa del Synset
 	 * 
 	 * @return la glossa del Synset

@@ -187,6 +187,17 @@ public class WordNet implements Iterable<Synset>
 	}
 
 	/**
+	 * Restituisce un Synset casuale fra tutti quelli presenti in WordNet
+	 * 
+	 * @return un Synset casuale
+	 */
+	public Synset getRandomSynset() 
+	{
+		Object[] synsets = synsetsMap.values().toArray();
+		return (Synset) synsets[(int) (Math.random() * synsets.length)];
+	}
+	
+	/**
 	 * Restituisce la lista dei Synset che contengono tra i sinonimi la parola specificata 
 	 * 
 	 * @param lemma una parola nella sua forma base

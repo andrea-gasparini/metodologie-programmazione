@@ -1,5 +1,6 @@
 package it.uniroma1.fabbricasemantica.data;
 
+import it.uniroma1.fabbricasemantica.data.wordnet.Synset;
 import it.uniroma1.fabbricasemantica.data.wordnet.WordNet;
 
 //TODO Javadoc everywhere
@@ -9,23 +10,26 @@ public class WordNetDataProvider implements DataProvider<String>
 	public String getData(Task task)
 	{
 		WordNet dataProvider = WordNet.getInstance("3.1");
+		Synset source = dataProvider.getRandomSynset();
 		
 		if (task == StandardTask.TRANSLATION_ANNOTATION)
 		{
 			return "{" +
-					"\"word\": \"Apple\"," +
-					"\"definition\": \"It's one of the most common fruits you mention in examples but that you rarely eat\"" +
+					"\"word\": \"" + source.getRandomSynonym() + "\"," +
+					"\"definition\": \"" + source.getGloss() + "\"" +
 					"}";
 		}
 		else if (task == StandardTask.WORD_ANNOTATION)
 		{
-			return "{\"definition\": \"A motor vehicle with four wheels; usually propelled by an internal combustion engine\"}";
+			return "{\"definition\": \"" + source.getGloss() + "\"}";
 		}
 		else if (task == StandardTask.DEFINITION_ANNOTATION)
 		{
 			return "{" + 
-					"\"word\": \"car\"," +
-					"\"hypernym\": \"motor_veichle\"" +
+					"\"word\": \"" + source.getRandomSynonym() + "\"," + //TODO va pescato un synonimo che abbia hypernym
+					"\"hypernym\": \"" +
+					dataProvider.getSynsetFromID(
+							source.streamRelatedSynsets().filter( s -> s.getRelation().equals("@") ).findAny().get().getSynsetID()).getRandomSynonym() + "\"" +
 					"}";
 		}
 		else if (task == StandardTask.SENSE_ANNOTATION)
