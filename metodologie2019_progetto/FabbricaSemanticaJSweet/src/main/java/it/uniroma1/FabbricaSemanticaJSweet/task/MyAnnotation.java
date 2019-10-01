@@ -1,7 +1,6 @@
 package it.uniroma1.FabbricaSemanticaJSweet.task;
 
 import static def.jquery.Globals.$;
-import static def.dom.Globals.alert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +8,8 @@ import java.util.function.Function;
 
 import def.dom.HTMLDivElement;
 import def.dom.MouseEvent;
+import def.jquery.JQueryXHR;
+import def.js.JSON;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder;
@@ -50,8 +51,9 @@ public class MyAnnotation extends TaskPage
 				createInputHiddenElem("synonym"),
 				createBottomButtons("bottom-buttons", "space-between"));
 		//$("#synonym-hidden").val("PAROLA"); // testMask
+		fillTaskContext();
+		//TODO $("#synonym-hidden").val() non restituisce nulla, ma con un timeout si, boh
 		synonym = (String) $("#synonym-hidden").val();
-		//TODO implementare il fillTaskContext();
 		createMask();
 	}
 	
@@ -64,6 +66,20 @@ public class MyAnnotation extends TaskPage
 	}
 	
 	private HTMLDivElement createKeyboardRow(int firstIndex) { return createKeyboardRow(firstIndex, ALPHABET.length); }
+	
+	@Override
+	protected void fillTaskContext()
+	{	
+		$.getJSON(REST_URL, "task=" + taskName, (Object result, String a, JQueryXHR ctx) -> 
+		{
+			JSON json = (JSON) result;
+			String text = json.$get(contextElems[0].toLowerCase());
+			$("#" + contextElems[0].toLowerCase()).text(text);
+			$("#" + contextElems[0].toLowerCase() + "-hidden").val(text);
+			$("#" + "synonym-hidden").val((String) json.$get("synonym"));
+			return null;
+		});
+	}
 	
 	private void createMask()
 	{

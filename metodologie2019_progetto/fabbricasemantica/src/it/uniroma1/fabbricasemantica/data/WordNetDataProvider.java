@@ -49,6 +49,13 @@ public class WordNetDataProvider implements DataProvider<String>
 					"\"definition\": \"09213565n\"" +
 					"}";
 		}
+		else if (task == StandardTask.MY_ANNOTATION)
+		{
+			return "{" +
+					"\"word\": \"chief\"," +
+					"\"synonym\": \"boss\"" +
+					"}";
+		}
 		return null; 
 	}
 	

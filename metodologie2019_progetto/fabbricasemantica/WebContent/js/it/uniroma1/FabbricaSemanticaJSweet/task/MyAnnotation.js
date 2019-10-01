@@ -20,7 +20,7 @@ var it;
                         $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLImageElementBuilder("Hangman").addSrc("./images/hmstart.gif").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder("final-word").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("keyboard").addClass("vertical container").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form").addClass("vertical container width-90").addAction(this.servletUrl).build());
                         $("#keyboard").append(this.createKeyboardRow$int$int(0, 10), this.createKeyboardRow$int$int(10, 19), this.createKeyboardRow$int(19));
                         $("#form").append(this.createInputHiddenElem(this.contextElems[0]), this.createInputHiddenElem("synonym"), this.createBottomButtons("bottom-buttons", "space-between"));
-                        $("#synonym-hidden").val("PAROLA");
+                        this.fillTaskContext();
                         this.synonym = $("#synonym-hidden").val();
                         this.createMask();
                     }
@@ -49,6 +49,26 @@ var it;
                     }
                     /*private*/ createKeyboardRow$int(firstIndex) {
                         return this.createKeyboardRow$int$int(firstIndex, MyAnnotation.ALPHABET_$LI$().length);
+                    }
+                    fillTaskContext(responsesName, nResponses) {
+                        if (((typeof responsesName === 'string') || responsesName === null) && ((typeof nResponses === 'number') || nResponses === null)) {
+                            super.fillTaskContext(responsesName, nResponses);
+                        }
+                        else if (responsesName === undefined && nResponses === undefined) {
+                            return this.fillTaskContext$();
+                        }
+                        else
+                            throw new Error('invalid overload');
+                    }
+                    fillTaskContext$() {
+                        $.getJSON(it.uniroma1.FabbricaSemanticaJSweet.task.TaskPage.REST_URL, "task=" + this.taskName, (result, a, ctx) => {
+                            let json = result;
+                            let text = (json[this.contextElems[0].toLowerCase()]);
+                            $("#" + this.contextElems[0].toLowerCase()).text(text);
+                            $("#" + this.contextElems[0].toLowerCase() + "-hidden").val(text);
+                            $("#synonym-hidden").val((json["synonym"]));
+                            return null;
+                        });
                     }
                     /*private*/ createMask() {
                         for (let i = 0; i < this.synonym.length; i++) {
