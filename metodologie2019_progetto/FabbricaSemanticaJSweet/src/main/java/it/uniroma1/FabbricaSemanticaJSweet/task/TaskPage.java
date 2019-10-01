@@ -86,10 +86,12 @@ public class TaskPage extends FabbricaSemanticaPage
 		return elem;
 	}
 	
-	protected HTMLInputElement createInputHiddenElem(String contextElem)
+	protected HTMLInputElement createInputHiddenElem(String contextElem, String defaultValue)
 	{
-		return new HTMLInputElementBuilder(contextElem.toLowerCase() + "-hidden").addName(contextElem.toLowerCase()).addType("hidden").build();
+		return new HTMLInputElementBuilder(contextElem.toLowerCase() + "-hidden").addName(contextElem.toLowerCase()).addValue(defaultValue).addType("hidden").build();
 	}
+	
+	protected HTMLInputElement createInputHiddenElem(String contextElem) { return createInputHiddenElem(contextElem, ""); }
 	
 	protected void fillTaskContext()
 	{	

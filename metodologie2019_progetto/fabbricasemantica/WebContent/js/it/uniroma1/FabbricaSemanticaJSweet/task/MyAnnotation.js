@@ -19,9 +19,9 @@ var it;
                         $(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder(2).addText("The synonyms hangman").build()).insertBefore("h3");
                         $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLImageElementBuilder("Hangman").addSrc("./images/hmstart.gif").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder("final-word").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("keyboard").addClass("vertical container").build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form").addClass("vertical container width-90").addAction(this.servletUrl).build());
                         $("#keyboard").append(this.createKeyboardRow$int$int(0, 10), this.createKeyboardRow$int$int(10, 19), this.createKeyboardRow$int(19));
-                        $("#form").append(this.createInputHiddenElem(this.contextElems[0]), this.createInputHiddenElem("synonym"), this.createBottomButtons("bottom-buttons", "space-between"));
+                        $("#form").append(this.createInputHiddenElem(this.contextElems[0]), this.createInputHiddenElem("synonym"), this.createInputHiddenElem("result", "uncompleted game"), this.createBottomButtons("bottom-buttons", "space-between"));
                         this.fillTaskContext();
-                        this.synonym = $("#synonym-hidden").val();
+                        this.synonym = $("#synonym-hidden").val().toUpperCase();
                         this.createMask();
                     }
                     static ALPHABET_$LI$() { if (MyAnnotation.ALPHABET == null)
@@ -33,7 +33,7 @@ var it;
                     createKeyboardRow$int$int(firstIndex, lastIndex) {
                         let row = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder().addClass("horizontal container align-center").build();
                         for (let i = firstIndex; i < lastIndex; i++) {
-                            $(row).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder(MyAnnotation.ALPHABET_$LI$()[i].toString()).onClick((this.clickSelectLetter(MyAnnotation.ALPHABET_$LI$()[i]))).addClass("letter").addText(MyAnnotation.ALPHABET_$LI$()[i].toString()).build());
+                            $(row).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder(MyAnnotation.ALPHABET_$LI$()[i].toString()).onClick((this.selectLetterClick(MyAnnotation.ALPHABET_$LI$()[i]))).addClass("letter").addText(MyAnnotation.ALPHABET_$LI$()[i].toString()).build());
                         }
                         return row;
                     }
@@ -61,14 +61,20 @@ var it;
                             throw new Error('invalid overload');
                     }
                     fillTaskContext$() {
-                        $.getJSON(it.uniroma1.FabbricaSemanticaJSweet.task.TaskPage.REST_URL, "task=" + this.taskName, (result, a, ctx) => {
-                            let json = result;
-                            let text = (json[this.contextElems[0].toLowerCase()]);
-                            $("#" + this.contextElems[0].toLowerCase()).text(text);
-                            $("#" + this.contextElems[0].toLowerCase() + "-hidden").val(text);
-                            $("#synonym-hidden").val((json["synonym"]));
-                            return null;
-                        });
+                        $.ajax(Object.defineProperty({
+                            url: it.uniroma1.FabbricaSemanticaJSweet.task.TaskPage.REST_URL,
+                            dataType: "json",
+                            data: "task=" + this.taskName,
+                            async: false,
+                            success: (result, a, ctx) => {
+                                let json = result;
+                                let text = (json[this.contextElems[0].toLowerCase()]);
+                                $("#" + this.contextElems[0].toLowerCase()).text(text);
+                                $("#" + this.contextElems[0].toLowerCase() + "-hidden").val(text);
+                                $("#synonym-hidden").val((json["synonym"]));
+                                return null;
+                            }
+                        }, '__interfaces', { configurable: true, value: ["def.jquery.JQueryAjaxSettings"] }));
                     }
                     /*private*/ createMask() {
                         for (let i = 0; i < this.synonym.length; i++) {
@@ -91,33 +97,39 @@ var it;
                         $("#final-word").text(maskString);
                     }
                     /*private*/ selectLetter(letter) {
-                        if ((this.usedLetters.indexOf((letter)) >= 0) || (!this.canPlay))
+                        if ((!this.canPlay) || (this.usedLetters.indexOf((letter)) >= 0))
                             return false;
                         /* add */ (this.usedLetters.push(letter) > 0);
                         if (this.synonym.indexOf(letter) !== -1) {
                             $("#" + letter).css("border-color", "green").css("color", "green");
-                            let letterIndexes = ([]);
-                            for (let index = this.synonym.indexOf(letter); index >= 0; index = this.synonym.indexOf(letter, index + 1)) {
-                                (letterIndexes.push(index) > 0);
-                            }
-                            this.editMask(letter, letterIndexes);
+                            this.editMask(letter, this.occurrencesPositions(letter));
                             if (!($("#final-word").text().indexOf("_") != -1)) {
                                 $("#final-word").css("border-color", "green").css("color", "green");
+                                $("#result-hidden").val("Win!");
                                 this.canPlay = false;
                             }
                         }
                         else {
                             $("#" + letter).css("border-color", "red").css("color", "red");
                             this.wrongGuesses++;
-                            if (this.wrongGuesses === 5) {
+                            $("#Hangman").attr("src", "images/hm" + this.wrongGuesses + ".gif");
+                            if (this.wrongGuesses === 6) {
                                 $("#final-word").text("The stickman died :(").css("border-color", "red").css("color", "red");
+                                $("#result-hidden").val("Lose :(");
                                 this.canPlay = false;
                             }
                         }
                         return true;
                     }
-                    /*private*/ clickSelectLetter(c) {
+                    /*private*/ selectLetterClick(c) {
                         return (e) => this.selectLetter(c);
+                    }
+                    /*private*/ occurrencesPositions(letter) {
+                        let letterIndexes = ([]);
+                        for (let index = this.synonym.indexOf(letter); index >= 0; index = this.synonym.indexOf(letter, index + 1)) {
+                            (letterIndexes.push(index) > 0);
+                        }
+                        return letterIndexes;
                     }
                 }
                 task.MyAnnotation = MyAnnotation;

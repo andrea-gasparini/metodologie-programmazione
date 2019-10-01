@@ -7,19 +7,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
-import it.uniroma1.fabbricasemantica.servlet.RandomTaskServlet;
+import it.uniroma1.fabbricasemantica.data.StandardTask;
 
 @WebServlet(name = "TaskMyAnnotationServlet", urlPatterns = "/myAnnotation.jsp")
-public class TaskMyAnnotationServlet extends BaseServlet
+public class TaskMyAnnotationServlet extends TaskServlet
 {
 	private static final long serialVersionUID = 1L;
 
+	public void init() throws ServletException
+	{
+		super.init(StandardTask.MY_ANNOTATION, new String[] {"word", "synonym"}, "result");
+	}
+	
 	@Override
 	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		//TODO Salvare i dati
-		response.sendRedirect(RandomTaskServlet.getRandomTaskUrl());
+		super.doSomething(request, response);
 	}
 
 }

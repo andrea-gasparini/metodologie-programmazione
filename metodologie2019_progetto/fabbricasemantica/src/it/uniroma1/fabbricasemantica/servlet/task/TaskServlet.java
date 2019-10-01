@@ -48,6 +48,6 @@ public class TaskServlet extends BaseServlet
 			taskData.saveFile();
 		}
 
-		response.sendRedirect(RandomTaskServlet.getRandomTaskUrl());
+		response.sendRedirect(RandomTaskServlet.getRandomTaskUrl(taskName));
 	}
 }

@@ -35,7 +35,7 @@ public class Signup extends FabbricaSemanticaPage
 				new HTMLFormElementBuilder("form").addClass("vertical container").changeMethod("POST").addAction("./signup.jsp")
 					.onSubmit(this::checkForm).build(),
 					new HTMLSpanElementBuilder("bottom-text").addText("Already have an account? ").build());
-		$("#form").append( //TODO tutte queste istanze simili fra loro si possono modularizzare in un metodo?
+		$("#form").append(
 				new HTMLSpanElementBuilder().addClass("form-text").addText("Email Address*").build(),
 				new HTMLInputElementBuilder().addClass("form-field").addName("email").addType("email").isRequired().build(),
 				new HTMLSpanElementBuilder().addClass("form-text").addText("Password*").build(), 

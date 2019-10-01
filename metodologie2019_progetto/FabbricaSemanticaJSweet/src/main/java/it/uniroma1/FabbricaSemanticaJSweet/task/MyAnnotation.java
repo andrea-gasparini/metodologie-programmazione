@@ -8,6 +8,7 @@ import java.util.function.Function;
 
 import def.dom.HTMLDivElement;
 import def.dom.MouseEvent;
+import def.jquery.JQueryAjaxSettings;
 import def.jquery.JQueryXHR;
 import def.js.JSON;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder;
@@ -17,7 +18,7 @@ import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingEleme
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLImageElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder;
 
-public class MyAnnotation extends TaskPage
+public class MyAnnotation extends TaskPage 
 {
 	public static final Character[] ALPHABET = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 	
@@ -49,11 +50,10 @@ public class MyAnnotation extends TaskPage
 		$("#form").append( 
 				createInputHiddenElem(contextElems[0]),
 				createInputHiddenElem("synonym"),
+				createInputHiddenElem("result", "uncompleted game"),
 				createBottomButtons("bottom-buttons", "space-between"));
-		//$("#synonym-hidden").val("PAROLA"); // testMask
 		fillTaskContext();
-		//TODO $("#synonym-hidden").val() non restituisce nulla, ma con un timeout si, boh
-		synonym = (String) $("#synonym-hidden").val();
+		synonym = ((String) $("#synonym-hidden").val()).toUpperCase();
 		createMask();
 	}
 	
@@ -61,7 +61,7 @@ public class MyAnnotation extends TaskPage
 	{
 		HTMLDivElement row = new HTMLDivElementBuilder().addClass("horizontal container align-center").build();
 		for (int i = firstIndex; i < lastIndex; i++)
-			$(row).append(new HTMLAnchorElementBuilder(ALPHABET[i].toString()).onClick(clickSelectLetter(ALPHABET[i])).addClass("letter").addText(ALPHABET[i].toString()).build());
+			$(row).append(new HTMLAnchorElementBuilder(ALPHABET[i].toString()).onClick(selectLetterClick(ALPHABET[i])).addClass("letter").addText(ALPHABET[i].toString()).build());
 		return row;
 	}
 	
@@ -70,14 +70,24 @@ public class MyAnnotation extends TaskPage
 	@Override
 	protected void fillTaskContext()
 	{	
-		$.getJSON(REST_URL, "task=" + taskName, (Object result, String a, JQueryXHR ctx) -> 
-		{
-			JSON json = (JSON) result;
-			String text = json.$get(contextElems[0].toLowerCase());
-			$("#" + contextElems[0].toLowerCase()).text(text);
-			$("#" + contextElems[0].toLowerCase() + "-hidden").val(text);
-			$("#" + "synonym-hidden").val((String) json.$get("synonym"));
-			return null;
+		$.ajax(new JQueryAjaxSettings() {
+			{
+				url = REST_URL;
+				dataType = "json";
+				data = "task=" + taskName;
+				async = false;
+			}
+			
+			@Override
+			public Object success(Object result, String a, JQueryXHR ctx) 
+			{
+				JSON json = (JSON) result;
+				String text = json.$get(contextElems[0].toLowerCase());
+				$("#" + contextElems[0].toLowerCase()).text(text);
+				$("#" + contextElems[0].toLowerCase() + "-hidden").val(text);
+				$("#" + "synonym-hidden").val((String) json.$get("synonym"));
+				return null;
+			}
 		});
 	}
 	
@@ -104,22 +114,21 @@ public class MyAnnotation extends TaskPage
 	}
 	
 	private boolean selectLetter(Character letter)
-	{	//TODO pulire un po' sto codice
-		if (usedLetters.contains(letter) || (! canPlay)) 
+	{
+		if ((! canPlay) || usedLetters.contains(letter)) 
 			return false;
+		
 		usedLetters.add(letter);
+		
 		if (synonym.indexOf(letter) != -1)
 		{
 			$("#" + letter).css("border-color", "green").css("color", "green");
-			
-			List<Integer> letterIndexes = new ArrayList<>();
-			for (int index = synonym.indexOf(letter); index >= 0; index = synonym.indexOf(letter, index + 1))
-			    letterIndexes.add(index);
-			editMask(letter, letterIndexes);
+			editMask(letter, occurrencesPositions(letter));
 			
 			if (! ((String) $("#final-word").text()).contains("_"))
 			{
 				$("#final-word").css("border-color", "green").css("color", "green");
+				$("#result-hidden").val("Win!");
 				canPlay = false;
 			}
 		}
@@ -127,15 +136,24 @@ public class MyAnnotation extends TaskPage
 		{
 			$("#" + letter).css("border-color", "red").css("color", "red");
 			wrongGuesses++;
-			//TODO $("#Hangman").attr("src", "hm" + wrongGuesses + ".gif");
-			if (wrongGuesses == 5)
+			$("#Hangman").attr("src", "images/hm" + wrongGuesses + ".gif"); //TODO ridisegnare lo stickman
+			if (wrongGuesses == 6)
 			{
 				$("#final-word").text("The stickman died :(").css("border-color", "red").css("color", "red");
+				$("#result-hidden").val("Lose :(");
 				canPlay = false;
 			}
 		}
 		return true;
 	}
 	
-	private Function<MouseEvent, Object> clickSelectLetter(Character c) { return e -> selectLetter(c); }
+	private Function<MouseEvent, Object> selectLetterClick(Character c) { return e -> selectLetter(c); }
+	
+	private List<Integer> occurrencesPositions(Character letter)
+	{
+		List<Integer> letterIndexes = new ArrayList<>();
+		for (int index = synonym.indexOf(letter); index >= 0; index = synonym.indexOf(letter, index + 1))
+		    letterIndexes.add(index);
+		return letterIndexes;
+	}
 }

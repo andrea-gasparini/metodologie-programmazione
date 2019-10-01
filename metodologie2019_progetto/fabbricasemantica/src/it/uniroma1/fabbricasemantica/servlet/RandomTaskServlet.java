@@ -1,6 +1,9 @@
 package it.uniroma1.fabbricasemantica.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,14 +24,17 @@ public class RandomTaskServlet extends BaseServlet
 		response.getWriter().write(getRandomTaskUrl());
 	}
 	
-	public static String getRandomTaskUrl()
-	{	//TODO aggiungere il MyTask
-		Task[] taskArray = StandardTask.values();
-		String randomTask = taskArray[(int) (Math.random() * taskArray.length)].getTaskID().toLowerCase();
+	public static String getRandomTaskUrl(Task taskName)
+	{
+		List<Task> taskArray = new ArrayList<>(Arrays.asList(StandardTask.values()));
+		taskArray.remove(taskName);
+		String randomTask = taskArray.get((int) (Math.random() * taskArray.size())).getTaskID().toLowerCase();
 		
 		StringBuilder sb = new StringBuilder(randomTask);
 		sb.setCharAt(randomTask.indexOf("_") + 1, Character.toUpperCase((randomTask.charAt(randomTask.indexOf("_") + 1))));
 		
 		return sb.toString().replace("_", "") + ".html";
 	}
+	
+	public static String getRandomTaskUrl() { return getRandomTaskUrl(null); }
 }

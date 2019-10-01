@@ -1,5 +1,5 @@
 package it.uniroma1.FabbricaSemanticaJSweet;
-
+//TODO Javadoc everywhere
 import static def.jquery.Globals.$;
 import static def.dom.Globals.window;
 

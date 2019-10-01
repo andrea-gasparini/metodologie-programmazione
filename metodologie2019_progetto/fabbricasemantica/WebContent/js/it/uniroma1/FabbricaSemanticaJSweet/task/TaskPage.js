@@ -69,8 +69,8 @@ var it;
                         $(secondButton).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addType("button").addText("SKIP").build());
                         return elem;
                     }
-                    createInputHiddenElem(contextElem) {
-                        return new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder(contextElem.toLowerCase() + "-hidden").addName(contextElem.toLowerCase()).addType("hidden").build();
+                    createInputHiddenElem(contextElem, defaultValue = "") {
+                        return new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder(contextElem.toLowerCase() + "-hidden").addName(contextElem.toLowerCase()).addValue(defaultValue).addType("hidden").build();
                     }
                     fillTaskContext$() {
                         $.getJSON(TaskPage.REST_URL, "task=" + this.taskName, (result, a, ctx) => {

@@ -1,5 +1,5 @@
 package it.uniroma1.fabbricasemantica.data;
-
+//TODO Javadoc everywhere
 public class WordNetDataProvider implements DataProvider<String>
 {	//TODO implementare dati dinamici da WordNet
 	@Override 
