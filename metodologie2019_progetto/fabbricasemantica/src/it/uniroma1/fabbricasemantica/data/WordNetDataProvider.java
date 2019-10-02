@@ -1,5 +1,6 @@
 package it.uniroma1.fabbricasemantica.data;
 
+import it.uniroma1.fabbricasemantica.data.wordnet.BasicWordNetRelation;
 import it.uniroma1.fabbricasemantica.data.wordnet.Synset;
 import it.uniroma1.fabbricasemantica.data.wordnet.WordNet;
 
@@ -25,11 +26,14 @@ public class WordNetDataProvider implements DataProvider<String>
 		}
 		else if (task == StandardTask.DEFINITION_ANNOTATION)
 		{
+			while(dataProvider.getRelatedSynsets(source, BasicWordNetRelation.HYPERNYM).isEmpty())
+				source = dataProvider.getRandomSynset();
+			
 			return "{" + 
-					"\"word\": \"" + source.getRandomSynonym() + "\"," + //TODO va pescato un synonimo che abbia hypernym
+					"\"word\": \"" + source.getRandomSynonym() + "\"," +
 					"\"hypernym\": \"" +
 					dataProvider.getSynsetFromID(
-							source.streamRelatedSynsets().filter( s -> s.getRelation().equals("@") ).findAny().get().getSynsetID()).getRandomSynonym() + "\"" +
+							dataProvider.getRelatedSynsets(source, BasicWordNetRelation.HYPERNYM).stream().findAny().get().getID()).getRandomSynonym() + "\"" +
 					"}";
 		}
 		else if (task == StandardTask.SENSE_ANNOTATION)
