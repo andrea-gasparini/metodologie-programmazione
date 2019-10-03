@@ -14,6 +14,7 @@ public class WordNetDataProvider implements DataProvider<String>
 	@Override 
 	public String getData(Task task)
 	{
+		//TODO il primo task carica troppo lento perché deve aspettare l'istanza di wn
 		WordNet dataProvider = WordNet.getInstance("3.1");
 		Synset source = dataProvider.getRandomSynset();
 		
@@ -45,6 +46,7 @@ public class WordNetDataProvider implements DataProvider<String>
 			String word = source.getRandomSynonym();
 			while((! (source.findExample(word).isPresent()) ||
 					dataProvider.getRelatedSynsets(source, BasicWordNetRelation.SIMILAR_TO).isEmpty() ||
+					dataProvider.getRelatedSynsets(source, BasicWordNetRelation.SIMILAR_TO).contains(null) || //necessario per delle incongruenze tra 's' ed 'a' nel file originale
 					dataProvider.getRelatedSynsets(source, BasicWordNetRelation.HYPERNYM).isEmpty()))
 			{
 				source = dataProvider.getRandomSynset();
@@ -71,26 +73,36 @@ public class WordNetDataProvider implements DataProvider<String>
 		else if (task == StandardTask.TRANSLATION_VALIDATION)
 		{
 			return "{" +
-					"\"word\": \"rock\"," +
-					"\"definition\": \"A lump or mass of hard consolidated mineral matter\"," + 
+					"\"word\": \"" + source.getRandomSynonym() + "\"," +
+					"\"definition\": \"" + source.getGloss() + "\"," + 
 					"\"translations\": [\"Un grumo o una massa di materia minerale consolidata dura\"," +
 										"\"Materiale costituito dall'aggregato di minerali come quelli che formano la crosta terrestre\"," +
 										"\"Un'associazione non ufficiale di persone o gruppi\"]" +
-					"}";
+					"}"; //TODO creare un metodo o una classe per le traduzioni
 		}
 		else if (task == StandardTask.SENSE_VALIDATION)
 		{
+			String word = source.getRandomSynonym();
+			while(! (source.findExample(word).isPresent()))
+			{
+				source = dataProvider.getRandomSynset();
+				word = source.getRandomSynonym();
+			}
+			
 			return "{" +
-					"\"word\": \"bank\"," +
-					"\"sentence\": \"He cashed a check at the bank\"," +
-					"\"definition\": \"09213565n\"" +
+					"\"word\": \"" + word + "\"," +
+					"\"sentence\": \"" + source.findExample(word).get() + "\"," +
+					"\"definition\": \"" + (Math.random() < 0.5 ? dataProvider.getRandomSynset().getGloss() : source.getGloss()) + "\"" +
 					"}";
 		}
 		else if (task == StandardTask.MY_ANNOTATION)
 		{
+			while(source.getSynonyms().size() <= 2)
+				source = dataProvider.getRandomSynset();
+			//TODO va rivisto il front-end per le parole con spazi
 			return "{" +
-					"\"word\": \"chief\"," +
-					"\"synonym\": \"boss\"" +
+					"\"word\": \"" + source.getRandomSynonym() + "\"," +
+					"\"synonym\": \"" + source.getRandomSynonym() + "\"" +
 					"}";
 		}
 		return null; 
