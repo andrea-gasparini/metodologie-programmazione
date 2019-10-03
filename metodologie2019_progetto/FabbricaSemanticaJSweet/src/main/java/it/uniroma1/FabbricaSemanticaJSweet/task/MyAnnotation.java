@@ -95,7 +95,7 @@ public class MyAnnotation extends TaskPage
 	private void createMask()
 	{
 		for (int i = 0; i < synonym.length(); i++)
-			mask.add('_');
+			mask.add(synonym.charAt(i) == ' ' ? ' ' : '_');
 		saveMask();
 	}
 	
@@ -110,7 +110,7 @@ public class MyAnnotation extends TaskPage
 	{
 		String maskString = "";
 		for (int i = 0; i < mask.size(); i++)
-			maskString += i == synonym.length() - 1 ? mask.get(i) : mask.get(i) + " ";
+			maskString += i == synonym.length() - 1 ? mask.get(i) : mask.get(i) + '\xa0'; //TODO sto carattere non esiste in Java ma in JS si
 		$("#final-word").text(maskString);
 	}
 	

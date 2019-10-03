@@ -22,6 +22,7 @@ var it;
                         $("#form").append(this.createInputHiddenElem(this.contextElems[0]), this.createInputHiddenElem("synonym"), this.createInputHiddenElem("result"), this.createBottomButtons("bottom-buttons", "space-between"));
                         $("#next-button").prop("disabled", this.canPlay + "");
                         this.fillTaskContext();
+                        $("#synonym-hidden").val("la fava");
                         this.synonym = $("#synonym-hidden").val().toUpperCase();
                         this.createMask();
                     }
@@ -79,7 +80,12 @@ var it;
                     }
                     /*private*/ createMask() {
                         for (let i = 0; i < this.synonym.length; i++) {
-                            (this.mask.push('_') > 0);
+                            (this.mask.push(/* equals */ ((o1, o2) => { if (o1 && o1.equals) {
+                                return o1.equals(o2);
+                            }
+                            else {
+                                return o1 === o2;
+                            } })((this.synonym.charAt(i) + ""), " ") ? ' ' : '_') > 0);
                         }
                         this.saveMask();
                     }
@@ -93,7 +99,7 @@ var it;
                     /*private*/ saveMask() {
                         let maskString = "";
                         for (let i = 0; i < this.mask.length; i++) {
-                            maskString += i === this.synonym.length - 1 ? this.mask[i] : this.mask[i] + " ";
+                            maskString += i === this.synonym.length - 1 ? this.mask[i] : this.mask[i] + '\xa0';
                         }
                         $("#final-word").text(maskString);
                     }
