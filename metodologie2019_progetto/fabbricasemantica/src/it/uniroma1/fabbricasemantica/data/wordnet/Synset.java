@@ -1,5 +1,6 @@
 package it.uniroma1.fabbricasemantica.data.wordnet;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -127,6 +128,14 @@ public class Synset
 	 * @return l'insieme degli esempi del Synset, vuoto se non ce ne sono
 	 */
 	public Set<String> getExamples() { return examples; }
+	
+	/**
+	 * Data una parola, restituisce un Optional di un esempio del Synset che la contiene
+	 * 
+	 * @param word una parola da ricercare fra gli esempi del Synset
+	 * @return un Optional contenente la stringa rappresentante un esempio 
+	 */
+	public Optional<String> findExample(String word) { return examples.stream().filter( e -> e.contains(word) ).findAny(); }
 	
 	/**
 	 * Restituisce lo stream delle relazioni del Synset verso altri Synset

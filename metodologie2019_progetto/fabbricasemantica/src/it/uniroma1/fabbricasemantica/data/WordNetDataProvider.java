@@ -1,5 +1,9 @@
 package it.uniroma1.fabbricasemantica.data;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import it.uniroma1.fabbricasemantica.data.wordnet.BasicWordNetRelation;
 import it.uniroma1.fabbricasemantica.data.wordnet.Synset;
 import it.uniroma1.fabbricasemantica.data.wordnet.WordNet;
@@ -37,11 +41,31 @@ public class WordNetDataProvider implements DataProvider<String>
 					"}";
 		}
 		else if (task == StandardTask.SENSE_ANNOTATION)
-		{
+		{//TODO pulire un po' sto codice
+			String word = source.getRandomSynonym();
+			while((! (source.findExample(word).isPresent()) ||
+					dataProvider.getRelatedSynsets(source, BasicWordNetRelation.SIMILAR_TO).isEmpty() ||
+					dataProvider.getRelatedSynsets(source, BasicWordNetRelation.HYPERNYM).isEmpty()))
+			{
+				source = dataProvider.getRandomSynset();
+				word = source.getRandomSynonym();
+			}
+			
+			List<String> senses = new ArrayList<>(Arrays.asList(
+					source.getGloss(),
+					dataProvider.getSynsetFromID(
+							dataProvider.getRelatedSynsets(source, BasicWordNetRelation.HYPERNYM).stream().findAny().get().getID()).getGloss(),
+					dataProvider.getSynsetFromID(
+							dataProvider.getRelatedSynsets(source, BasicWordNetRelation.SIMILAR_TO).stream().findAny().get().getID()).getGloss(),
+					dataProvider.getRandomSynset().getGloss()));
+			
 			return "{" + 
-					"\"word\":\"mouse\"," +
-					"\"sentence\":\"A swollen bruise caused by a blow to the eye\"," + 
-					"\"senses\": [\"02330245n\", \"03793489n\", \"10335563n\", \"14289387n\"]" + 
+					"\"word\":\"" + word + "\"," +
+					"\"sentence\":\"" + source.findExample(word).get() + "\"," + 
+					"\"senses\": [\"" + senses.remove((int) (Math.random() * senses.size())) + "\", \"" +
+										senses.remove((int) (Math.random() * senses.size())) + "\", \"" +
+										senses.remove((int) (Math.random() * senses.size())) + "\", \"" +
+										senses.remove((int) (Math.random() * senses.size())) + "\"]" + 
 					"}";
 		}
 		else if (task == StandardTask.TRANSLATION_VALIDATION)
@@ -71,6 +95,4 @@ public class WordNetDataProvider implements DataProvider<String>
 		}
 		return null; 
 	}
-	
-
 }
