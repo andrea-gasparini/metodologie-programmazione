@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import it.uniroma1.fabbricasemantica.data.management.TranslationsReader;
 import it.uniroma1.fabbricasemantica.data.wordnet.BasicWordNetRelation;
 import it.uniroma1.fabbricasemantica.data.wordnet.Synset;
 import it.uniroma1.fabbricasemantica.data.wordnet.WordNet;
@@ -72,12 +73,24 @@ public class WordNetDataProvider implements DataProvider<String>
 		}
 		else if (task == StandardTask.TRANSLATION_VALIDATION)
 		{
+			while(dataProvider.getRelatedSynsets(source, BasicWordNetRelation.HYPERNYM).isEmpty())
+				source = dataProvider.getRandomSynset();
+			
+			TranslationsReader tr = new TranslationsReader("it-en");
+			
+			List<String> translations = new ArrayList<>(Arrays.asList(
+					tr.getTranslatedSentence(source.getGloss()),
+					tr.getTranslatedSentence(
+							dataProvider.getSynsetFromID(
+									dataProvider.getRelatedSynsets(source, BasicWordNetRelation.HYPERNYM).stream().findAny().get().getID()).getGloss()),
+					tr.getTranslatedSentence(dataProvider.getRandomSynset().getGloss())));
+			
 			return "{" +
 					"\"word\": \"" + source.getRandomSynonym() + "\"," +
 					"\"definition\": \"" + source.getGloss() + "\"," + 
-					"\"translations\": [\"Un grumo o una massa di materia minerale consolidata dura\"," +
-										"\"Materiale costituito dall'aggregato di minerali come quelli che formano la crosta terrestre\"," +
-										"\"Un'associazione non ufficiale di persone o gruppi\"]" +
+					"\"translations\": [\"" + translations.remove((int) (Math.random() * translations.size())) + "\"," +
+										"\"" + translations.remove((int) (Math.random() * translations.size())) + "\"," +
+										"\"" + translations.remove((int) (Math.random() * translations.size())) + "\"]" +
 					"}"; //TODO creare un metodo o una classe per le traduzioni
 		}
 		else if (task == StandardTask.SENSE_VALIDATION)
