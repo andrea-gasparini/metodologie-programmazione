@@ -15,5 +15,4 @@ public class XMLUserReader extends XMLReader
 				return true;
 		return false;
 	}
-
 }

@@ -110,7 +110,7 @@ public class MyAnnotation extends TaskPage
 	{
 		String maskString = "";
 		for (int i = 0; i < mask.size(); i++)
-			maskString += i == synonym.length() - 1 ? mask.get(i) : mask.get(i) + '\xa0'; //TODO sto carattere non esiste in Java ma in JS si
+			maskString += i == synonym.length() - 1 ? mask.get(i) : mask.get(i) + " "; //TODO sto carattere \xa0 non esiste in Java ma in JS si
 		$("#final-word").text(maskString);
 	}
 	

@@ -97,12 +97,16 @@ public class WordNetDataProvider implements DataProvider<String>
 		}
 		else if (task == StandardTask.MY_ANNOTATION)
 		{
-			while(source.getSynonyms().size() <= 2)
+			String word = source.getRandomSynonym();
+			while(source.getSynonyms().size() < 2 || word.contains(" ") || word.contains("-"))
+			{
 				source = dataProvider.getRandomSynset();
-			//TODO va rivisto il front-end per le parole con spazi
+				word = source.getRandomSynonym();
+			}
+			//TODO va rivisto il front-end per le parole con spazi // per ora ho fixato cercando solo parole senza spazi
 			return "{" +
-					"\"word\": \"" + source.getRandomSynonym() + "\"," +
-					"\"synonym\": \"" + source.getRandomSynonym() + "\"" +
+					"\"word\": \"" + source.getRandomSynonym(word) + "\"," +
+					"\"synonym\": \"" + word + "\"" +
 					"}";
 		}
 		return null; 
