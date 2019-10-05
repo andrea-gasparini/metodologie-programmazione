@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.3.0-SNAPSHOT - http://www.jsweet.org */
 namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
-    export class HTMLSpanElementBuilder implements it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
+    export class HTMLSpanElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
         /*private*/ spanElement : HTMLSpanElement;
 
         public constructor(id? : any) {
@@ -8,6 +8,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                 let __args = arguments;
                 {
                     let __args = arguments;
+                    super();
                     if(this.spanElement===undefined) this.spanElement = null;
                     if(this.spanElement===undefined) this.spanElement = null;
                     (() => {
@@ -19,6 +20,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                 })();
             } else if(id === undefined) {
                 let __args = arguments;
+                super();
                 if(this.spanElement===undefined) this.spanElement = null;
                 if(this.spanElement===undefined) this.spanElement = null;
                 (() => {
@@ -52,8 +54,6 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
         }
     }
     HTMLSpanElementBuilder["__class"] = "it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder";
-    HTMLSpanElementBuilder["__interfaces"] = ["it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder"];
-
 
 }
 

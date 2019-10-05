@@ -7,12 +7,13 @@ var it;
         (function (FabbricaSemanticaJSweet) {
             var HTMLElementsBuilders;
             (function (HTMLElementsBuilders) {
-                class HTMLInputElementBuilder {
+                class HTMLInputElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
                     constructor(id) {
                         if (((typeof id === 'string') || id === null)) {
                             let __args = arguments;
                             {
                                 let __args = arguments;
+                                super();
                                 if (this.inputElement === undefined)
                                     this.inputElement = null;
                                 if (this.inputElement === undefined)
@@ -27,6 +28,7 @@ var it;
                         }
                         else if (id === undefined) {
                             let __args = arguments;
+                            super();
                             if (this.inputElement === undefined)
                                 this.inputElement = null;
                             if (this.inputElement === undefined)
@@ -68,7 +70,6 @@ var it;
                 }
                 HTMLElementsBuilders.HTMLInputElementBuilder = HTMLInputElementBuilder;
                 HTMLInputElementBuilder["__class"] = "it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder";
-                HTMLInputElementBuilder["__interfaces"] = ["it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder"];
             })(HTMLElementsBuilders = FabbricaSemanticaJSweet.HTMLElementsBuilders || (FabbricaSemanticaJSweet.HTMLElementsBuilders = {}));
         })(FabbricaSemanticaJSweet = uniroma1.FabbricaSemanticaJSweet || (uniroma1.FabbricaSemanticaJSweet = {}));
     })(uniroma1 = it.uniroma1 || (it.uniroma1 = {}));

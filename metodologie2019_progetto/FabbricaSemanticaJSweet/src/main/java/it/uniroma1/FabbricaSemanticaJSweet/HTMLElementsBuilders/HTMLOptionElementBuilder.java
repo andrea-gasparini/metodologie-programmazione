@@ -5,7 +5,7 @@ import static def.dom.Globals.document;
 import def.dom.HTMLOptionElement;
 import jsweet.util.StringTypes;
 
-public class HTMLOptionElementBuilder implements HTMLElementBuilder
+public class HTMLOptionElementBuilder extends HTMLElementBuilder
 {
 	private HTMLOptionElement optionElement;
 	

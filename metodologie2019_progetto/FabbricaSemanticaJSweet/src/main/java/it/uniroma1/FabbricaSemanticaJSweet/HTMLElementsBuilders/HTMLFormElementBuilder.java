@@ -8,7 +8,7 @@ import def.dom.Event;
 import def.dom.HTMLFormElement;
 import jsweet.util.StringTypes;
 
-public class HTMLFormElementBuilder implements HTMLElementBuilder
+public class HTMLFormElementBuilder extends HTMLElementBuilder
 {
 	private HTMLFormElement formElement;
 	

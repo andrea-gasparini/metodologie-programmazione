@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.3.0-SNAPSHOT - http://www.jsweet.org */
 namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
-    export class HTMLOptionElementBuilder implements it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
+    export class HTMLOptionElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
         /*private*/ optionElement : HTMLOptionElement;
 
         public constructor(id? : any) {
@@ -8,6 +8,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                 let __args = arguments;
                 {
                     let __args = arguments;
+                    super();
                     if(this.optionElement===undefined) this.optionElement = null;
                     if(this.optionElement===undefined) this.optionElement = null;
                     (() => {
@@ -19,6 +20,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                 })();
             } else if(id === undefined) {
                 let __args = arguments;
+                super();
                 if(this.optionElement===undefined) this.optionElement = null;
                 if(this.optionElement===undefined) this.optionElement = null;
                 (() => {
@@ -52,8 +54,6 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
         }
     }
     HTMLOptionElementBuilder["__class"] = "it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLOptionElementBuilder";
-    HTMLOptionElementBuilder["__interfaces"] = ["it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder"];
-
 
 }
 

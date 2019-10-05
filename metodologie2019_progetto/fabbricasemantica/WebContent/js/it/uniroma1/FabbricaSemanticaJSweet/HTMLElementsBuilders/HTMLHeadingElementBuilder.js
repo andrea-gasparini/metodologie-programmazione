@@ -7,12 +7,13 @@ var it;
         (function (FabbricaSemanticaJSweet) {
             var HTMLElementsBuilders;
             (function (HTMLElementsBuilders) {
-                class HTMLHeadingElementBuilder {
+                class HTMLHeadingElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
                     constructor(headingDimension, id) {
                         if (((typeof headingDimension === 'number') || headingDimension === null) && ((typeof id === 'string') || id === null)) {
                             let __args = arguments;
                             {
                                 let __args = arguments;
+                                super();
                                 if (this.headingElement === undefined)
                                     this.headingElement = null;
                                 if (this.headingElement === undefined)
@@ -33,6 +34,7 @@ var it;
                                 let headingDimension = 1;
                                 {
                                     let __args = arguments;
+                                    super();
                                     if (this.headingElement === undefined)
                                         this.headingElement = null;
                                     if (this.headingElement === undefined)
@@ -48,6 +50,7 @@ var it;
                         }
                         else if (((typeof headingDimension === 'number') || headingDimension === null) && id === undefined) {
                             let __args = arguments;
+                            super();
                             if (this.headingElement === undefined)
                                 this.headingElement = null;
                             if (this.headingElement === undefined)
@@ -61,6 +64,7 @@ var it;
                             {
                                 let __args = arguments;
                                 let headingDimension = 1;
+                                super();
                                 if (this.headingElement === undefined)
                                     this.headingElement = null;
                                 if (this.headingElement === undefined)
@@ -91,7 +95,6 @@ var it;
                 }
                 HTMLElementsBuilders.HTMLHeadingElementBuilder = HTMLHeadingElementBuilder;
                 HTMLHeadingElementBuilder["__class"] = "it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder";
-                HTMLHeadingElementBuilder["__interfaces"] = ["it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder"];
             })(HTMLElementsBuilders = FabbricaSemanticaJSweet.HTMLElementsBuilders || (FabbricaSemanticaJSweet.HTMLElementsBuilders = {}));
         })(FabbricaSemanticaJSweet = uniroma1.FabbricaSemanticaJSweet || (uniroma1.FabbricaSemanticaJSweet = {}));
     })(uniroma1 = it.uniroma1 || (it.uniroma1 = {}));

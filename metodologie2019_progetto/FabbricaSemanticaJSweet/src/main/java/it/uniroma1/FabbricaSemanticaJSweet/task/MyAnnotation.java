@@ -110,7 +110,7 @@ public class MyAnnotation extends TaskPage
 	{
 		String maskString = "";
 		for (int i = 0; i < mask.size(); i++)
-			maskString += i == synonym.length() - 1 ? mask.get(i) : mask.get(i) + " "; //TODO sto carattere \xa0 non esiste in Java ma in JS si
+			maskString += i == synonym.length() - 1 ? mask.get(i) : mask.get(i) + " ";
 		$("#final-word").text(maskString);
 	}
 	
@@ -133,7 +133,7 @@ public class MyAnnotation extends TaskPage
 		{
 			$("#" + letter).css("border-color", "red").css("color", "red");
 			wrongGuesses++;
-			$("#Hangman").attr("src", "images/hm" + wrongGuesses + ".gif"); //TODO ridisegnare lo stickman
+			$("#Hangman").attr("src", "images/hm" + wrongGuesses + ".gif");
 			if (wrongGuesses == 6)
 				endGame(false);
 		}

@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.3.0-SNAPSHOT - http://www.jsweet.org */
 namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
-    export class HTMLSelectElementBuilder implements it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
+    export class HTMLSelectElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
         /*private*/ selectElement : HTMLSelectElement;
 
         public constructor(id? : any) {
@@ -8,6 +8,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                 let __args = arguments;
                 {
                     let __args = arguments;
+                    super();
                     if(this.selectElement===undefined) this.selectElement = null;
                     if(this.selectElement===undefined) this.selectElement = null;
                     (() => {
@@ -19,6 +20,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                 })();
             } else if(id === undefined) {
                 let __args = arguments;
+                super();
                 if(this.selectElement===undefined) this.selectElement = null;
                 if(this.selectElement===undefined) this.selectElement = null;
                 (() => {
@@ -52,8 +54,6 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
         }
     }
     HTMLSelectElementBuilder["__class"] = "it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSelectElementBuilder";
-    HTMLSelectElementBuilder["__interfaces"] = ["it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder"];
-
 
 }
 

@@ -5,7 +5,7 @@ import static def.dom.Globals.document;
 import def.dom.HTMLSelectElement;
 import jsweet.util.StringTypes;
 
-public class HTMLSelectElementBuilder implements HTMLElementBuilder
+public class HTMLSelectElementBuilder extends HTMLElementBuilder
 {
 	private HTMLSelectElement selectElement;
 	

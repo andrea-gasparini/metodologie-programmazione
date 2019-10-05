@@ -5,7 +5,7 @@ import static def.dom.Globals.document;
 import def.dom.HTMLInputElement;
 import jsweet.util.StringTypes;
 
-public class HTMLInputElementBuilder implements HTMLElementBuilder
+public class HTMLInputElementBuilder extends HTMLElementBuilder
 {
 	private HTMLInputElement inputElement;
 	

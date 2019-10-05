@@ -5,7 +5,7 @@ import static def.dom.Globals.document;
 import def.dom.HTMLHeadingElement;
 import jsweet.util.StringTypes;
 
-public class HTMLHeadingElementBuilder implements HTMLElementBuilder
+public class HTMLHeadingElementBuilder extends HTMLElementBuilder
 {
 	private HTMLHeadingElement headingElement;
 	

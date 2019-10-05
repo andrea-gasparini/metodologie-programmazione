@@ -5,7 +5,7 @@ import static def.dom.Globals.document;
 import def.dom.HTMLSpanElement;
 import jsweet.util.StringTypes;
 
-public class HTMLSpanElementBuilder implements HTMLElementBuilder
+public class HTMLSpanElementBuilder extends HTMLElementBuilder
 {
 	private HTMLSpanElement spanElement;
 	

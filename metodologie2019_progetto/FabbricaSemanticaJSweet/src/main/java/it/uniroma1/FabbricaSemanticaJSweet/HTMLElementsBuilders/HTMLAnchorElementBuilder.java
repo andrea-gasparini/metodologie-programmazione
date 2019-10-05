@@ -8,7 +8,7 @@ import def.dom.HTMLAnchorElement;
 import def.dom.MouseEvent;
 import jsweet.util.StringTypes;
 
-public class HTMLAnchorElementBuilder implements HTMLElementBuilder
+public class HTMLAnchorElementBuilder extends HTMLElementBuilder
 {
 	private HTMLAnchorElement anchorElement;
 	

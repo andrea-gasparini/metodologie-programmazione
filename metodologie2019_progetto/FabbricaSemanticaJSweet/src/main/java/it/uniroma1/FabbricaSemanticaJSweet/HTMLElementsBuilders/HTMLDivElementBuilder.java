@@ -5,7 +5,7 @@ import static def.dom.Globals.document;
 import def.dom.HTMLDivElement;
 import jsweet.util.StringTypes;
 
-public class HTMLDivElementBuilder implements HTMLElementBuilder
+public class HTMLDivElementBuilder extends HTMLElementBuilder
 {
 	private HTMLDivElement divElement;
 	

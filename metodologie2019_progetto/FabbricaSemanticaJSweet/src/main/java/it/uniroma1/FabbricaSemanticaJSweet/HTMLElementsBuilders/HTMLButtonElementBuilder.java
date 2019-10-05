@@ -5,7 +5,7 @@ import static def.dom.Globals.document;
 import def.dom.HTMLButtonElement;
 import jsweet.util.StringTypes;
 
-public class HTMLButtonElementBuilder implements HTMLElementBuilder
+public class HTMLButtonElementBuilder extends HTMLElementBuilder
 {
 	HTMLButtonElement buttonElement;
 	

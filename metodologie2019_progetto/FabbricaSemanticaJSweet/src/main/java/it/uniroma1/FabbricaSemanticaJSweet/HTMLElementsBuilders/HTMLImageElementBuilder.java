@@ -5,7 +5,7 @@ import static def.dom.Globals.document;
 import def.dom.HTMLImageElement;
 import jsweet.util.StringTypes;
 
-public class HTMLImageElementBuilder implements HTMLElementBuilder
+public class HTMLImageElementBuilder extends HTMLElementBuilder
 {
 	private HTMLImageElement imageElement;
 	

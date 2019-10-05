@@ -15,7 +15,6 @@ public class WordNetDataProvider implements DataProvider<String>
 	@Override 
 	public String getData(Task task)
 	{
-		//TODO il primo task carica troppo lento perché deve aspettare l'istanza di wn
 		WordNet dataProvider = WordNet.getInstance("3.1");
 		Synset source = dataProvider.getRandomSynset();
 		
@@ -116,7 +115,7 @@ public class WordNetDataProvider implements DataProvider<String>
 				source = dataProvider.getRandomSynset();
 				word = source.getRandomSynonym();
 			}
-			//TODO va rivisto il front-end per le parole con spazi // per ora ho fixato cercando solo parole senza spazi
+			
 			return "{" +
 					"\"word\": \"" + source.getRandomSynonym(word) + "\"," +
 					"\"synonym\": \"" + word + "\"" +

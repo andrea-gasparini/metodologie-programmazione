@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.3.0-SNAPSHOT - http://www.jsweet.org */
 namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
-    export class HTMLHeadingElementBuilder implements it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
+    export class HTMLHeadingElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
         /*private*/ headingElement : HTMLHeadingElement;
 
         public constructor(headingDimension? : any, id? : any) {
@@ -8,6 +8,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                 let __args = arguments;
                 {
                     let __args = arguments;
+                    super();
                     if(this.headingElement===undefined) this.headingElement = null;
                     if(this.headingElement===undefined) this.headingElement = null;
                     (() => {
@@ -25,6 +26,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                     let headingDimension : any = 1;
                     {
                         let __args = arguments;
+                        super();
                         if(this.headingElement===undefined) this.headingElement = null;
                         if(this.headingElement===undefined) this.headingElement = null;
                         (() => {
@@ -37,6 +39,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                 }
             } else if(((typeof headingDimension === 'number') || headingDimension === null) && id === undefined) {
                 let __args = arguments;
+                super();
                 if(this.headingElement===undefined) this.headingElement = null;
                 if(this.headingElement===undefined) this.headingElement = null;
                 (() => {
@@ -47,6 +50,7 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
                 {
                     let __args = arguments;
                     let headingDimension : any = 1;
+                    super();
                     if(this.headingElement===undefined) this.headingElement = null;
                     if(this.headingElement===undefined) this.headingElement = null;
                     (() => {
@@ -76,8 +80,6 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
         }
     }
     HTMLHeadingElementBuilder["__class"] = "it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder";
-    HTMLHeadingElementBuilder["__interfaces"] = ["it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder"];
-
 
 }
 
