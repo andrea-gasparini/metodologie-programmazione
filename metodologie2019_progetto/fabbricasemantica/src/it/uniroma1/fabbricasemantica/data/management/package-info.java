@@ -1,6 +1,6 @@
-
+//TODO Javadoc
 /**
- * Classi di base del sito web che ne definiscono la struttura o sono indipendenti dalle altre 
+ * Classi per la gestione della base di dati del sito web.
  * 
  * @author Andrea Gasparini (1813486)
  *

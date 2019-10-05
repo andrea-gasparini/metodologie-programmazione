@@ -1,6 +1,6 @@
 
 /**
- * Classi di base del sito web che ne definiscono la struttura o sono indipendenti dalle altre 
+ * Classi per l'utilizzo di WordNet.
  * 
  * @author Andrea Gasparini (1813486)
  *
