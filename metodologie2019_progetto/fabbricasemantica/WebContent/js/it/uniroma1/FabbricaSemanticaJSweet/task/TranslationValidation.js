@@ -9,7 +9,7 @@ var it;
             (function (task) {
                 class TranslationValidation extends it.uniroma1.FabbricaSemanticaJSweet.task.TaskPage {
                     constructor() {
-                        super("TRANSLATION_VALIDATION", "Select the correct translation of this word and his definition", ["Word", "Definition"], "./translationValidation.jsp");
+                        super("TRANSLATION_VALIDATION", "Select the better translation of this word and his definition", ["Word", "Definition"], "./translationValidation.jsp");
                         $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form").changeMethod("POST").addAction(this.servletUrl).build());
                         $("#form").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("form-div").addClass("vertical container grey-text").build(), this.createInputHiddenElem(this.contextElems[0]), this.createInputHiddenElem(this.contextElems[1]), this.createBottomButtons("bottom-buttons", "space-between"));
                         $("#form-div").append(this.createRadioResponse$java_lang_String$java_lang_String("response-1", "translation"), this.createRadioResponse$java_lang_String$java_lang_String("response-2", "translation"), this.createRadioResponse$java_lang_String$java_lang_String("response-3", "translation"), this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String("response-4", "Nessuna", "translation"));

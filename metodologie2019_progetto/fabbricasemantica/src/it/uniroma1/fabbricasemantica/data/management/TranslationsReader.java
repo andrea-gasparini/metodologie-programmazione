@@ -4,13 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Stream;
-
-import it.uniroma1.fabbricasemantica.data.wordnet.RelatedSynset;
-import it.uniroma1.fabbricasemantica.data.wordnet.Synset;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TranslationsReader 
 {
@@ -20,39 +15,44 @@ public class TranslationsReader
 	
 	public String getTranslatedWord(String word)
 	{
-		Optional<String> translatedWord = Optional.empty();
-//		try (Stream<String> stream = Files.lines(dataFile.toPath())) 
-//		{//TODO migliorare la ricerca
-//			translatedWord = stream
-//				.filter(line -> line.contains(word))
-//				.findAny();
-//		}
-//		catch (IOException e) 
-//		{
-//			e.printStackTrace();
-//		}
-		
+		if (word.matches("[0-9]") || word.matches(".*[A-Z].*")) 
+			return word;
 		
 		try (BufferedReader br = Files.newBufferedReader(dataFile.toPath()))
-		{//TODO forse questa implementazione è più easy
+		{
 			String line = "";
-			while (br.ready() || (! translatedWord.isPresent()))
+			List<String> italianWords = new ArrayList<>();
+			List<String> englishWords = new ArrayList<>();
+			
+			while (br.ready())
 			{
 				line = br.readLine();
+				String lineWords[] = new String[2];
+				if (line.contains(word))
+				{
+					lineWords = line.split(" ");
+					italianWords.add(lineWords[0]);
+					englishWords.add(lineWords[1]);
+				}
 			}
 			
-		} catch (IOException e)
+			for (int i = 0; i < englishWords.size(); i++)
+				if (englishWords.get(i).matches("^"+ word + "$"))
+					return italianWords.get(i);
+		} 
+		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 		
-		return translatedWord.isPresent() ? translatedWord.get().substring(0, translatedWord.get().indexOf(" ")) : word;
+		return ""; 
 	}
 	
 	public String getTranslatedSentence(String sentence)
 	{
 		String str = "";
-		sentence = sentence.replaceAll("[;(),]", "");
+		sentence = sentence.replaceAll("[;():,]", "");
+		sentence = sentence.replaceAll("-", " ");
 		String strArr[] = sentence.split(" ");
 		
 		for (int i = 0; i < strArr.length; i++)

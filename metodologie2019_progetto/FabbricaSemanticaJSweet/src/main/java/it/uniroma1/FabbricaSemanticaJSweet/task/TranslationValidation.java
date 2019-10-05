@@ -11,7 +11,7 @@ public class TranslationValidation extends TaskPage
 	
 	public TranslationValidation()
 	{
-		super("TRANSLATION_VALIDATION", "Select the correct translation of this word and his definition", new String[] {"Word", "Definition"}, "./translationValidation.jsp");
+		super("TRANSLATION_VALIDATION", "Select the better translation of this word and his definition", new String[] {"Word", "Definition"}, "./translationValidation.jsp");
 		$("#box").append(new HTMLFormElementBuilder("form").changeMethod("POST").addAction(servletUrl).build());
 		$("#form").append(
 				new HTMLDivElementBuilder("form-div").addClass("vertical container grey-text").build(),

@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.uniroma1.fabbricasemantica.data.StandardTask;
 import it.uniroma1.fabbricasemantica.data.Task;
+import it.uniroma1.fabbricasemantica.data.wordnet.WordNet;
 
 @WebServlet(name="RandomTaskServlet", urlPatterns="/randomTask.jsp")
 public class RandomTaskServlet extends BaseServlet
 {	
+	public static final WordNet dataProvider = WordNet.getInstance("3.1");
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Override

@@ -79,12 +79,7 @@ var it;
                     }
                     /*private*/ createMask() {
                         for (let i = 0; i < this.synonym.length; i++) {
-                            (this.mask.push(/* equals */ ((o1, o2) => { if (o1 && o1.equals) {
-                                return o1.equals(o2);
-                            }
-                            else {
-                                return o1 === o2;
-                            } })((this.synonym.charAt(i) + ""), " ") ? ' ' : '_') > 0);
+                            (this.mask.push((c => c.charCodeAt == null ? c : c.charCodeAt(0))(this.synonym.charAt(i)) == ' '.charCodeAt(0) ? ' ' : '_') > 0);
                         }
                         this.saveMask();
                     }

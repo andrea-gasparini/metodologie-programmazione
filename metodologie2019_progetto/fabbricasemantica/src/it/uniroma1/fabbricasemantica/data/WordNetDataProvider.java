@@ -11,7 +11,7 @@ import it.uniroma1.fabbricasemantica.data.wordnet.WordNet;
 
 //TODO Javadoc everywhere
 public class WordNetDataProvider implements DataProvider<String>
-{	//TODO implementare dati dinamici da WordNet
+{
 	@Override 
 	public String getData(Task task)
 	{
@@ -43,13 +43,13 @@ public class WordNetDataProvider implements DataProvider<String>
 					"}";
 		}
 		else if (task == StandardTask.SENSE_ANNOTATION)
-		{//TODO pulire un po' sto codice
+		{
 			String word = source.getRandomSynonym();
 			while((! (source.findExample(word).isPresent()) ||
 					dataProvider.getRelatedSynsets(source, BasicWordNetRelation.SIMILAR_TO).isEmpty() ||
-					dataProvider.getRelatedSynsets(source, BasicWordNetRelation.SIMILAR_TO).contains(null) || //necessario per delle incongruenze tra 's' ed 'a' nel file originale
+					dataProvider.getRelatedSynsets(source, BasicWordNetRelation.SIMILAR_TO).contains(null) || 
 					dataProvider.getRelatedSynsets(source, BasicWordNetRelation.HYPERNYM).isEmpty()))
-			{
+			{ // controllo su null necessario per delle incongruenze tra 's' ed 'a' nei file di WordNet
 				source = dataProvider.getRandomSynset();
 				word = source.getRandomSynonym();
 			}
@@ -91,7 +91,7 @@ public class WordNetDataProvider implements DataProvider<String>
 					"\"translations\": [\"" + translations.remove((int) (Math.random() * translations.size())) + "\"," +
 										"\"" + translations.remove((int) (Math.random() * translations.size())) + "\"," +
 										"\"" + translations.remove((int) (Math.random() * translations.size())) + "\"]" +
-					"}"; //TODO creare un metodo o una classe per le traduzioni
+					"}";
 		}
 		else if (task == StandardTask.SENSE_VALIDATION)
 		{
