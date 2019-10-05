@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import it.uniroma1.fabbricasemantica.data.management.TranslationsReader;
 import it.uniroma1.fabbricasemantica.data.wordnet.BasicWordNetRelation;
 import it.uniroma1.fabbricasemantica.data.wordnet.Synset;
 import it.uniroma1.fabbricasemantica.data.wordnet.WordNet;

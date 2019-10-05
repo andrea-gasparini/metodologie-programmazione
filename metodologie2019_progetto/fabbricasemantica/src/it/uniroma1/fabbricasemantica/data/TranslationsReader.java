@@ -1,4 +1,4 @@
-package it.uniroma1.fabbricasemantica.data.management;
+package it.uniroma1.fabbricasemantica.data;
 
 import java.io.BufferedReader;
 import java.io.File;
