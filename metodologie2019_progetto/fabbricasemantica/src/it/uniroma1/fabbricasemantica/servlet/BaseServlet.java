@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * La Servlet BaseServlet viene fornita dal progetto di base per semplificare lo
+ * sviluppo delle Servlet.
+ *
+ */
 public abstract class BaseServlet extends HttpServlet 
 {
 	private static final long serialVersionUID = 6784574842574L;
@@ -23,7 +28,7 @@ public abstract class BaseServlet extends HttpServlet
 
 	/**
 	 * Metodo che implementa la logica richiesta nelle specifiche del backend.
-	 * */
+	 */
 	protected abstract void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
 	

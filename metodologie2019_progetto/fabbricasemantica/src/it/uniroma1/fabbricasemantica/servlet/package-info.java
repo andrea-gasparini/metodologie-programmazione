@@ -1,6 +1,6 @@
-//TODO Javadoc
+
 /**
- * Classi di base del sito web che ne definiscono la struttura o sono indipendenti dalle altre 
+ * Servlet generiche che definiscono la struttura di altre o sono indipendenti.
  * 
  * @author Andrea Gasparini (1813486)
  *
