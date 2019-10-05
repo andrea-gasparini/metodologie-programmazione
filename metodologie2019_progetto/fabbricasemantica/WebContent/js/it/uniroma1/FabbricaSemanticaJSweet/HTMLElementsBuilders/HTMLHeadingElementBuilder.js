@@ -7,6 +7,16 @@ var it;
         (function (FabbricaSemanticaJSweet) {
             var HTMLElementsBuilders;
             (function (HTMLElementsBuilders) {
+                /**
+                 * Costruisce il Builder del titolo HTML con la grandezza passata come parametro
+                 * e gli imposta un ID
+                 *
+                 * @param {number} headingDimension grandezza del titolo
+                 * @param {string} id identificatore da assegnare al titolo
+                 * @class
+                 * @extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder
+                 * @author Andrea Gasparini (1813486)
+                 */
                 class HTMLHeadingElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
                     constructor(headingDimension, id) {
                         if (((typeof headingDimension === 'number') || headingDimension === null) && ((typeof id === 'string') || id === null)) {
@@ -77,18 +87,38 @@ var it;
                         else
                             throw new Error('invalid overload');
                     }
+                    /**
+                     *
+                     * @param {string} id
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder}
+                     */
                     addId(id) {
                         this.headingElement.id = id;
                         return this;
                     }
+                    /**
+                     *
+                     * @param {string} className
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder}
+                     */
                     addClass(className) {
                         this.headingElement.className = className;
                         return this;
                     }
+                    /**
+                     * Imposta il testo del titolo
+                     *
+                     * @param {string} text testo del titolo
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder} l'elemento Builder stesso
+                     */
                     addText(text) {
                         this.headingElement.innerText = text;
                         return this;
                     }
+                    /**
+                     *
+                     * @return {HTMLHeadingElement}
+                     */
                     build() {
                         return this.headingElement;
                     }

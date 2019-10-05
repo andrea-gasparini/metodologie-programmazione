@@ -4,7 +4,6 @@ import static def.dom.Globals.document;
 import static def.dom.Globals.alert;
 import static def.jquery.Globals.$;
 
-import def.dom.Event;
 import def.dom.HTMLDivElement;
 import def.dom.HTMLInputElement;
 import it.uniroma1.FabbricaSemanticaJSweet.FabbricaSemanticaPage;
@@ -17,15 +16,33 @@ import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElement
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSelectElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder;
 
+/**
+ * La classe Signup rappresenta la pagina di registrazione che permette
+ * all’utente di registrarsi al sistema.
+ * 
+ * @author Andrea Gasparini (1813486)
+ *
+ */
 public class Signup extends FabbricaSemanticaPage
 {
+	/**
+	 * Stringhe rappresentanti i livelli linguistici standard 
+	 */
 	public static final String[] LANGUAGE_LEVELS = {"A1", "A2", "B1", "B2", "C1", "C2"};
 	
-	public static void main(String[] args) { new Signup(PageType.SIGNUP_PAGE); }
+	/**
+	 * Crea la pagina Signup
+	 */
+	public static void main(String[] args) { new Signup(); }
 	
-	public Signup(PageType pageName)
+	/**
+	 * Costruisce la pagina Signup con un titolo di benvenuto, i campi obbligatori e
+	 * facoltativi da inserire per potersi registrare al sistema e un riferimento
+	 * alla pagina di Login.
+	 */
+	public Signup()
 	{	
-		super(pageName);
+		super(PageType.SIGNUP_PAGE);
 		
 		$("#page").append(new HTMLDivElementBuilder("box").addClass("vertical container").build());
 		$("#box").append(
@@ -33,7 +50,7 @@ public class Signup extends FabbricaSemanticaPage
 				new HTMLSpanElementBuilder().addCss("color: grey; margin-top: 5px;")
 					.addText("Please register a new account :-)").build(),
 				new HTMLFormElementBuilder("form").addClass("vertical container").changeMethod("POST").addAction("./signup.jsp")
-					.onSubmit(this::checkForm).build(),
+					.onSubmit(e -> checkForm()).build(),
 					new HTMLSpanElementBuilder("bottom-text").addText("Already have an account? ").build());
 		$("#form").append(
 				new HTMLSpanElementBuilder().addClass("form-text").addText("Email Address*").build(),
@@ -56,6 +73,13 @@ public class Signup extends FabbricaSemanticaPage
 		$("#bottom-text").append(new HTMLAnchorElementBuilder("change-page").addHref("./login.html").addText("Log in!").build());
 	}
 	
+	/**
+	 * Crea un elemento HTML per la lingua da scegliere, contenente un elemento di
+	 * Input checkbox e uno Span come etichetta
+	 * 
+	 * @param language lingua da utilizzare come valore dell'input e testo dell'etichetta
+	 * @return l'elemento Div contenente l'Input e lo Span
+	 */
 	private HTMLDivElement createCheckboxDiv(String language)
 	{
 		HTMLDivElement checkboxDiv = new HTMLDivElementBuilder().addClass("checkbox-text").build();
@@ -65,6 +89,11 @@ public class Signup extends FabbricaSemanticaPage
 		return checkboxDiv;
 	}
 	
+	/**
+	 * Crea un elemento HTML per le lingue aggiuntive contenente un Input e un selettore dei livelli linguistici
+	 * 
+	 * @return l'elemento Div contenente l'Input e il Select
+	 */
 	private HTMLDivElement createOtherLanguageDiv()
 	{
 		HTMLDivElement otherLanguageDiv = new HTMLDivElementBuilder().addClass("other-language horizontal container").build();
@@ -76,9 +105,21 @@ public class Signup extends FabbricaSemanticaPage
 		return otherLanguageDiv;
 	}
 	
+	/**
+	 * Dato una stringa, restituisce l'elemento Input HTML che la ha come nome 
+	 * 
+	 * @param name nome dell'elemento HTML
+	 * @return l'HTMLInputElement con la stringa come nome
+	 */
 	private HTMLInputElement getInputElem(String name) { return (HTMLInputElement) document.querySelector("[name='" + name + "']"); }
 	
-	private boolean checkForm(Event event)
+	/**
+	 * Controlla che sia stato selezionato almeno una lingua madre e se le password
+	 * coincidano. Mostra un alert di avviso in entrambi i casi
+	 * 
+	 * @return false se non e' stata selezionata alcuna lingua madre, true in ogni altro caso
+	 */
+	private boolean checkForm()
 	{
 		if ($("input[type='checkbox']:checked").length == 0)
 		{

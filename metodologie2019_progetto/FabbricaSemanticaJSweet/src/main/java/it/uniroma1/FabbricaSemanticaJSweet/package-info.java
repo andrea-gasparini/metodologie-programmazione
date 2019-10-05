@@ -1,6 +1,7 @@
 
 /**
- * Classi di base del sito web che ne definiscono la struttura o sono indipendenti dalle altre 
+ * Classi di base del sito web che ne definiscono la struttura o sono
+ * indipendenti dalle altre.
  * 
  * @author Andrea Gasparini (1813486)
  *

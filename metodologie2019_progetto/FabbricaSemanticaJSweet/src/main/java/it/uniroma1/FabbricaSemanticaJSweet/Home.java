@@ -8,13 +8,28 @@ import def.jquery.JQueryXHR;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder;
 
+/**
+ * La classe Home rappresenta la pagina di base successiva all'autenticazione.
+ * Permette all’utente di iniziare ad utilizzare FabbricaSemantica e ad eseguire
+ * i task di Annotazione/Validazione.
+ * 
+ * @author Andrea Gasparini (1813486)
+ *
+ */
 public class Home extends FabbricaSemanticaPage
 {
-	public static void main(String[] args) { new Home(PageType.HOME_PAGE); }
+	/**
+	 * Crea la pagina Home
+	 */
+	public static void main(String[] args) { new Home(); }
 	
-	public Home(PageType pageName)
+	/**
+	 * Costruisce la pagina Home con un pulsante centrale di avvio dei Task di
+	 * FabbricaSemantica e ci aggiunge l'indirizzo di un task casuale
+	 */
+	public Home()
 	{		
-		super(pageName);
+		super(PageType.HOME_PAGE);
 		$("#page").append(new HTMLAnchorElementBuilder("play-border").addClass("vertical container clickable").build());
 		$("#play-border").append(new HTMLDivElementBuilder("play-box").addClass("vertical container").build());
 		$("#play-box").append(new HTMLDivElementBuilder("play-triangle").build());

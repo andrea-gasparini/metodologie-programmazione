@@ -5,6 +5,19 @@ var it;
     (function (uniroma1) {
         var FabbricaSemanticaJSweet;
         (function (FabbricaSemanticaJSweet) {
+            /**
+             * La classe PageType rappresenta le tipologie di pagine web presenti in
+             * FabbricaSemantica, i Task di annotazione e validazione sono compresi tutti
+             * nella tipologia TASK_PAGE.
+             *
+             * @author Andrea Gasparini (1813486)
+             * @enum
+             * @property {it.uniroma1.FabbricaSemanticaJSweet.PageType} LOGIN_PAGE
+             * @property {it.uniroma1.FabbricaSemanticaJSweet.PageType} SIGNUP_PAGE
+             * @property {it.uniroma1.FabbricaSemanticaJSweet.PageType} HOME_PAGE
+             * @property {it.uniroma1.FabbricaSemanticaJSweet.PageType} TASK_PAGE
+             * @class
+             */
             var PageType;
             (function (PageType) {
                 PageType[PageType["LOGIN_PAGE"] = 0] = "LOGIN_PAGE";

@@ -7,6 +7,14 @@ var it;
         (function (FabbricaSemanticaJSweet) {
             var HTMLElementsBuilders;
             (function (HTMLElementsBuilders) {
+                /**
+                 * La classe astratta HTMLElementBuilder rappresenta le funzionalita' di base
+                 * delle classi Builder utilizzate per costruire gli elementi HTML nelle pagine
+                 * di FabbricaSemantica.
+                 *
+                 * @author Andrea Gasparini (1813486)
+                 * @class
+                 */
                 class HTMLElementBuilder {
                 }
                 HTMLElementsBuilders.HTMLElementBuilder = HTMLElementBuilder;

@@ -7,6 +7,19 @@ var it;
         (function (FabbricaSemanticaJSweet) {
             var task;
             (function (task) {
+                /**
+                 * Costruisce la pagina con un titolo relativo al funzionamento del Task e con
+                 * le etichette degli elementi di contesto relative ai dati che verranno forniti
+                 * dal sistema.
+                 *
+                 * @param {string} taskName nome del Task
+                 * @param {string} title titolo esplicativo del funzionamento
+                 * @param {Array} contextElems etichette degli elementi di contesto
+                 * @param {string} servletUrl indirizzo della servlet che si occupa di registrare i dati
+                 * @class
+                 * @extends it.uniroma1.FabbricaSemanticaJSweet.FabbricaSemanticaPage
+                 * @author Andrea Gasparini (1813486)
+                 */
                 class TaskPage extends it.uniroma1.FabbricaSemanticaJSweet.FabbricaSemanticaPage {
                     constructor(taskName, title, contextElems, servletUrl) {
                         super(it.uniroma1.FabbricaSemanticaJSweet.PageType.TASK_PAGE);
@@ -31,6 +44,11 @@ var it;
                             ;
                         }
                     }
+                    /**
+                     * Aggiunge alla pagina un elemento di Input per inserire il responso da
+                     * tastiera e i pulsanti per inviare o saltare il Task. Aggiunge al Task gli
+                     * elementi di contesto reperiti dal back-end tramite la Servlet.
+                     */
                     createBasicTask() {
                         $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("div-form").addClass("horizontal container").build());
                         $("#div-form").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form-1").addClass("horizontal container width-90").changeMethod("POST").addAction(this.servletUrl).build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder("button-2").addHref(this.servletUrl).build());
@@ -43,6 +61,16 @@ var it;
                         $(elem).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder(id + "-radio").isRequired().addType("radio").addName(name).addValue(text).build(), new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder(id).addClass("form-text").addText(text).build());
                         return elem;
                     }
+                    /**
+                     * Crea un elemento HTML contenente un Input di tipo Radio per la selezione e un
+                     * elemento Span come sua etichetta.
+                     *
+                     * @param {string} id identificatore di entrambi gli elementi
+                     * @param {string} text testo da impostare come etichetta e valore dell'Input Radio
+                     * @param {string} name nome dell'elemento Input
+                     * @param {string} justifyContent classe css da aggiungere a quelle standard dell'elemento
+                     * @return {HTMLDivElement} l'elemento Div contenente l'Input e lo Span
+                     */
                     createRadioResponse(id, text, name, justifyContent) {
                         if (((typeof id === 'string') || id === null) && ((typeof text === 'string') || text === null) && ((typeof name === 'string') || name === null) && ((typeof justifyContent === 'string') || justifyContent === null)) {
                             return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(id, text, name, justifyContent);
@@ -62,6 +90,14 @@ var it;
                     createRadioResponse$java_lang_String$java_lang_String(id, name) {
                         return this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String(id, "", name, "");
                     }
+                    /**
+                     * Crea un elemento HTML contenente i pulsanti che permettono di inviare e
+                     * saltare il Task. Da utilizzare a fondo pagina.
+                     *
+                     * @param {string} divId identificatore dell'elemento che contiene i pulsanti
+                     * @param {string} justifyContent classe css da aggiungere a quelle standard dell'elemento
+                     * @return {HTMLDivElement} l'elemento Div contenente i pulsanti
+                     */
                     createBottomButtons(divId, justifyContent) {
                         let elem = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder(divId).addClass("horizontal container " + justifyContent).build();
                         let secondButton = new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder("skip-button").addHref(this.servletUrl).build();
@@ -69,6 +105,12 @@ var it;
                         $(secondButton).append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLButtonElementBuilder("form-button").addName("submit").addValue("SKIP").addType("button").addText("SKIP").build());
                         return elem;
                     }
+                    /**
+                     * Crea un elemento di Input HTML di tipo nascosto che non verr� quindi mostrato visivamente.
+                     *
+                     * @param {string} contextElem testo impostato come nome dell'elemento e concatenato a "-hidden" anche come identificatore
+                     * @return {HTMLInputElement} l'elemento Input HTML hidden
+                     */
                     createInputHiddenElem(contextElem) {
                         return new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder(contextElem.toLowerCase() + "-hidden").addName(contextElem.toLowerCase()).addType("hidden").build();
                     }
@@ -108,6 +150,13 @@ var it;
                             return null;
                         });
                     }
+                    /**
+                     * Aggiunge al Task gli elementi di contesto e le risposte possibili, reperiti
+                     * dal back-end tramite la Servlet.
+                     *
+                     * @param {string} responsesName nome identificativo delle risposte per reperirle dal JSON nel back-end
+                     * @param {number} nResponses numero delle risposte presenti nel Task
+                     */
                     fillTaskContext(responsesName, nResponses) {
                         if (((typeof responsesName === 'string') || responsesName === null) && ((typeof nResponses === 'number') || nResponses === null)) {
                             return this.fillTaskContext$java_lang_String$int(responsesName, nResponses);
@@ -119,6 +168,9 @@ var it;
                             throw new Error('invalid overload');
                     }
                 }
+                /**
+                 * Indirizzo della servlet che si occupa di fornire i dati a seconda del Task
+                 */
                 TaskPage.REST_URL = "./nextExample.jsp";
                 task.TaskPage = TaskPage;
                 TaskPage["__class"] = "it.uniroma1.FabbricaSemanticaJSweet.task.TaskPage";

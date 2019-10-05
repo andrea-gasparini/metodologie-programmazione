@@ -7,21 +7,19 @@ var it;
         (function (FabbricaSemanticaJSweet) {
             var HTMLElementsBuilders;
             (function (HTMLElementsBuilders) {
+                /**
+                 * Costruisce il Builder dell'elemento HTML e gli imposta un ID
+                 *
+                 * @param {string} id identificatore da assegnare all'elemento
+                 * @class
+                 * @extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder
+                 */
                 class HTMLSpanElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
                     constructor(id) {
                         if (((typeof id === 'string') || id === null)) {
                             let __args = arguments;
-                            {
-                                let __args = arguments;
-                                super();
-                                if (this.spanElement === undefined)
-                                    this.spanElement = null;
-                                if (this.spanElement === undefined)
-                                    this.spanElement = null;
-                                (() => {
-                                    this.spanElement = document.createElement("span");
-                                })();
-                            }
+                            super();
+                            this.spanElement = document.createElement("span");
                             (() => {
                                 this.addId(id);
                             })();
@@ -29,33 +27,54 @@ var it;
                         else if (id === undefined) {
                             let __args = arguments;
                             super();
-                            if (this.spanElement === undefined)
-                                this.spanElement = null;
-                            if (this.spanElement === undefined)
-                                this.spanElement = null;
-                            (() => {
-                                this.spanElement = document.createElement("span");
-                            })();
+                            this.spanElement = document.createElement("span");
                         }
                         else
                             throw new Error('invalid overload');
                     }
+                    /**
+                     *
+                     * @param {string} id
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder}
+                     */
                     addId(id) {
                         this.spanElement.id = id;
                         return this;
                     }
+                    /**
+                     *
+                     * @param {string} className
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder}
+                     */
                     addClass(className) {
                         this.spanElement.className = className;
                         return this;
                     }
+                    /**
+                     * Imposta il testo dell'elemento HTML
+                     *
+                     * @param value testo da impostare
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder} l'elemento Builder stesso
+                     * @param {string} text
+                     */
                     addText(text) {
                         this.spanElement.innerText = text;
                         return this;
                     }
+                    /**
+                     * Imposta una stringa come css dell'elemento HTML
+                     *
+                     * @param {string} css il css dell'elemento HTML
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder} l'elemento Builder stesso
+                     */
                     addCss(css) {
                         this.spanElement.setAttribute("style", css);
                         return this;
                     }
+                    /**
+                     *
+                     * @return {HTMLSpanElement}
+                     */
                     build() {
                         return this.spanElement;
                     }

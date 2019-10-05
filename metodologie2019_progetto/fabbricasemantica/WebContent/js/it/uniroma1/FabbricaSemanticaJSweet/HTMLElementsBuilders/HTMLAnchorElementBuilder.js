@@ -7,59 +7,76 @@ var it;
         (function (FabbricaSemanticaJSweet) {
             var HTMLElementsBuilders;
             (function (HTMLElementsBuilders) {
+                /**
+                 * Costruisce il Builder dell'elemento HTML e gli imposta un ID
+                 *
+                 * @param {string} id identificatore da assegnare all'elemento
+                 * @class
+                 * @extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder
+                 * @author Andrea Gasparini (1813486)
+                 */
                 class HTMLAnchorElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
                     constructor(id) {
-                        if (((typeof id === 'string') || id === null)) {
-                            let __args = arguments;
-                            {
-                                let __args = arguments;
-                                super();
-                                if (this.anchorElement === undefined)
-                                    this.anchorElement = null;
-                                if (this.anchorElement === undefined)
-                                    this.anchorElement = null;
-                                (() => {
-                                    this.anchorElement = document.createElement("a");
-                                })();
-                            }
-                            (() => {
-                                this.addId(id);
-                            })();
-                        }
-                        else if (id === undefined) {
-                            let __args = arguments;
-                            super();
-                            if (this.anchorElement === undefined)
-                                this.anchorElement = null;
-                            if (this.anchorElement === undefined)
-                                this.anchorElement = null;
-                            (() => {
-                                this.anchorElement = document.createElement("a");
-                            })();
-                        }
-                        else
-                            throw new Error('invalid overload');
+                        super();
+                        /**
+                         * L'elemento HTML vero e proprio che verra' restituito a seguito della chiamata
+                         * al metodo build
+                         */
+                        /*private*/ this.anchorElement = document.createElement("a");
+                        this.addId(id);
                     }
+                    /**
+                     *
+                     * @param {string} id
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder}
+                     */
                     addId(id) {
                         this.anchorElement.id = id;
                         return this;
                     }
+                    /**
+                     *
+                     * @param {string} className
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder}
+                     */
                     addClass(className) {
                         this.anchorElement.className = className;
                         return this;
                     }
+                    /**
+                     * Imposta l'indirizzo a cui l'elemento rimanda
+                     *
+                     * @param {string} url indirizzo a cui rimandare
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder} l'elemento Builder stesso
+                     */
                     addHref(url) {
                         this.anchorElement.href = url;
                         return this;
                     }
+                    /**
+                     * Imposta il testo contenuto nell'elemento
+                     *
+                     * @param {string} text testo da impostare
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder} l'elemento Builder stesso
+                     */
                     addText(text) {
                         this.anchorElement.innerText = text;
                         return this;
                     }
+                    /**
+                     * Imposta una funzione che viene richiamata al click dell'elemento
+                     *
+                     * @param {*} func funzione da chiamare al click
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder} l'elemento Builder stesso
+                     */
                     onClick(func) {
                         this.anchorElement.onclick = (func);
                         return this;
                     }
+                    /**
+                     *
+                     * @return {HTMLAnchorElement}
+                     */
                     build() {
                         return this.anchorElement;
                     }

@@ -28,7 +28,7 @@ public class Synset
 	private String offset;
 	
 	/**
-	 * categoria grammaticale del Synset (Nome, Verbo, Aggettivo, Avverbio)
+	 * Categoria grammaticale del Synset (Nome, Verbo, Aggettivo, Avverbio)
 	 * insieme all'offset possono formare un identificatore univoco
 	 */
 	private POS grammaticalCategory;

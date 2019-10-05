@@ -7,51 +7,56 @@ var it;
         (function (FabbricaSemanticaJSweet) {
             var HTMLElementsBuilders;
             (function (HTMLElementsBuilders) {
+                /**
+                 * Costruisce il Builder dell'immagine HTML e gli imposta un ID
+                 *
+                 * @param {string} id identificatore da assegnare all'immagine
+                 * @class
+                 * @extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder
+                 * @author Andrea Gasparini (1813486)
+                 */
                 class HTMLImageElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
                     constructor(id) {
-                        if (((typeof id === 'string') || id === null)) {
-                            let __args = arguments;
-                            {
-                                let __args = arguments;
-                                super();
-                                if (this.imageElement === undefined)
-                                    this.imageElement = null;
-                                if (this.imageElement === undefined)
-                                    this.imageElement = null;
-                                (() => {
-                                    this.imageElement = document.createElement("img");
-                                })();
-                            }
-                            (() => {
-                                this.addId(id);
-                            })();
-                        }
-                        else if (id === undefined) {
-                            let __args = arguments;
-                            super();
-                            if (this.imageElement === undefined)
-                                this.imageElement = null;
-                            if (this.imageElement === undefined)
-                                this.imageElement = null;
-                            (() => {
-                                this.imageElement = document.createElement("img");
-                            })();
-                        }
-                        else
-                            throw new Error('invalid overload');
+                        super();
+                        /**
+                         * L'immagine HTML vera e propria che verra' restituita a seguito della chiamata
+                         * al metodo build
+                         */
+                        /*private*/ this.imageElement = document.createElement("img");
+                        this.addId(id);
                     }
+                    /**
+                     *
+                     * @param {string} id
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLImageElementBuilder}
+                     */
                     addId(id) {
                         this.imageElement.id = id;
                         return this;
                     }
+                    /**
+                     *
+                     * @param {string} className
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLImageElementBuilder}
+                     */
                     addClass(className) {
                         this.imageElement.className = className;
                         return this;
                     }
+                    /**
+                     * Imposta l'indirizzo in cui e' situato il file dell'immagine
+                     *
+                     * @param {string} url indirizzo in cui e' situata l'immagine
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLImageElementBuilder} l'elemento Builder stesso
+                     */
                     addSrc(url) {
                         this.imageElement.src = url;
                         return this;
                     }
+                    /**
+                     *
+                     * @return {HTMLImageElement}
+                     */
                     build() {
                         return this.imageElement;
                     }

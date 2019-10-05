@@ -7,21 +7,20 @@ var it;
         (function (FabbricaSemanticaJSweet) {
             var HTMLElementsBuilders;
             (function (HTMLElementsBuilders) {
+                /**
+                 * Costruisce il Builder dell'elemento HTML e gli imposta un ID
+                 *
+                 * @param {string} id identificatore da assegnare all'elemento
+                 * @class
+                 * @extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder
+                 * @author Andrea Gasparini (1813486)
+                 */
                 class HTMLDivElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
                     constructor(id) {
                         if (((typeof id === 'string') || id === null)) {
                             let __args = arguments;
-                            {
-                                let __args = arguments;
-                                super();
-                                if (this.divElement === undefined)
-                                    this.divElement = null;
-                                if (this.divElement === undefined)
-                                    this.divElement = null;
-                                (() => {
-                                    this.divElement = document.createElement("div");
-                                })();
-                            }
+                            super();
+                            this.divElement = document.createElement("div");
                             (() => {
                                 this.addId(id);
                             })();
@@ -29,25 +28,33 @@ var it;
                         else if (id === undefined) {
                             let __args = arguments;
                             super();
-                            if (this.divElement === undefined)
-                                this.divElement = null;
-                            if (this.divElement === undefined)
-                                this.divElement = null;
-                            (() => {
-                                this.divElement = document.createElement("div");
-                            })();
+                            this.divElement = document.createElement("div");
                         }
                         else
                             throw new Error('invalid overload');
                     }
+                    /**
+                     *
+                     * @param {string} id
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder}
+                     */
                     addId(id) {
                         this.divElement.id = id;
                         return this;
                     }
+                    /**
+                     *
+                     * @param {string} className
+                     * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder}
+                     */
                     addClass(className) {
                         this.divElement.className = className;
                         return this;
                     }
+                    /**
+                     *
+                     * @return {HTMLDivElement}
+                     */
                     build() {
                         return this.divElement;
                     }

@@ -10,8 +10,23 @@ import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingEleme
 import def.dom.HTMLButtonElement;
 import def.jquery.JQueryXHR;
 
+/**
+ * La classe FabbricaSemanticaPage rappresenta la struttura base di ogni pagina
+ * del sito web. Contiene la barra di navigazione base con funzionalità diverse
+ * a seconda del tipo di pagina web che si andrà ad implementare.
+ * 
+ * @author Andrea Gasparini (1813486)
+ *
+ */
 public class FabbricaSemanticaPage 
 {
+	/**
+	 * Costruisce una Pagina di FabbricaSemantica con la barra di navigazione base e
+	 * i pulsanti di navigazione (che rimandano alle pagine principali del sito web)
+	 * diversi a seconda del tipo di pagina specificato come parametro.
+	 * 
+	 * @param pageName il tipo di pagina
+	 */
 	public FabbricaSemanticaPage(PageType pageName)
 	{
 		HTMLAnchorElementBuilder changePage = new HTMLAnchorElementBuilder("change-page");
@@ -24,32 +39,61 @@ public class FabbricaSemanticaPage
 		switch(pageName)
 		{
 			case LOGIN_PAGE:
-				$("#menu").append(createMenuButton("actual-page", "Log in"), changePage.addHref("./signup.html").build());
-				$("#change-page").append(createMenuButton("other-page", "Sign up"));
+				$("#menu").append(createActualButton("Log in"), changePage.addHref("./signup.html").build());
+				$("#change-page").append(createOtherButton("Sign up"));
 				break;
 			case SIGNUP_PAGE:	
-				$("#menu").append(changePage.addHref("./login.html").build(), createMenuButton("actual-page", "Sign up"));
-				$("#change-page").append(createMenuButton("other-page", "Log in"));
+				$("#menu").append(changePage.addHref("./login.html").build(), createActualButton("Sign up"));
+				$("#change-page").append(createOtherButton("Log in"));
 				break;
 			case HOME_PAGE:
 				checkLoggedIn();
-				$("#menu").append(createMenuButton("actual-page", "Home"), changePage.addHref("./logout.jsp").build());
-				$("#change-page").append(createMenuButton("other-page", "Log out"));
+				$("#menu").append(createActualButton("Home"), changePage.addHref("./logout.jsp").build());
+				$("#change-page").append(createOtherButton("Log out"));
 				break;
 			case TASK_PAGE:
 				checkLoggedIn();
 				$("#menu").append(new HTMLAnchorElementBuilder("home").addHref("./home.html").build(), changePage.addHref("./logout.jsp").build());
-				$("#home").append(createMenuButton("other-page", "Home"));
-				$("#change-page").append(createMenuButton("other-page", "Log out"));
+				$("#home").append(createOtherButton("Home"));
+				$("#change-page").append(createOtherButton("Log out"));
 				break;
 		}
 	}
 	
-	private HTMLButtonElement createMenuButton(String page, String text) 
+	/**
+	 * Crea un pulsante HTML per il menu di navigazione
+	 * 
+	 * @param actualPage true se il pulsante rappresenta la pagina attuale, false altrimenti
+	 * @param text l'etichetta da inserire nel bottone
+	 * @return il pulsante HTML
+	 */
+	private HTMLButtonElement createMenuButton(boolean actualPage, String text) 
 	{
-		return new HTMLButtonElementBuilder(page).addClass("menu-button").addText(text).build();
+		return new HTMLButtonElementBuilder(actualPage ? "actual-page" : "other-page").addClass("menu-button").addText(text).build();
 	}
 	
+	/**
+	 * Crea un pulsante HTML rappresentante la pagina attuale per il menu di
+	 * navigazione
+	 * 
+	 * @param text l'etichetta da inserire nel bottone
+	 * @return il pulsante HTML
+	 */
+	private HTMLButtonElement createActualButton(String text) { return createMenuButton(true, text); }
+	
+	/**
+	 * Crea un pulsante HTML rappresentante un'altra pagina del sito web per il menu
+	 * di navigazione
+	 * 
+	 * @param text l'etichetta da inserire nel bottone
+	 * @return il pulsante HTML
+	 */
+	private HTMLButtonElement createOtherButton(String text) { return createMenuButton(false, text); }
+	
+	/**
+	 * Effettua una chiamata alla servlet di controllo autenticazione e rimanda alla
+	 * pagina di login se nessun utente risulta loggato
+	 */
 	private void checkLoggedIn()
 	{
 		$.get("./isLoggedIn.jsp", (Object result, String a, JQueryXHR ctx) -> 

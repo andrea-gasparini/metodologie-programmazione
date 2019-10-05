@@ -11,13 +11,28 @@ import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingEleme
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLInputElementBuilder;
 import it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLSpanElementBuilder;
 
+/**
+ * La classe Login rappresenta la pagina di login, che permette all’utente di
+ * autenticarsi al sistema.
+ * 
+ * @author Andrea Gasparini (1813486)
+ *
+ */
 public class Login extends FabbricaSemanticaPage
 {
-	public static void main(String[] args) { new Login(PageType.LOGIN_PAGE); }
+	/**
+	 * Crea la pagina Login
+	 */
+	public static void main(String[] args) { new Login(); }
 	
-	public Login(PageType pageName)
+	/**
+	 * Costruisce la pagina Login con un titolo di bentornato, i campi obbligatori da
+	 * inserire per effettuare l'accesso e un riferimento alla pagina di
+	 * registrazione.
+	 */
+	public Login()
 	{
-		super(pageName);
+		super(PageType.LOGIN_PAGE);
 		$("#page").append(new HTMLDivElementBuilder("box").addClass("vertical container").build());
 		$("#box").append(
 				new HTMLHeadingElementBuilder().addText("Welcome Back!").build(),

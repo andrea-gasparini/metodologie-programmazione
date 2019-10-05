@@ -1,6 +1,20 @@
 /* Generated from Java with JSweet 2.3.0-SNAPSHOT - http://www.jsweet.org */
 namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
+    /**
+     * Costruisce il Builder del titolo HTML con la grandezza passata come parametro
+     * e gli imposta un ID
+     * 
+     * @param {number} headingDimension grandezza del titolo
+     * @param {string} id identificatore da assegnare al titolo
+     * @class
+     * @extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder
+     * @author Andrea Gasparini (1813486)
+     */
     export class HTMLHeadingElementBuilder extends it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLElementBuilder {
+        /**
+         * Il titolo HTML vero e proprio che verra' restituito a seguito della chiamata al
+         * metodo build
+         */
         /*private*/ headingElement : HTMLHeadingElement;
 
         public constructor(headingDimension? : any, id? : any) {
@@ -60,21 +74,41 @@ namespace it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders {
             } else throw new Error('invalid overload');
         }
 
+        /**
+         * 
+         * @param {string} id
+         * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder}
+         */
         public addId(id : string) : HTMLHeadingElementBuilder {
             this.headingElement.id = id;
             return this;
         }
 
+        /**
+         * 
+         * @param {string} className
+         * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder}
+         */
         public addClass(className : string) : HTMLHeadingElementBuilder {
             this.headingElement.className = className;
             return this;
         }
 
+        /**
+         * Imposta il testo del titolo
+         * 
+         * @param {string} text testo del titolo
+         * @return {it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLHeadingElementBuilder} l'elemento Builder stesso
+         */
         public addText(text : string) : HTMLHeadingElementBuilder {
             this.headingElement.innerText = text;
             return this;
         }
 
+        /**
+         * 
+         * @return {HTMLHeadingElement}
+         */
         public build() : HTMLHeadingElement {
             return this.headingElement;
         }

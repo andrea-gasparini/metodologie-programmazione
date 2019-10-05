@@ -5,9 +5,16 @@ var it;
     (function (uniroma1) {
         var FabbricaSemanticaJSweet;
         (function (FabbricaSemanticaJSweet) {
+            /**
+             * Costruisce la pagina Home con un pulsante centrale di avvio dei Task di
+             * FabbricaSemantica e ci aggiunge l'indirizzo di un task casuale
+             * @class
+             * @extends it.uniroma1.FabbricaSemanticaJSweet.FabbricaSemanticaPage
+             * @author Andrea Gasparini (1813486)
+             */
             class Home extends it.uniroma1.FabbricaSemanticaJSweet.FabbricaSemanticaPage {
-                constructor(pageName) {
-                    super(pageName);
+                constructor() {
+                    super(it.uniroma1.FabbricaSemanticaJSweet.PageType.HOME_PAGE);
                     $("#page").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLAnchorElementBuilder("play-border").addClass("vertical container clickable").build());
                     $("#play-border").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("play-box").addClass("vertical container").build());
                     $("#play-box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("play-triangle").build());
@@ -16,8 +23,12 @@ var it;
                         return null;
                     });
                 }
+                /**
+                 * Crea la pagina Home
+                 * @param {Array} args
+                 */
                 static main(args) {
-                    new Home(it.uniroma1.FabbricaSemanticaJSweet.PageType.HOME_PAGE);
+                    new Home();
                 }
             }
             FabbricaSemanticaJSweet.Home = Home;

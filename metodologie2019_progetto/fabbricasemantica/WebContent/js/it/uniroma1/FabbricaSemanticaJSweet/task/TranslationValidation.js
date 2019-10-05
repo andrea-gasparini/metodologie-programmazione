@@ -7,6 +7,15 @@ var it;
         (function (FabbricaSemanticaJSweet) {
             var task;
             (function (task) {
+                /**
+                 * Costruisce la pagina TranslationValidation con gli elementi di contesto Word e
+                 * Definition. Al form vengono aggiunte le risposte tra cui scegliere, gli
+                 * elementi nascosti relativi al contesto e i pulsanti per inviare o saltare il
+                 * Task. Viene chiamato il metodo per recuperare i dati del Task dal back-end.
+                 * @class
+                 * @extends it.uniroma1.FabbricaSemanticaJSweet.task.TaskPage
+                 * @author Andrea Gasparini (1813486)
+                 */
                 class TranslationValidation extends it.uniroma1.FabbricaSemanticaJSweet.task.TaskPage {
                     constructor() {
                         super("TRANSLATION_VALIDATION", "Select the better translation of this word and his definition", ["Word", "Definition"], "./translationValidation.jsp");
@@ -15,6 +24,10 @@ var it;
                         $("#form-div").append(this.createRadioResponse$java_lang_String$java_lang_String("response-1", "translation"), this.createRadioResponse$java_lang_String$java_lang_String("response-2", "translation"), this.createRadioResponse$java_lang_String$java_lang_String("response-3", "translation"), this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String("response-4", "Nessuna", "translation"));
                         this.fillTaskContext$java_lang_String$int("translations", 3);
                     }
+                    /**
+                     * Crea la pagina TranslationValidation
+                     * @param {Array} args
+                     */
                     static main(args) {
                         new TranslationValidation();
                     }
