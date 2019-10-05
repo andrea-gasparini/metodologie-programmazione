@@ -1,4 +1,4 @@
-//TODO Javadoc
+
 /**
  * Classi per la gestione della base di dati del sito web.
  * 

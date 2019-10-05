@@ -17,18 +17,46 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
+/**
+ * La classe XMLWriter rappresenta un interprete per la creazione e l'aggiunta
+ * di dati a file XML.
+ * 
+ * @author Andrea Gasparini (1813486)
+ *
+ */
 public class XMLWriter 
 {
+	/**
+	 * Il documento XML
+	 */
 	protected Document doc;
 	
+	/**
+	 * Il nome degli elementi principali del documento
+	 */
 	protected String childName;
 	
+	/**
+	 * File da modificare o scrivere
+	 */
 	private File dataFile;
 	
+	/**
+	 * Radice del documento XML
+	 */
 	protected Element root;
 	
+	/**
+	 * Contatore dell'id del prossimo elemento da inserire nel file
+	 */
 	protected int idCnt = 1;
 	
+	/**
+	 * Costruisce un XMLWriter a partire dal nome del file. Controlla se il file
+	 * esiste gia' e in caso contrario ne crea uno nuovo.
+	 * 
+	 * @param fileName
+	 */
 	public XMLWriter(String fileName)
 	{
 		dataFile = new File("data" + File.separator + fileName + ".xml");
@@ -57,6 +85,9 @@ public class XMLWriter
 		}
 	}
 	
+	/**
+	 * Salva il documento XML nel file
+	 */
 	public void saveFile()
 	{
 		try
@@ -78,6 +109,13 @@ public class XMLWriter
 		}
 	}
 	
+	/**
+	 * Dato un nome ed un valore crea un nuovo nodo 
+	 * 
+	 * @param name nome del nuovo nodo
+	 * @param value valore da inserire nel nodo
+	 * @return il nodo
+	 */
 	protected Node createNode(String name, String value) 
 	{
 		Element node = doc.createElement(name);

@@ -73,7 +73,7 @@ public class TranslationsReader
 			e.printStackTrace();
 		}
 		
-		return word; 
+		return ""; 
 	}
 	
 	/**

@@ -4,8 +4,8 @@ che that
 per for
 nel in
 con with
-una a
-una one
+un a
+un one
 non not
 dell dell
 come how
@@ -8474,7 +8474,6 @@ lino flax
 capaci capable
 ira ira
 ira wrath
-make make
 conduzione conduction
 conduzione conduct
 curtis curtis
@@ -8541,7 +8540,7 @@ catene chain
 rara rare
 rimuovere remove
 eyes eyes
-ultimate ultimate
+finale ultimate
 face face
 sinonimi synonyms
 sinonimi synonym
@@ -64686,6 +64685,7 @@ calpestare trampling
 calpestare trample
 sati sati
 ginette ginette
+solitamente usually
 yasuhiko yasuhiko
 vrenna vrenna
 weah weah

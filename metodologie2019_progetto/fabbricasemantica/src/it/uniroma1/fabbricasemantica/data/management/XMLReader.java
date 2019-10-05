@@ -12,14 +12,36 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+/**
+ * La classe XMLReader rappresenta un interprete per la lettura di file XML.
+ * 
+ * @author Andrea Gasparini (1813486)
+ *
+ */
 public class XMLReader 
 {
+	/**
+	 * Il documento XML
+	 */
 	private Document doc;
 	
+	/**
+	 * File da leggere
+	 */
 	private File dataFile;
 	
+	/**
+	 * Radice del documento XML
+	 */
 	protected Element root;
 	
+	/**
+	 * Costruisce un XMLReader a partire dal nome del file. Controlla se il file
+	 * esiste gia' e in caso contrario crea un nuovo oggetto XMLWriter che si
+	 * occupera' di creare il file.
+	 * 
+	 * @param fileName
+	 */
 	public XMLReader(String fileName)
 	{
 		dataFile = new File("data" + File.separator + fileName + ".xml");
@@ -40,6 +62,14 @@ public class XMLReader
 			new XMLWriter(fileName);
 	}
 	
+	/**
+	 * Dati un valore e il nome di un Elemento del documento, controlla se il valore
+	 * e' presente nel documento alle voci che corrispondono al nome dell'elemento.
+	 * 
+	 * @param fieldName nome degli elementi del documento XML tra cui cercare
+	 * @param value valore da ricercare
+	 * @return true se il valore e' presente, false altrimenti
+	 */
 	public boolean checkForElement(String fieldName, String value)
 	{
 		NodeList list = root.getElementsByTagName(fieldName);

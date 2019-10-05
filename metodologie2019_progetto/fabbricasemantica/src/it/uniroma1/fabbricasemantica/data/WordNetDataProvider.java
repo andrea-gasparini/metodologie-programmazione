@@ -23,13 +23,15 @@ public class WordNetDataProvider implements DataProvider<String>
 	private WordNet dataProvider = WordNet.getInstance("3.1");
 	
 	/**
-	 * Un Synset selezionato casualmente
+	 * Il synset selezionato
 	 */
-	private Synset source = dataProvider.getRandomSynset();
+	private Synset source;
 	
 	@Override 
 	public String getData(Task task)
 	{
+		source = dataProvider.getRandomSynset();
+		
 		if (task == StandardTask.TRANSLATION_ANNOTATION)
 			return getTranslationAnnotationData();
 		else if (task == StandardTask.WORD_ANNOTATION)

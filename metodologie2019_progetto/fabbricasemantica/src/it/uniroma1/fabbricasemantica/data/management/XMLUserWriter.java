@@ -2,10 +2,30 @@ package it.uniroma1.fabbricasemantica.data.management;
 
 import org.w3c.dom.Element;
 
+/**
+ * La classe XMLUserWriter rappresenta un interprete per la creazione e
+ * l'aggiunta di dati al file XML relativo agli utenti registrati a
+ * FabbricaSemantica.
+ * 
+ * @author Andrea Gasparini (1813486)
+ *
+ */
 public class XMLUserWriter extends XMLWriter
 {
+	/**
+	 * Costruisce un XMLUserWriter come XMLWriter
+	 */
 	public XMLUserWriter() { super("users"); }
 	
+	/**
+	 * Registra un nuovo utente nel documento XML
+	 * 
+	 * @param username email del nuovo utente
+	 * @param password password del nuovo utente
+	 * @param mainLanguages lingue principali selezionate
+	 * @param otherLanguages altre lingue selezionate
+	 * @param levels livelli selezionati
+	 */
 	public void addUser(String username, String password, String[] mainLanguages, String[] otherLanguages, String[] levels) 
 	{
 		Element user = doc.createElement(childName);
