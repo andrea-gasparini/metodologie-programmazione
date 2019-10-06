@@ -1,6 +1,7 @@
-//TODO Javadoc
+
 /**
- * Classi di base del sito web che ne definiscono la struttura o sono indipendenti dalle altre 
+ * Servlet per la ricezione dei dati dei Task dal client e successivo
+ * salvataggio nella base di dati.
  * 
  * @author Andrea Gasparini (1813486)
  *

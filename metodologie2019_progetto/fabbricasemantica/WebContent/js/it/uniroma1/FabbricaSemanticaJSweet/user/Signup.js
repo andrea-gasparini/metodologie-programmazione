@@ -81,9 +81,7 @@ var it;
                      * Controlla che sia stato selezionato almeno una lingua madre e se le password
                      * coincidano. Mostra un alert di avviso in entrambi i casi
                      *
-                     * @param event l
-                     * @return
-                     * @return {boolean}
+                     * @return {boolean} false se non e' stata selezionata alcuna lingua madre, true in ogni altro caso
                      * @private
                      */
                     /*private*/ checkForm() {

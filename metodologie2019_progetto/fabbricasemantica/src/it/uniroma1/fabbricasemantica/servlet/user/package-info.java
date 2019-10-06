@@ -1,6 +1,8 @@
 //TODO Javadoc
 /**
- * Classi di base del sito web che ne definiscono la struttura o sono indipendenti dalle altre 
+ * Servlet per le operazioni relative agli utenti; ricezione dei dati dal client
+ * per accesso, registrazione e log out, e successivo salvataggio nella base di
+ * dati.
  * 
  * @author Andrea Gasparini (1813486)
  *

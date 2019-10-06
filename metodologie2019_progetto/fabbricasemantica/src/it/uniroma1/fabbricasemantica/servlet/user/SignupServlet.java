@@ -11,11 +11,29 @@ import it.uniroma1.fabbricasemantica.data.management.XMLUserReader;
 import it.uniroma1.fabbricasemantica.data.management.XMLUserWriter;
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 
+/**
+ * La servlet SignupServlet riceve i dati di registrazione di un nuovo utente e
+ * controlla se l'email sia gia' registrata nella base di dati o se le due
+ * password non combacino, in caso positivo reindirizza alla pagina di
+ * registrazione, altrimenti aggiunge il nuovo utente alla base di dati,
+ * effettua l'accesso e reindirizza alla pagina home.
+ * 
+ * @author Andrea Gasparini (1813486)
+ *
+ */
 @WebServlet(name="SignupServlet", urlPatterns="/signup.jsp")
 public class SignupServlet extends BaseServlet 
 {
 	private static final long serialVersionUID = 8484501789787L;
 
+	/**
+	 * Richiede i dati di registrazione (email, password, password di conferma,
+	 * lingue principali ed eventuali altre lingue) al client e controlla se l'email
+	 * sia gia' registrata nella base di dati o se le due password non combacino, in
+	 * caso positivo reindirizza alla pagina di registrazione, altrimenti aggiunge
+	 * il nuovo utente alla base di dati, effettua l'accesso e reindirizza alla
+	 * pagina home.
+	 */
 	@Override
 	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{

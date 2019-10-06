@@ -22,6 +22,7 @@ var it;
                         $("#box").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLFormElementBuilder("form").changeMethod("POST").addAction(this.servletUrl).build());
                         $("#form").append(new it.uniroma1.FabbricaSemanticaJSweet.HTMLElementsBuilders.HTMLDivElementBuilder("radio-div").addClass("horizontal container grey-text align-center").build(), this.createInputHiddenElem(this.contextElems[0]), this.createInputHiddenElem(this.contextElems[1]), this.createInputHiddenElem(this.contextElems[2]), this.createBottomButtons("buttons-div", "align-center"));
                         $("#radio-div").append(this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String("Yes", "Yes", "response", "space-between"), this.createRadioResponse$java_lang_String$java_lang_String$java_lang_String$java_lang_String("No", "No", "response", "space-between"));
+                        $(".radio-div").css("height", "33px");
                         this.fillTaskContext();
                     }
                     /**

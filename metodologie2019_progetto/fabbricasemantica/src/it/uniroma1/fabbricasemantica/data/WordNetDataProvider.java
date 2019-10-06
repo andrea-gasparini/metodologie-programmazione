@@ -18,14 +18,28 @@ import it.uniroma1.fabbricasemantica.data.wordnet.WordNet;
 public class WordNetDataProvider implements DataProvider<String>
 {
 	/**
-	 * Istanza di WordNet 3.1 da cui vengono forniti i dati
+	 * Istanza di WordNet da cui vengono forniti i dati
 	 */
-	private WordNet dataProvider = WordNet.getInstance("3.1");
+	private static WordNet dataProvider; 
 	
 	/**
 	 * Il synset selezionato
 	 */
 	private Synset source;
+	
+	/**
+	 * Costruisce un WordNetDataProvider istanziando WordNet con la versione
+	 * specificata, solo se non e' stato gia' istanziato prima o se l'istanza gia'
+	 * esistente e' una versione differente.
+	 * 
+	 * @param version versione di WordNet da istanziare
+	 */
+	public WordNetDataProvider(String version) { if (dataProvider == null ||  (! dataProvider.getVersion().equals(version))) dataProvider = WordNet.getInstance(version); }
+	
+	/**
+	 * Costruisce un WordNetDataProvider istanziando WordNet in versione 3.1
+	 */
+	public WordNetDataProvider() { this("3.1"); }
 	
 	@Override 
 	public String getData(Task task)

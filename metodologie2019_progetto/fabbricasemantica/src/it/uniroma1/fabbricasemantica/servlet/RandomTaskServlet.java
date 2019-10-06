@@ -14,8 +14,7 @@ import it.uniroma1.fabbricasemantica.data.StandardTask;
 import it.uniroma1.fabbricasemantica.data.Task;
 
 /**
- * La Servlet RandomTaskServlet permette di reindirizzare ad un Task casuale sia
- * da front che da back-end.
+ * La Servlet RandomTaskServlet reindirizza ad un Task casuale.
  * 
  * @author Andrea Gasparini (1813486)
  *

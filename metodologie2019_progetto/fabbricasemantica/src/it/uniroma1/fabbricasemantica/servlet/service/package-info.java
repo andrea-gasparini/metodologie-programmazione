@@ -1,6 +1,6 @@
-//TODO Javadoc
+
 /**
- * Classi di base del sito web che ne definiscono la struttura o sono indipendenti dalle altre 
+ * Servlet di servizio che implementano le funzionalita' base delle API REST. 
  * 
  * @author Andrea Gasparini (1813486)
  *

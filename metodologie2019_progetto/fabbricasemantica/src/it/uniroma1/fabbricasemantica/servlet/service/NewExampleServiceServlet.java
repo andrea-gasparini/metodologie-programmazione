@@ -16,14 +16,34 @@ import it.uniroma1.fabbricasemantica.data.StandardTask;
 import it.uniroma1.fabbricasemantica.data.Task;
 import it.uniroma1.fabbricasemantica.servlet.BaseServlet;
 
+/**
+ * La servlet NewExampleServiceServlet prende un parametro "task" che indica il
+ * Task per il quale si vuole il prossimo esempio e restituisce una stringa JSON
+ * contenente il prossimo elemento da annotare per il Task specificato.
+ * 
+ * @author Andrea Gasparini (1813486)
+ *
+ */
 @WebServlet(name="NewExampleServlet", urlPatterns="/nextExample.jsp")
 public class NewExampleServiceServlet extends BaseServlet
 {
 	private static final long serialVersionUID = 8783416660707020469L;
 	
+	/**
+	 * Mappa dei Task presenti nel sistema, in cui la chiave e' l'ID del Task e il
+	 * valore e' il Task associato
+	 */
 	private Map<String, Task> tasks;
+	
+	/**
+	 * Il DataProvider che fornisce i dati
+	 */
 	private DataProvider<String> dataProvider;
 	
+	/**
+	 * Imposta il DataProvider come WordNetDataProvider e memorizza i task di
+	 * base esistenti
+	 */
 	@Override
 	public void init() throws ServletException
 	{
@@ -32,6 +52,10 @@ public class NewExampleServiceServlet extends BaseServlet
 		tasks = Arrays.stream(StandardTask.values()).collect(Collectors.toMap(Task::getTaskID, s -> s));
 	}
 
+	/**
+	 * Richiede il nome del Task al client e restituisce la stringa JSON contenente
+	 * i dati
+	 */
 	@Override
 	protected void doSomething(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{

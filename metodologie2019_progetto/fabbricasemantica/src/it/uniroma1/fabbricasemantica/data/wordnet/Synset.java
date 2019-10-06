@@ -145,9 +145,9 @@ public class Synset
 	 * Data una parola, restituisce un Optional di un esempio del Synset che la contiene
 	 * 
 	 * @param word una parola da ricercare fra gli esempi del Synset
-	 * @return un Optional contenente la stringa rappresentante un esempio 
+	 * @return un Optional contenente la stringa rappresentante un esempio
 	 */
-	public Optional<String> findExample(String word) { return examples.stream().filter( e -> e.contains(word) ).findAny(); }
+	public Optional<String> findExample(String word) { return examples.stream().filter(s -> s.matches(".*\\b" + word + "\\b.*")).findAny(); }
 	
 	/**
 	 * Restituisce lo stream delle relazioni del Synset verso altri Synset

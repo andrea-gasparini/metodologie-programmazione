@@ -39,6 +39,7 @@ public class SenseValidation extends TaskPage
 		$("#radio-div").append(
 				createRadioResponse("Yes", "Yes", "response", "space-between"),
 				createRadioResponse("No", "No", "response", "space-between"));
+		$(".radio-div").css("height", "33px");
 		fillTaskContext();
 	}
 }
