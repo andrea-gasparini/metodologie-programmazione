@@ -28,7 +28,7 @@ public class TranslationsReader
 	 * 
 	 * @param fileName nome del file delle traduzioni
 	 */
-	public TranslationsReader(String fileName) { dataFile = new File("data" + File.separator + fileName + ".txt"); }
+	public TranslationsReader(String fileName) { dataFile = new File("WebContent" + File.separator + "data" + File.separator + fileName + ".txt"); }
 	
 	/**
 	 * Data una parola, controlla se non sia una data o un nome proprio (in tal caso

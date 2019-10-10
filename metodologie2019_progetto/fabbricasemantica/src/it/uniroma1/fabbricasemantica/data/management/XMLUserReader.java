@@ -1,5 +1,7 @@
 package it.uniroma1.fabbricasemantica.data.management;
 
+import java.nio.file.Path;
+
 import org.w3c.dom.NodeList;
 
 /**
@@ -13,8 +15,10 @@ public class XMLUserReader extends XMLReader
 {
 	/**
 	 * Costruisce un XMLUserReader come XMLReader
+	 * 
+	 * @param actualPath path attuale
 	 */
-	public XMLUserReader() { super("users"); }
+	public XMLUserReader(Path actualPath) { super(actualPath, "users"); }
 
 	/**
 	 * Controlla se un utente e' registrato nel documento XML, ritorna true in caso

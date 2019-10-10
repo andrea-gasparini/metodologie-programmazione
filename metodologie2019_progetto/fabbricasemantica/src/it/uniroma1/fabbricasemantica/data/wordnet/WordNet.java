@@ -34,7 +34,7 @@ public class WordNet implements Iterable<Synset>
 	/**
 	 * Path della cartella contenente le versioni di WordNet rilasciate
 	 */
-	public static final Path PATH_WORDNET = Paths.get("data", "wordnet-releases", "releases");
+	public static final Path PATH_WORDNET = Paths.get("WebContent", "data", "wordnet-releases", "releases");
 	
 	/**
 	 * Array di stringhe contenente i nomi dei file data, in cui sono contenute tutte le informazioni sui Synset 

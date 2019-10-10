@@ -1,6 +1,9 @@
 package it.uniroma1.fabbricasemantica.servlet.user;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +37,7 @@ public class LoginServlet extends BaseServlet
 		String username = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		XMLUserReader usersData = new XMLUserReader();
+		XMLUserReader usersData = new XMLUserReader(Paths.get(getServletContext().getRealPath("/")));
 		if (usersData.checkForUser(username, password))
 		{
 			logIn(request, username);

@@ -1,6 +1,7 @@
 package it.uniroma1.fabbricasemantica.servlet.user;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,8 +45,8 @@ public class SignupServlet extends BaseServlet
 		String[] otherLanguages = request.getParameterValues("other-language");
 		String[] languageLevels = request.getParameterValues("language-level");
 
-		XMLUserWriter usersData = new XMLUserWriter();
-		if (new XMLUserReader().checkForElement("username", username) || ! (password.equals(confirmPassword)))
+		XMLUserWriter usersData = new XMLUserWriter(Paths.get(getServletContext().getRealPath("/")));
+		if (new XMLUserReader(Paths.get(getServletContext().getRealPath("/"))).checkForElement("username", username) || ! (password.equals(confirmPassword)))
 			response.sendRedirect("signup.html");
 		else
 		{

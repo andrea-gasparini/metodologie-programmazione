@@ -1,5 +1,7 @@
 package it.uniroma1.fabbricasemantica.data.management;
 
+import java.nio.file.Path;
+
 import org.w3c.dom.Element;
 
 import it.uniroma1.fabbricasemantica.data.Task;
@@ -16,8 +18,10 @@ public class XMLTaskWriter extends XMLWriter
 {
 	/**
 	 * Costruisce un XMLTaskWriter come XMLWriter
+	 * 
+	 * @param actualPath path attuale
 	 */
-	public XMLTaskWriter() { super("tasks"); }
+	public XMLTaskWriter(Path actualPath) { super(actualPath, "tasks"); }
 	
 	/**
 	 * Registra un nuovo Task nel documento XML

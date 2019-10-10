@@ -1,6 +1,7 @@
 package it.uniroma1.fabbricasemantica.servlet.task;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -82,7 +83,7 @@ public class TaskServlet extends BaseServlet
 			HttpSession session = request.getSession();
 			String username = (String) session.getAttribute("username");
 			
-			XMLTaskWriter taskData = new XMLTaskWriter();
+			XMLTaskWriter taskData = new XMLTaskWriter(Paths.get(getServletContext().getRealPath("/")));
 			taskData.addResponse(username, taskName, contextElemNames, contextElems, answer);
 			taskData.saveFile();
 		}

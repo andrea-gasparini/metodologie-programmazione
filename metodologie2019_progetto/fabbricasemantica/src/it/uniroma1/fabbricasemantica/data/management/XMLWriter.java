@@ -2,6 +2,7 @@ package it.uniroma1.fabbricasemantica.data.management;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -52,14 +53,15 @@ public class XMLWriter
 	protected int idCnt = 1;
 	
 	/**
-	 * Costruisce un XMLWriter a partire dal nome del file. Controlla se il file
+	 * Costruisce un XMLWriter a partire da un Path e dal nome del file. Controlla se il file
 	 * esiste gia' e in caso contrario ne crea uno nuovo.
 	 * 
-	 * @param fileName
+	 * @param actualPath path attuale
+	 * @param fileName nome del file
 	 */
-	public XMLWriter(String fileName)
+	public XMLWriter(Path actualPath, String fileName)
 	{
-		dataFile = new File("data" + File.separator + fileName + ".xml");
+		dataFile = new File(actualPath + File.separator + "data" + File.separator + fileName + ".xml");
 		childName = fileName.substring(0, fileName.length() - 1);
 		try
 		{

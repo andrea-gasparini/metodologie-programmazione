@@ -2,6 +2,7 @@ package it.uniroma1.fabbricasemantica.data.management;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -36,15 +37,16 @@ public class XMLReader
 	protected Element root;
 	
 	/**
-	 * Costruisce un XMLReader a partire dal nome del file. Controlla se il file
+	 * Costruisce un XMLReader a partire da un Path e dal nome del file. Controlla se il file
 	 * esiste gia' e in caso contrario crea un nuovo oggetto XMLWriter che si
 	 * occupera' di creare il file.
 	 * 
-	 * @param fileName
+	 * @param actualPath path attuale
+	 * @param fileName nome del file
 	 */
-	public XMLReader(String fileName)
+	public XMLReader(Path actualPath, String fileName)
 	{
-		dataFile = new File("data" + File.separator + fileName + ".xml");
+		dataFile = new File(actualPath + File.separator + "data" + File.separator + fileName + ".xml");
 		if (dataFile.exists())
 			try
 			{
@@ -59,7 +61,7 @@ public class XMLReader
 				e.printStackTrace();
 			}
 		else
-			new XMLWriter(fileName);
+			new XMLWriter(actualPath, fileName);
 	}
 	
 	/**

@@ -1,5 +1,7 @@
 package it.uniroma1.fabbricasemantica.data.management;
 
+import java.nio.file.Path;
+
 import org.w3c.dom.Element;
 
 /**
@@ -14,8 +16,10 @@ public class XMLUserWriter extends XMLWriter
 {
 	/**
 	 * Costruisce un XMLUserWriter come XMLWriter
+	 * 
+	 * @param actualPath path attuale
 	 */
-	public XMLUserWriter() { super("users"); }
+	public XMLUserWriter(Path actualPath) { super(actualPath, "users"); }
 	
 	/**
 	 * Registra un nuovo utente nel documento XML
