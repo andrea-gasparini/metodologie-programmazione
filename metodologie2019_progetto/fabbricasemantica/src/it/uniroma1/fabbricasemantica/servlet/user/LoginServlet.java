@@ -1,6 +1,5 @@
 package it.uniroma1.fabbricasemantica.servlet.user;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 

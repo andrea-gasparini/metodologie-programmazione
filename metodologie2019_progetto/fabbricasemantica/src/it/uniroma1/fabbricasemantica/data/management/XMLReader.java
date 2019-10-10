@@ -47,21 +47,20 @@ public class XMLReader
 	public XMLReader(Path actualPath, String fileName)
 	{
 		dataFile = new File(actualPath + File.separator + "data" + File.separator + fileName + ".xml");
-		if (dataFile.exists())
-			try
-			{
-				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder builder = factory.newDocumentBuilder();
-				doc = builder.parse(dataFile);
-				doc.getDocumentElement().normalize();
-				root = doc.getDocumentElement();
-			} 
-			catch (SAXException | IOException | ParserConfigurationException e)
-			{
-				e.printStackTrace();
-			}
-		else
+		if (! dataFile.exists())
 			new XMLWriter(actualPath, fileName);
+		try
+		{
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			doc = builder.parse(dataFile);
+			doc.getDocumentElement().normalize();
+			root = doc.getDocumentElement();
+		} 
+		catch (SAXException | IOException | ParserConfigurationException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	/**
