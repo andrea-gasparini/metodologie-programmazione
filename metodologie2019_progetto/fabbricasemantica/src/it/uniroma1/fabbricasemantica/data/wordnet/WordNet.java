@@ -34,7 +34,7 @@ public class WordNet implements Iterable<Synset>
 	/**
 	 * Path della cartella contenente le versioni di WordNet rilasciate
 	 */
-	public static final Path PATH_WORDNET = Paths.get("WebContent", "data", "wordnet-releases", "releases");
+	public static final Path PATH_WORDNET = Paths.get("wordnet-releases", "releases");
 	
 	/**
 	 * Array di stringhe contenente i nomi dei file data, in cui sono contenute tutte le informazioni sui Synset 
@@ -170,13 +170,14 @@ public class WordNet implements Iterable<Synset>
 	 * altrimenti richiama il costruttore e restituisce una nuova istanza.
 	 * Se invece la versione di WordNet non e' disponibile nella cartella restituisce null
 	 * 
+	 * @param actualPath path attuale
 	 * @param version la versione di WordNet di cui si vuole l'istanza
 	 * @return l'istanza di WordNet della versione specificata, null se non disponibile 
 	 * nella cartella wordnet-releases
 	 */
-	public static WordNet getInstance(String version)
+	public static WordNet getInstance(Path actualPath, String version)
 	{
-		Path folderDir = Paths.get(PATH_WORDNET + File.separator + "WordNet-" + version + File.separator + "dict");
+		Path folderDir = Paths.get(actualPath + File.separator + PATH_WORDNET + File.separator + "WordNet-" + version + File.separator + "dict");
 		if (!(Files.exists(folderDir)))
 			return null;
 		if (instancedVersions.containsKey(version))

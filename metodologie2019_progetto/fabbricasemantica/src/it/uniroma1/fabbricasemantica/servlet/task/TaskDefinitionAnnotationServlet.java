@@ -23,11 +23,11 @@ public class TaskDefinitionAnnotationServlet extends TaskServlet
 
 	/**
 	 * Imposta il nome del Task come DEFINITION_ANNOTATION, gli elementi di contesto
-	 * come ["word", "hypernym"] e il nome del campo di risposta come "translation"
+	 * come ["word", "hypernym"] e il nome del campo di risposta come default ("response")
 	 */
 	public void init() throws ServletException
 	{
-		super.init(StandardTask.DEFINITION_ANNOTATION, new String[] {"word", "hypernym"}, "translation");
+		super.init(StandardTask.DEFINITION_ANNOTATION, new String[] {"word", "hypernym"});
 	}
 	
 	@Override

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +27,10 @@ public class TranslationsReader
 	 * Costruisce un TranslationsReader a partire dal nome del file e imposta il suo
 	 * percorso relativo
 	 * 
+	 * @param actualPath path attuale
 	 * @param fileName nome del file delle traduzioni
 	 */
-	public TranslationsReader(String fileName) { dataFile = new File("WebContent" + File.separator + "data" + File.separator + fileName + ".txt"); }
+	public TranslationsReader(Path actualPath, String fileName) { dataFile = new File(actualPath + File.separator + fileName + ".txt"); }
 	
 	/**
 	 * Data una parola, controlla se non sia una data o un nome proprio (in tal caso

@@ -1,8 +1,7 @@
-//TODO Javadoc
+
 /**
- * Servlet per le operazioni relative agli utenti; ricezione dei dati dal client
- * per accesso, registrazione e log out, e successivo salvataggio nella base di
- * dati.
+ * Servlet per le operazioni di salvataggio nella base di dati delle
+ * informazioni ricevute dai Task.
  * 
  * @author Andrea Gasparini (1813486)
  *

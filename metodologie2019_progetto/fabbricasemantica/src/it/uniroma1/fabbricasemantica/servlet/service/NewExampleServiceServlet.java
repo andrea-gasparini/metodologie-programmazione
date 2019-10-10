@@ -1,6 +1,7 @@
 package it.uniroma1.fabbricasemantica.servlet.service;
  
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -48,7 +49,7 @@ public class NewExampleServiceServlet extends BaseServlet
 	public void init() throws ServletException
 	{
 		super.init();
-		dataProvider = new WordNetDataProvider();
+		dataProvider = new WordNetDataProvider(Paths.get(getServletContext().getRealPath("/")), "3.1");
 		tasks = Arrays.stream(StandardTask.values()).collect(Collectors.toMap(Task::getTaskID, s -> s));
 	}
 

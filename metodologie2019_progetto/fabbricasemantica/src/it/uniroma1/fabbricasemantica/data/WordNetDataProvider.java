@@ -1,5 +1,7 @@
 package it.uniroma1.fabbricasemantica.data;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +20,11 @@ import it.uniroma1.fabbricasemantica.data.wordnet.WordNet;
 public class WordNetDataProvider implements DataProvider<String>
 {
 	/**
+	 * Path in cui sono presenti i dati
+	 */
+	private Path dataPath;
+	
+	/**
 	 * Istanza di WordNet da cui vengono forniti i dati
 	 */
 	private static WordNet dataProvider; 
@@ -32,14 +39,17 @@ public class WordNetDataProvider implements DataProvider<String>
 	 * specificata, solo se non e' stato gia' istanziato prima o se l'istanza gia'
 	 * esistente e' una versione differente.
 	 * 
+	 * @param actualPath path attuale
 	 * @param version versione di WordNet da istanziare
 	 */
-	public WordNetDataProvider(String version) { if (dataProvider == null ||  (! dataProvider.getVersion().equals(version))) dataProvider = WordNet.getInstance(version); }
-	
-	/**
-	 * Costruisce un WordNetDataProvider istanziando WordNet in versione 3.1
-	 */
-	public WordNetDataProvider() { this("3.1"); }
+	public WordNetDataProvider(Path actualPath, String version) 
+	{ 
+		if (dataProvider == null ||  (! dataProvider.getVersion().equals(version)))
+		{
+			dataPath = Paths.get(actualPath.toString(), "data");
+			dataProvider = WordNet.getInstance(dataPath, version);
+		}
+	}
 	
 	@Override 
 	public String getData(Task task)
@@ -159,7 +169,7 @@ public class WordNetDataProvider implements DataProvider<String>
 		while(dataProvider.getRelatedSynsets(source, BasicWordNetRelation.HYPERNYM).isEmpty())
 			source = dataProvider.getRandomSynset();
 		
-		TranslationsReader tr = new TranslationsReader("it-en");
+		TranslationsReader tr = new TranslationsReader(dataPath, "it-en");
 		
 		List<String> translations = new ArrayList<>(Arrays.asList(
 				tr.getTranslatedSentence(source.getGloss()),

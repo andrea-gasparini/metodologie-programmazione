@@ -99,7 +99,7 @@ public class XMLWriter
 			
 			transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 			transf.setOutputProperty(OutputKeys.INDENT, "yes");
-
+			
 			DOMSource source = new DOMSource(doc);
 			StreamResult file = new StreamResult(dataFile);
 			
