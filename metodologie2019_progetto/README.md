@@ -11,3 +11,9 @@ Dopo aver importato il progetto fabbricasemantica in eclipse, andrà impostato i
 
 - [NodeJS](https://nodejs.org/it/) 10.16.3
 - [Maven](https://maven.apache.org/download.cgi) 3.6.2 (Binary zip archive)
+
+### Soluzioni a problemi comuni
+
+- [How to import fabbricasemantica and Tomcat Server](https://stackoverflow.com/questions/23468653/how-to-import-java-project-into-eclipse-to-run-on-tomcat-server)
+- [Fix default JRE problem](https://sites.miis.edu/dreadkingrathalos/2017/06/05/unbound-classpath-container-jre-system-library-resolved/)
+
