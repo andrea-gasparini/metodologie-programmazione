@@ -1,4 +1,4 @@
-# Requisiti generali
+# Requisiti avvio progetto
 
 - [Eclipse ee](https://www.eclipse.org/downloads/packages/) 2019-09-R
 - [Tomcat](https://tomcat.apache.org/download-80.cgi) 8.5.46 (Core zip)
