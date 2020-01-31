@@ -1,5 +1,5 @@
 # Progetto Metodologie di Programmazione - A.A 2018/2019
-Le specifiche del progetto sono consultabili nel pdf [FabbricaSemantica-Progetto_Metodologie_di_Programmazione_2018_2019](./FabbricaSemantica-Progetto_Metodologie_di_Programmazione_2018_2019.pdf).
+Le specifiche del progetto sono consultabili nel pdf [FabbricaSemantica - Progetto_Metodologie_di_Programmazione_2018_2019](./FabbricaSemantica-Progetto_Metodologie_di_Programmazione_2018_2019.pdf).
 
 # Requisiti avvio progetto
 
