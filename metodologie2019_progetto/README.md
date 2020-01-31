@@ -1,3 +1,6 @@
+# Progetto Metodologie di Programmazione - A.A 2018/2019
+[Specifiche del progetto](./FabbricaSemantica-Progetto_Metodologie_di_Programmazione_2018_2019.pdf)
+
 # Requisiti avvio progetto
 
 - [Eclipse ee](https://www.eclipse.org/downloads/packages/) 2019-09-R
