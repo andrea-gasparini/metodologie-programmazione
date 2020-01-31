@@ -5,7 +5,7 @@
 
 Una volta installate queste componenti è necessario configurare Tomcat all’interno del proprio Eclipse workspace seguendo i passi specificati a questo [link](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.stardust.docs.wst%2Fhtml%2Fwst-integration%2Fconfiguration.html).
 
-## Requisiti "transpilazione" Jsweet
+## Requisiti "transpilazione" JSweet
 
 - [JDK e JRE 1.8](https://1drv.ms/u/s!AuophiC0Yx5egowvCr85AZ2HDhcsvQ?e=2hhap8)
 - [NodeJS](https://nodejs.org/it/) 10.16.3
